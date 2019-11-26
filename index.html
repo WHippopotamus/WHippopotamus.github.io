@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -120,7 +120,7 @@
 
 
 
-  <title>Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Hexo</title>
   
 
 
@@ -139,7 +139,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -299,51 +299,32 @@
       
         
           
-            <h1 id="对总线通信中优先级问题的讨论">对总线通信中优先级问题的讨论</h1>
-<hr />
-<h2 id="一主要实验目标">一、主要实验目标</h2>
-<ul>
-<li><input type="checkbox" disabled="" checked="" />
-搭建一个多节点通信的网络，至少包含两个发送节点、一个接收节点</li>
-<li><input type="checkbox" disabled="" checked="" />
-为不同的任务引入不同的优先级，以验证当消息发送存在冲突时，总线该如何仲裁</li>
-<li><input type="checkbox" disabled="" />
-讨论不同的任务调度策略总线通信的影响</li>
+            <h1 id="对总线通信中优先级问题的讨论"><a href="#对总线通信中优先级问题的讨论" class="headerlink" title="对总线通信中优先级问题的讨论"></a>对总线通信中优先级问题的讨论</h1><hr>
+<h2 id="一、主要实验目标"><a href="#一、主要实验目标" class="headerlink" title="一、主要实验目标"></a>一、主要实验目标</h2><ul>
+<li>[x] 搭建一个多节点通信的网络，至少包含两个发送节点、一个接收节点</li>
+<li>[x] 为不同的任务引入不同的优先级，以验证当消息发送存在冲突时，总线该如何仲裁</li>
+<li>[ ] 讨论不同的任务调度策略总线通信的影响</li>
 </ul>
 <p><strong>完成度：</strong>60%</p>
-<hr />
-<h2 id="二系统网络结构">二、系统网络结构</h2>
-<h3 id="系统网络结构及工作原理">1. 系统网络结构及工作原理</h3>
-<p>构建一个总线通信网络，其中包含：两个信号发送节点，一个信号接收节点，一条CAN总线。</p>
-<figure>
-<img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573377798270.png" alt="" /><figcaption>1573377798270</figcaption>
-</figure>
+<hr>
+<h2 id="二、系统网络结构"><a href="#二、系统网络结构" class="headerlink" title="二、系统网络结构"></a>二、系统网络结构</h2><h3 id="1-系统网络结构及工作原理"><a href="#1-系统网络结构及工作原理" class="headerlink" title="1. 系统网络结构及工作原理"></a>1. 系统网络结构及工作原理</h3><p>构建一个总线通信网络，其中包含：两个信号发送节点，一个信号接收节点，一条CAN总线。</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573377798270.png" alt="1573377798270"></p>
 <p>其工作原理如下：</p>
 <p>发送节点1、2周期性的定时向总线中发送消息，且遵循CAN总线协议的报文传送规则。</p>
 <p>CAN总线协议的报文传送规则：当总线空闲时，连结到总线的所有节点都可以发送消息（多主控制），且先占有总线获得发送消息的资格（CSMA/CR：Carrier Sense Multiple Access / Collosion Avoidance；如果多个节点同时开始发送消息，那么具有最高优先级（最低ID值）的节点获得发送消息的资格，其余消息则进入到消息缓存区依次等待发送。</p>
-<h3 id="simulink模型">2. Simulink模型</h3>
-<p>在Matlab中利用TrueTime工具箱搭建的网络通信模型如下：</p>
-<figure>
-<img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573376814384.png" alt="" /><figcaption>1573376814384</figcaption>
-</figure>
-<h3 id="仿真结果及分析">3. 仿真结果及分析</h3>
-<p>发送节点1与发送节点2以0.5s为周期定时向总线中发送一个消息，且在下一个周期来临后取相反值。为了方便观察，取节点1消息的幅值为<span class="math inline">\(1\)</span>，节点2消息的幅值为<span class="math inline">\(2\)</span>。如下图所示，其中，前两排分别为两个发送节点的时序图，后两排分别为两个节点向总线中发送的消息的波形。</p>
-<figure>
-<img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573389815400.png" alt="" /><figcaption>1573389815400</figcaption>
-</figure>
-<p>调整发送节点1、2的开始时间、执行时间，使两个节点的消息发送周期存在整数倍关系（此处<span class="math inline">\(T_1=0.5s\)</span>,<span class="math inline">\(T_2=1s\)</span>），以保证在仿真的过程中能够出现消息发送冲突。接收节点采用事件触发的机制，及当检测到总线中有消息在发送的时候才被触发。通过观察总线的调度计划时序图及接收节点的输出结果，可以对CAN总线的报文传送规则进行验证。</p>
-<p>设置发送节点1、2中消息的优先级分别为<span class="math inline">\(2、1\)</span>。运行仿真，得到仿真结果如下：</p>
+<h3 id="2-Simulink模型"><a href="#2-Simulink模型" class="headerlink" title="2. Simulink模型"></a>2. Simulink模型</h3><p>在Matlab中利用TrueTime工具箱搭建的网络通信模型如下：</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573376814384.png" alt="1573376814384"></p>
+<h3 id="3-仿真结果及分析"><a href="#3-仿真结果及分析" class="headerlink" title="3. 仿真结果及分析"></a>3. 仿真结果及分析</h3><p>发送节点1与发送节点2以0.5s为周期定时向总线中发送一个消息，且在下一个周期来临后取相反值。为了方便观察，取节点1消息的幅值为$1$，节点2消息的幅值为$2$。如下图所示，其中，前两排分别为两个发送节点的时序图，后两排分别为两个节点向总线中发送的消息的波形。</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573389815400.png" alt="1573389815400"></p>
+<p>调整发送节点1、2的开始时间、执行时间，使两个节点的消息发送周期存在整数倍关系（此处$T_1=0.5s$,$T_2=1s$），以保证在仿真的过程中能够出现消息发送冲突。接收节点采用事件触发的机制，及当检测到总线中有消息在发送的时候才被触发。通过观察总线的调度计划时序图及接收节点的输出结果，可以对CAN总线的报文传送规则进行验证。</p>
+<p>设置发送节点1、2中消息的优先级分别为$2、1$。运行仿真，得到仿真结果如下：</p>
 <p>1）总线的调度计划时序图</p>
-<figure>
-<img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573392189337.png" alt="" /><figcaption>1573392189337</figcaption>
-</figure>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573392189337.png" alt="1573392189337"></p>
 <p>2）接收节点的输出结果：（第三排为节点3的输出结果）</p>
-<figure>
-<img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573394345266.png" alt="" /><figcaption>1573394345266</figcaption>
-</figure>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573394345266.png" alt="1573394345266"></p>
 <p><strong>结果分析：</strong></p>
 <p>从总线的调度计划时序图中可以看出：发送节点2中消息的优先级的确高于节点1。</p>
-<p>为方便观察，设置接收节点中<span class="math inline">\(D/A\)</span>转换的执行时间为<span class="math inline">\(0.1s\)</span>。对从<span class="math inline">\(t=1s\)</span>到<span class="math inline">\(t=3s\)</span>时间段内的情况进行分析：</p>
+<p>为方便观察，设置接收节点中$D/A$转换的执行时间为$0.1s$。对从$t=1s$到$t=3s$时间段内的情况进行分析：</p>
 <ul>
 <li>t=1s时，节点1、2同时向总线中发送数值-1、0.5，总线按照优先级顺序将0.5、-1先后发送给接收节点。</li>
 <li>节点3在接收到1、2的消息后，经过0.1s的延迟（D/A转换器的执行时间为0.1s）后，输出的数值0.5（来自节点2），此时t=0.1s；再经过0.1s的延迟后输出的数值为-1（来自节点1），此时t=0.2s。</li>
@@ -353,24 +334,18 @@
 </ul>
 <p>可见，仿真结果满足CAN总线的报文传送规则。</p>
 <p>值得注意的是：实际情况中，节点发送和接收的消息可能不仅仅是简单的数值，而是一帧一帧的数据。此处为了讨论方便，暂时未涉及到对数据的编码及长度计算。作者在后续的学习过程中将继续深入探讨其详细的工作模式。</p>
-<hr />
-<h2 id="三关键问题及策略总结">三、关键问题及策略总结</h2>
-<h3 id="优先级的含义">“优先级”的含义：</h3>
-<ol type="1">
+<hr>
+<h2 id="三、关键问题及策略总结"><a href="#三、关键问题及策略总结" class="headerlink" title="三、关键问题及策略总结"></a>三、关键问题及策略总结</h2><h3 id="“优先级”的含义："><a href="#“优先级”的含义：" class="headerlink" title="“优先级”的含义："></a>“优先级”的含义：</h3><ol>
 <li>若节点中同时存在两个以上的任务需要发送时，则需要给不同的任务设定不同的优先级</li>
 <li>若网络中同时存在两个以上的节点需要往总线中发送消息，则需要给给个消息都设置一个特定的优先级</li>
 </ol>
-<h3 id="任务调度策略">任务调度策略：</h3>
-<p>RMS：单调速率策略，任务的周期越短，优先级越高。</p>
+<h3 id="任务调度策略："><a href="#任务调度策略：" class="headerlink" title="任务调度策略："></a>任务调度策略：</h3><p>RMS：单调速率策略，任务的周期越短，优先级越高。</p>
 <p>DMS：截止期单调策略，任务的截止时间越短，优先级越高。当任务的截止时间等于其周期时：RMS=DMS</p>
-<hr />
-<h2 id="参考资料">参考资料</h2>
-<p>RMS: https://baike.baidu.com/item/RMS/7521847</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>RMS: <a href="https://baike.baidu.com/item/RMS/7521847" target="_blank" rel="noopener">https://baike.baidu.com/item/RMS/7521847</a> </p>
 <p>DMS: <em>N.C.Audeley, etc. HARD REAL-TIME SCHEDULING:THE DEADLINE_MONOTONIC APPROACH</em></p>
-<hr />
-<h2 id="附录">附录</h2>
-<h3 id="关键代码">关键代码：</h3>
-<p>发送节点1（初始化程序）：</p>
+<hr>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="关键代码："><a href="#关键代码：" class="headerlink" title="关键代码："></a>关键代码：</h3><p>发送节点1（初始化程序）：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sender1_init</span><span class="params">(Amp)</span></span></span><br><span class="line"></span><br><span class="line">ttInitKernel(<span class="string">'prioFP'</span>)</span><br><span class="line"></span><br><span class="line">data.u=Amp;</span><br><span class="line">data.exectime=<span class="number">0</span>;</span><br><span class="line">starttime=<span class="number">0</span>;</span><br><span class="line">period=<span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line">ttCreatePeriodicTask(<span class="string">'sender1_task'</span>,starttime,period,<span class="string">'sender1_code'</span>,data)</span><br></pre></td></tr></table></figure>
 <p>发送节点1（控制代码）：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime,data]</span> = <span class="title">sender1_code</span><span class="params">(segment, data)</span></span></span><br><span class="line"><span class="keyword">switch</span> segment</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">        data.u=-data.u;</span><br><span class="line">        exectime = data.exectime;</span><br><span class="line">        ttSendMsg([<span class="number">1</span> <span class="number">3</span>],data.u,<span class="number">10</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        ttAnalogOut(<span class="number">1</span>, data.u);</span><br><span class="line">        exectime = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -501,65 +476,49 @@
       
         
           
-            <h1 id="基于can总线协议的控制系统仿真">基于CAN总线协议的控制系统仿真</h1>
-<hr />
-<h2 id="主要实验目标">主要实验目标：</h2>
-<ul>
-<li><input type="checkbox" disabled="" checked="" />
-搭建一个基于TrueTime工具箱的负反馈控制系统（不考虑干扰）</li>
-<li><input type="checkbox" disabled="" checked="" />
-实现两个节点之间的通信（控制器节点、传感器/执行机构节点）</li>
+            <h1 id="基于CAN总线协议的控制系统仿真"><a href="#基于CAN总线协议的控制系统仿真" class="headerlink" title="基于CAN总线协议的控制系统仿真"></a>基于CAN总线协议的控制系统仿真</h1><hr>
+<h2 id="主要实验目标："><a href="#主要实验目标：" class="headerlink" title="主要实验目标："></a>主要实验目标：</h2><ul>
+<li>[x] 搭建一个基于TrueTime工具箱的负反馈控制系统（不考虑干扰）</li>
+<li>[x] 实现两个节点之间的通信（控制器节点、传感器/执行机构节点）</li>
 </ul>
-<h2 id="一非总线通信效果对照">一、非总线通信效果（对照）</h2>
-<p>被控对象传递函数：开环 <span class="math inline">\(P=\frac{2}{s-1}\)</span> (不稳定) ；闭环 <span class="math inline">\(G=\frac{2}{s+1}\)</span> (稳定)</p>
-<p>控制系统框图（非总线通信）：其中控制器增益为<span class="math inline">\(K=1\)</span>，输入变换增益为<span class="math inline">\(K_p=0.5\)</span>。</p>
-<figure>
-<img src="https://pic1.zhimg.com/80/v2-924687b21cd57bbb9b869706a76ad9b0_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<h2 id="一、非总线通信效果（对照）"><a href="#一、非总线通信效果（对照）" class="headerlink" title="一、非总线通信效果（对照）"></a>一、非总线通信效果（对照）</h2><p>被控对象传递函数：开环 $P=\frac{2}{s-1}$ (不稳定) ；闭环 $G=\frac{2}{s+1}$ (稳定)</p>
+<p>控制系统框图（非总线通信）：其中控制器增益为$K=1$，输入变换增益为$K_p=0.5$。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-924687b21cd57bbb9b869706a76ad9b0_hd.jpg" alt="img"></p>
 <p>阶跃响应特性分析如下：</p>
-<figure>
-<img src="https://pic1.zhimg.com/80/v2-8608b5995a2a3e6b182a991705ea82a8_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<p><img src="https://pic1.zhimg.com/80/v2-8608b5995a2a3e6b182a991705ea82a8_hd.jpg" alt="img"></p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">性能</th>
-<th style="text-align: center;">时间</th>
+<tr>
+<th style="text-align:center">性能</th>
+<th style="text-align:center">时间</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">上升时间</td>
-<td style="text-align: center;"><span class="math inline">\(t_r=2.2T=2.2s ，T=1\)</span></td>
+<tr>
+<td style="text-align:center">上升时间</td>
+<td style="text-align:center">$t_r=2.2T=2.2s ，T=1$</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">调节时间</td>
-<td style="text-align: center;"><span class="math inline">\(ts=3T=3s\)</span></td>
+<tr>
+<td style="text-align:center">调节时间</td>
+<td style="text-align:center">$ts=3T=3s$</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>其中，T为时间常数。从上图中可以看出被控对象P（不稳定）在经过负反馈调节及输入变换后，系统稳定且最终稳态增益等于阶跃响应的幅值。</p>
 <p>上述控制过程是采用线缆点对点直接连接的结果，并没有采用总线通信。所以不存在时延或者丢包等问题。下面将基于MATLAB/Simulink Truetime工具箱，引入总线通信，重新搭建控制系统。在保持原有被控对象、控制输入及控制律不变的情况下，探讨总线通信对系统响应造成的影响（以CAN总线为例）。</p>
-<hr />
-<h2 id="二基于can总线的仿真">二、基于CAN总线的仿真</h2>
-<h3 id="系统网络结构及控制原理">1. 系统网络结构及控制原理</h3>
-<p>系统网络结构如图所示：本例中使用的总线为CAN总线，CAN总线的详细原理可以参考文章《<a href="https://zhuanlan.zhihu.com/p/32221140" target="_blank" rel="noopener">一口气从零读懂CAN总线</a>》。连接到CAN线的节点共有两个，即控制器节点、传感器/执行机构节点，暂时不涉及对节点间优先级的讨论。</p>
-<figure>
-<img src="https://pic2.zhimg.com/80/v2-86f3ce130c5e7e04dae2d4dfbaca8621_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<hr>
+<h2 id="二、基于CAN总线的仿真"><a href="#二、基于CAN总线的仿真" class="headerlink" title="二、基于CAN总线的仿真"></a>二、基于CAN总线的仿真</h2><h3 id="1-系统网络结构及控制原理"><a href="#1-系统网络结构及控制原理" class="headerlink" title="1. 系统网络结构及控制原理"></a>1. 系统网络结构及控制原理</h3><p>系统网络结构如图所示：本例中使用的总线为CAN总线，CAN总线的详细原理可以参考文章《<a href="https://zhuanlan.zhihu.com/p/32221140" target="_blank" rel="noopener">一口气从零读懂CAN总线</a>》。连接到CAN线的节点共有两个，即控制器节点、传感器/执行机构节点，暂时不涉及对节点间优先级的讨论。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-86f3ce130c5e7e04dae2d4dfbaca8621_hd.jpg" alt="img"></p>
 <p>控制原理：</p>
-<p>step1：控制器节点将经过输入变换后的参考信号<span class="math inline">\(K_p*\hat{r}\)</span>与从总线接收到被控对象输出信号<span class="math inline">\(\hat{y}\)</span>做差，得到控制信号<span class="math inline">\(\hat{u}=K_p*\hat{r}-\hat{y}\)</span> 并发送到总线中。</p>
-<p>step2：传感器/执行机构节点对从总线中接收到的控制信号<span class="math inline">\(\hat{u}\)</span>做D/A转换，得到连续的时间信号<span class="math inline">\(u\)</span>，然后作为控制输入输入到被控对象中。</p>
-<p>step3：被控对象在<span class="math inline">\(u\)</span>的作用下得到输出<span class="math inline">\(y\)</span>，在传感器/执行机构节点中经过A/D转换得到离散的输出信号<span class="math inline">\(\hat{y}\)</span>，然后作为控制器的反馈输入被发送到总线中。</p>
+<p>step1：控制器节点将经过输入变换后的参考信号$K_p<em>\hat{r}$与从总线接收到被控对象输出信号$\hat{y}$做差，得到控制信号$\hat{u}=K_p</em>\hat{r}-\hat{y}$ 并发送到总线中。</p>
+<p>step2：传感器/执行机构节点对从总线中接收到的控制信号$\hat{u}$做D/A转换，得到连续的时间信号$u$，然后作为控制输入输入到被控对象中。</p>
+<p>step3：被控对象在$u$的作用下得到输出$y$，在传感器/执行机构节点中经过A/D转换得到离散的输出信号$\hat{y}$，然后作为控制器的反馈输入被发送到总线中。</p>
 <p>step4：跳转到step1并循环，直到仿真时间结束。</p>
-<h3 id="simulink模型及代码">2. Simulink模型及代码</h3>
-<h5 id="simulink模型">Simulink模型</h5>
-<p>利用Truetime工具箱，在Simulink中搭建的系统模型如下图所示：</p>
-<figure>
-<img src="https://pic2.zhimg.com/80/v2-7e77acb028b492dc22e39c86cdb78675_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
-<h5 id="相关代码">相关代码</h5>
-<p>1） 控制器节点初始化</p>
+<h3 id="2-Simulink模型及代码"><a href="#2-Simulink模型及代码" class="headerlink" title="2. Simulink模型及代码"></a>2. Simulink模型及代码</h3><h5 id="Simulink模型"><a href="#Simulink模型" class="headerlink" title="Simulink模型"></a>Simulink模型</h5><p>利用Truetime工具箱，在Simulink中搭建的系统模型如下图所示：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-7e77acb028b492dc22e39c86cdb78675_hd.jpg" alt="img"></p>
+<h5 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h5><p>1） 控制器节点初始化</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">controller_init</span><span class="params">(arg)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize TrueTime kernel</span></span><br><span class="line">ttInitKernel(<span class="string">'prioDM'</span>) <span class="comment">% deadline-monotonic scheduling</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Create task data (local memory)</span></span><br><span class="line">data.h = <span class="number">1</span>;</span><br><span class="line">data.Kp = <span class="number">0.5</span>;</span><br><span class="line">data.u = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Sporadic controller task, activated by arriving network message</span></span><br><span class="line">deadline = data.h;</span><br><span class="line">ttCreateTask(<span class="string">'controller_task'</span>, deadline, <span class="string">'controller_code'</span>, data);</span><br><span class="line">ttAttachNetworkHandler(<span class="string">'controller_task'</span>)</span><br></pre></td></tr></table></figure>
 <p>2）控制算法</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime, data]</span> = <span class="title">controller_code</span><span class="params">(seg, data)</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> seg</span><br><span class="line"> <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">  y = ttGetMsg;         <span class="comment">% Obtain sensor value</span></span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">isempty</span>(y)</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'Error in controller: no message received!'</span>);</span><br><span class="line">    y = <span class="number">0.0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  r = ttAnalogIn(<span class="number">1</span>);    <span class="comment">% Read reference value</span></span><br><span class="line">  data.u = data.Kp*r - y;</span><br><span class="line">  exectime = <span class="number">0.005</span>;</span><br><span class="line"> <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">  ttSendMsg(<span class="number">2</span>, data.u, <span class="number">80</span>);    <span class="comment">% Send 80 bits to node 2 (actuator)</span></span><br><span class="line">  exectime = <span class="number">-1</span>; <span class="comment">% finished</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -569,25 +528,17 @@
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime, data]</span> = <span class="title">sensor_code</span><span class="params">(seg, data)</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">persistent</span> y</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> seg</span><br><span class="line"> <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">  y = ttAnalogIn(<span class="number">1</span>);</span><br><span class="line">  exectime = <span class="number">0.005</span>;</span><br><span class="line"> <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">  ttSendMsg(<span class="number">1</span>, y, <span class="number">80</span>); <span class="comment">% Send message (80 bits) to node 3 (controller)</span></span><br><span class="line">  exectime = <span class="number">0.0002</span>;</span><br><span class="line"> <span class="keyword">case</span> <span class="number">3</span></span><br><span class="line">  exectime = <span class="number">-1</span>; <span class="comment">% finished</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>5）执行机构算法：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime, data]</span> = <span class="title">actuator_code</span><span class="params">(seg, data)</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">persistent</span> u</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> seg</span><br><span class="line"> <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">  u = ttGetMsg;</span><br><span class="line">  exectime = <span class="number">0.005</span>;</span><br><span class="line"> <span class="keyword">otherwise</span></span><br><span class="line">  <span class="keyword">if</span> ~<span class="built_in">isempty</span>(u)</span><br><span class="line">    ttAnalogOut(<span class="number">1</span>, u)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'Error: actuator received empty message!'</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  exectime = <span class="number">-1</span>; <span class="comment">% finished</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h5 id="仿真结果">3. 仿真结果</h5>
-<p>在开始仿真之前，还需要配置一些重要的参数。仿真时间设置为20s；选择总线类型为，并设置端口数量为2；传感器及执行机构的采样周期设置为0.5s、执行时间为0.005s、传感器发送时延为0.0002s。运行仿真，得到仿真结果如下：</p>
-<figure>
-<img src="https://pic1.zhimg.com/80/v2-9b947b3a897cd09ae9a254a89e30d9d4_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<h5 id="3-仿真结果"><a href="#3-仿真结果" class="headerlink" title="3. 仿真结果"></a>3. 仿真结果</h5><p>在开始仿真之前，还需要配置一些重要的参数。仿真时间设置为20s；选择总线类型为，并设置端口数量为2；传感器及执行机构的采样周期设置为0.5s、执行时间为0.005s、传感器发送时延为0.0002s。运行仿真，得到仿真结果如下：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-9b947b3a897cd09ae9a254a89e30d9d4_hd.jpg" alt="img"></p>
 <p><strong>时序图：</strong></p>
 <p>总线调度计划</p>
-<figure>
-<img src="https://pic4.zhimg.com/80/v2-b56662fb41d05c62589e1e952fb0eaf3_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<p><img src="https://pic4.zhimg.com/80/v2-b56662fb41d05c62589e1e952fb0eaf3_hd.jpg" alt="img"></p>
 <p>各节点调度计划</p>
-<figure>
-<img src="https://pic1.zhimg.com/80/v2-52d9467efee9f8174e4e8834f4098e00_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
-<hr />
-<h2 id="参考资料">参考资料</h2>
-<ul>
-<li>一口气从零读懂CAN总线（上）：https://zhuanlan.zhihu.com/p/32221140</li>
-<li>一口气从零读懂CAN总线（下）：https://zhuanlan.zhihu.com/p/32262127</li>
+<p><img src="https://pic1.zhimg.com/80/v2-52d9467efee9f8174e4e8834f4098e00_hd.jpg" alt="img"></p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>一口气从零读懂CAN总线（上）：<a href="https://zhuanlan.zhihu.com/p/32221140" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32221140</a></li>
+<li>一口气从零读懂CAN总线（下）：<a href="https://zhuanlan.zhihu.com/p/32262127" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32262127</a></li>
 </ul>
 
           
@@ -708,27 +659,25 @@
       
         
           
-            <h1 id="博客小白的进阶之路">博客小白的进阶之路</h1>
-<hr />
+            <h1 id="博客小白的进阶之路"><a href="#博客小白的进阶之路" class="headerlink" title="博客小白的进阶之路"></a>博客小白的进阶之路</h1><hr>
 <ul>
 <li>准备材料：Hexo+git+github+markdown</li>
 </ul>
-<h2 id="一准备工作">一、准备工作</h2>
-<ol type="1">
-<li><h3 id="购买域名">购买域名</h3></li>
-<li><h3 id="在github中创建个人仓库">在github中创建个人仓库</h3></li>
-<li><h3 id="安装-node.js">安装 Node.js</h3></li>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><ol>
+<li><h3 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h3></li>
+<li><h3 id="在github中创建个人仓库"><a href="#在github中创建个人仓库" class="headerlink" title="在github中创建个人仓库"></a>在github中创建个人仓库</h3></li>
+<li><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3></li>
 </ol>
-<p>下载地址： https://nodejs.org/en/download/</p>
+<p>下载地址： <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a> </p>
 <p><strong>添加国内镜像源</strong>：如果没有梯子的话，可以使用阿里的国内镜像进行加速。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li><h3 id="安装git">安装git</h3></li>
+<ol>
+<li><h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3></li>
 </ol>
-<p>下载地址： https://git-scm.com/download/win</p>
-<ol start="5" type="1">
-<li><h3 id="安装hexo">安装Hexo</h3></li>
-<li><h3 id="连接github与本地">连接Github与本地</h3></li>
+<p>下载地址： <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a> </p>
+<ol>
+<li><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3></li>
+<li><h3 id="连接Github与本地"><a href="#连接Github与本地" class="headerlink" title="连接Github与本地"></a>连接Github与本地</h3></li>
 </ol>
 <p>首先右键打开git bash，然后输入下面命令：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "WHippopotamus"</span><br><span class="line">git config --global user.email "<span class="number">18829575732</span>@<span class="number">163</span>.com"</span><br></pre></td></tr></table></figure>
@@ -740,28 +689,22 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 <p>将输出的内容复制到框中，点击确定保存。</p>
 <p>输入<code>ssh -T git@github.com</code>，如果如下图所示，出现你的用户名，那就成功了。</p>
-<figure>
-<img src="https://pic2.zhimg.com/80/v2-d2681a4830e54238450b6dc2a57d0c55_hd.jpg" alt="" /><figcaption>img</figcaption>
-</figure>
+<p><img src="https://pic2.zhimg.com/80/v2-d2681a4830e54238450b6dc2a57d0c55_hd.jpg" alt="img"></p>
 <p>打开博客根目录下的<code>_config.yml</code>文件，这是博客的配置文件，在这里你可以修改与博客相关的各种信息。</p>
 <p>修改最后一行的配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/godweiyang/godweiyang.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>repository修改为你自己的github项目地址。</p>
-<h2 id="博客的撰写">博客的撰写</h2>
-<h2 id="常用的hexo-命令">常用的Hexo 命令</h2>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n "我的博客" == hexo new "我的博客" #新建文章</span><br><span class="line">hexo g == hexo generate #生成</span><br><span class="line">hexo s == hexo server #启动服务预览</span><br><span class="line">hexo d == hexo deploy #部署</span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p <span class="number">5000</span> #更改端口</span><br><span class="line">hexo server -i <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">1</span> #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure>
-<hr />
-<h2 id="我的域名">我的域名</h2>
-<ul>
-<li>https://github.com/</li>
+<h2 id="博客的撰写"><a href="#博客的撰写" class="headerlink" title="博客的撰写"></a>博客的撰写</h2><h2 id="常用的Hexo-命令"><a href="#常用的Hexo-命令" class="headerlink" title="常用的Hexo 命令"></a>常用的Hexo 命令</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n "我的博客" == hexo new "我的博客" #新建文章</span><br><span class="line">hexo g == hexo generate #生成</span><br><span class="line">hexo s == hexo server #启动服务预览</span><br><span class="line">hexo d == hexo deploy #部署</span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p <span class="number">5000</span> #更改端口</span><br><span class="line">hexo server -i <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">1</span> #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="我的域名"><a href="#我的域名" class="headerlink" title="我的域名"></a>我的域名</h2><ul>
+<li><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> </li>
 <li>www.whippopotamus.github.io</li>
 <li>www.orionly.cn</li>
 </ul>
-<hr />
-<h2 id="参考链接">参考链接</h2>
-<ul>
-<li>GitHub+Hexo 搭建个人网站详细教程：https://zhuanlan.zhihu.com/p/26625249</li>
-<li>https://zhuanlan.zhihu.com/p/35668237</li>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li>GitHub+Hexo 搭建个人网站详细教程：<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26625249</a> </li>
+<li><a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35668237</a> </li>
 </ul>
 
           
@@ -883,18 +826,13 @@
         
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
@@ -1141,24 +1079,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
