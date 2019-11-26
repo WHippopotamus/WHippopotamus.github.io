@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="对总线通信中优先级问题的讨论 一、主要实验目标  搭建一个多节点通信的网络，至少包含两个发送节点、一个接收节点  为不同的任务引入不同的优先级，以验证当消息发送存在冲突时，总线该如何仲裁  讨论不同的任务调度策略总线通信的影响  完成度：60%  二、系统网络结构1. 系统网络结构及工作原理构建一个总线通信网络，其中包含：两个信号发送节点，一个信号接收节点，一条CAN总线。  其工作原理如下： 发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对总线通信优先级问题的讨论">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;25&#x2F;%E5%AF%B9%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%A8%E8%AE%BA&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对总线通信中优先级问题的讨论 一、主要实验目标  搭建一个多节点通信的网络，至少包含两个发送节点、一个接收节点  为不同的任务引入不同的优先级，以验证当消息发送存在冲突时，总线该如何仲裁  讨论不同的任务调度策略总线通信的影响  完成度：60%  二、系统网络结构1. 系统网络结构及工作原理构建一个总线通信网络，其中包含：两个信号发送节点，一个信号接收节点，一条CAN总线。  其工作原理如下： 发">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573377798270.png">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573376814384.png">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573389815400.png">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573392189337.png">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573394345266.png">
+<meta property="og:updated_time" content="2019-11-10T14:35:38.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:&#x2F;Users&#x2F;Administrator&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1573377798270.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/25/对总线通信优先级问题的讨论/"/>
+
+
+
+
+
+  <title>对总线通信优先级问题的讨论 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/25/%E5%AF%B9%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%A8%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对总线通信优先级问题的讨论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-25T22:43:54+08:00">
+                2019-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="对总线通信中优先级问题的讨论"><a href="#对总线通信中优先级问题的讨论" class="headerlink" title="对总线通信中优先级问题的讨论"></a>对总线通信中优先级问题的讨论</h1><hr>
+<h2 id="一、主要实验目标"><a href="#一、主要实验目标" class="headerlink" title="一、主要实验目标"></a>一、主要实验目标</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 搭建一个多节点通信的网络，至少包含两个发送节点、一个接收节点</li>
+<li><input checked="" disabled="" type="checkbox"> 为不同的任务引入不同的优先级，以验证当消息发送存在冲突时，总线该如何仲裁</li>
+<li><input disabled="" type="checkbox"> 讨论不同的任务调度策略总线通信的影响</li>
+</ul>
+<p><strong>完成度：</strong>60%</p>
+<hr>
+<h2 id="二、系统网络结构"><a href="#二、系统网络结构" class="headerlink" title="二、系统网络结构"></a>二、系统网络结构</h2><h3 id="1-系统网络结构及工作原理"><a href="#1-系统网络结构及工作原理" class="headerlink" title="1. 系统网络结构及工作原理"></a>1. 系统网络结构及工作原理</h3><p>构建一个总线通信网络，其中包含：两个信号发送节点，一个信号接收节点，一条CAN总线。</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573377798270.png" alt="1573377798270"></p>
+<p>其工作原理如下：</p>
+<p>发送节点1、2周期性的定时向总线中发送消息，且遵循CAN总线协议的报文传送规则。</p>
+<p>CAN总线协议的报文传送规则：当总线空闲时，连结到总线的所有节点都可以发送消息（多主控制），且先占有总线获得发送消息的资格（CSMA/CR：Carrier Sense Multiple Access / Collosion Avoidance；如果多个节点同时开始发送消息，那么具有最高优先级（最低ID值）的节点获得发送消息的资格，其余消息则进入到消息缓存区依次等待发送。</p>
+<h3 id="2-Simulink模型"><a href="#2-Simulink模型" class="headerlink" title="2. Simulink模型"></a>2. Simulink模型</h3><p>在Matlab中利用TrueTime工具箱搭建的网络通信模型如下：</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573376814384.png" alt="1573376814384"></p>
+<h3 id="3-仿真结果及分析"><a href="#3-仿真结果及分析" class="headerlink" title="3. 仿真结果及分析"></a>3. 仿真结果及分析</h3><p>发送节点1与发送节点2以0.5s为周期定时向总线中发送一个消息，且在下一个周期来临后取相反值。为了方便观察，取节点1消息的幅值为$1$，节点2消息的幅值为$2$。如下图所示，其中，前两排分别为两个发送节点的时序图，后两排分别为两个节点向总线中发送的消息的波形。</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573389815400.png" alt="1573389815400"></p>
+<p>调整发送节点1、2的开始时间、执行时间，使两个节点的消息发送周期存在整数倍关系（此处$T_1=0.5s$,$T_2=1s$），以保证在仿真的过程中能够出现消息发送冲突。接收节点采用事件触发的机制，及当检测到总线中有消息在发送的时候才被触发。通过观察总线的调度计划时序图及接收节点的输出结果，可以对CAN总线的报文传送规则进行验证。</p>
+<p>设置发送节点1、2中消息的优先级分别为$2、1$。运行仿真，得到仿真结果如下：</p>
+<p>1）总线的调度计划时序图</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573392189337.png" alt="1573392189337"></p>
+<p>2）接收节点的输出结果：（第三排为节点3的输出结果）</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1573394345266.png" alt="1573394345266"></p>
+<p><strong>结果分析：</strong></p>
+<p>从总线的调度计划时序图中可以看出：发送节点2中消息的优先级的确高于节点1。</p>
+<p>为方便观察，设置接收节点中$D/A$转换的执行时间为$0.1s$。对从$t=1s$到$t=3s$时间段内的情况进行分析：</p>
+<ul>
+<li>t=1s时，节点1、2同时向总线中发送数值-1、0.5，总线按照优先级顺序将0.5、-1先后发送给接收节点。</li>
+<li>节点3在接收到1、2的消息后，经过0.1s的延迟（D/A转换器的执行时间为0.1s）后，输出的数值0.5（来自节点2），此时t=0.1s；再经过0.1s的延迟后输出的数值为-1（来自节点1），此时t=0.2s。</li>
+<li>t=1.5时，节点1向总线中发送数值1，节点3在收到消息后，经过0.1s的延迟输出数值1，此时t=1.6s。</li>
+<li>如果没有新的数值需要显示，节点3会一直保持输出当前的数值不变，直到接收到新的消息为止。</li>
+<li>t=2s到t=3s时间段的情况类似，只是输出的数值不同而已。</li>
+</ul>
+<p>可见，仿真结果满足CAN总线的报文传送规则。</p>
+<p>值得注意的是：实际情况中，节点发送和接收的消息可能不仅仅是简单的数值，而是一帧一帧的数据。此处为了讨论方便，暂时未涉及到对数据的编码及长度计算。作者在后续的学习过程中将继续深入探讨其详细的工作模式。</p>
+<hr>
+<h2 id="三、关键问题及策略总结"><a href="#三、关键问题及策略总结" class="headerlink" title="三、关键问题及策略总结"></a>三、关键问题及策略总结</h2><h3 id="“优先级”的含义："><a href="#“优先级”的含义：" class="headerlink" title="“优先级”的含义："></a>“优先级”的含义：</h3><ol>
+<li>若节点中同时存在两个以上的任务需要发送时，则需要给不同的任务设定不同的优先级</li>
+<li>若网络中同时存在两个以上的节点需要往总线中发送消息，则需要给给个消息都设置一个特定的优先级</li>
+</ol>
+<h3 id="任务调度策略："><a href="#任务调度策略：" class="headerlink" title="任务调度策略："></a>任务调度策略：</h3><p>RMS：单调速率策略，任务的周期越短，优先级越高。</p>
+<p>DMS：截止期单调策略，任务的截止时间越短，优先级越高。当任务的截止时间等于其周期时：RMS=DMS</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>RMS: <a href="https://baike.baidu.com/item/RMS/7521847" target="_blank" rel="noopener">https://baike.baidu.com/item/RMS/7521847</a> </p>
+<p>DMS: <em>N.C.Audeley, etc. HARD REAL-TIME SCHEDULING:THE DEADLINE_MONOTONIC APPROACH</em></p>
+<hr>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="关键代码："><a href="#关键代码：" class="headerlink" title="关键代码："></a>关键代码：</h3><p>发送节点1（初始化程序）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sender1_init</span><span class="params">(Amp)</span></span></span><br><span class="line"></span><br><span class="line">ttInitKernel(<span class="string">'prioFP'</span>)</span><br><span class="line"></span><br><span class="line">data.u=Amp;</span><br><span class="line">data.exectime=<span class="number">0</span>;</span><br><span class="line">starttime=<span class="number">0</span>;</span><br><span class="line">period=<span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line">ttCreatePeriodicTask(<span class="string">'sender1_task'</span>,starttime,period,<span class="string">'sender1_code'</span>,data)</span><br></pre></td></tr></table></figure>
+
+<p>发送节点1（控制代码）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime,data]</span> = <span class="title">sender1_code</span><span class="params">(segment, data)</span></span></span><br><span class="line"><span class="keyword">switch</span> segment</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">        data.u=-data.u;</span><br><span class="line">        exectime = data.exectime;</span><br><span class="line">        ttSendMsg([<span class="number">1</span> <span class="number">3</span>],data.u,<span class="number">10</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        ttAnalogOut(<span class="number">1</span>, data.u);</span><br><span class="line">        exectime = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>发送节点2（初始化）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sender2_init</span><span class="params">(Amp)</span></span></span><br><span class="line"></span><br><span class="line">ttInitKernel(<span class="string">'prioFP'</span>)</span><br><span class="line"></span><br><span class="line">data.u=Amp;</span><br><span class="line">data.exectime=<span class="number">0</span>;</span><br><span class="line">starttime=<span class="number">0</span>;</span><br><span class="line">period=<span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line">ttCreatePeriodicTask(<span class="string">'sender2_task'</span>,starttime,period,<span class="string">'sender2_code'</span>,data)</span><br></pre></td></tr></table></figure>
+
+<p>发送节点2（控制代码）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime,data]</span> = <span class="title">sender2_code</span><span class="params">(segment, data)</span></span></span><br><span class="line"><span class="keyword">switch</span> segment</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">        data.u=-data.u;</span><br><span class="line">        exectime = data.exectime;</span><br><span class="line">        ttSendMsg([<span class="number">1</span> <span class="number">3</span>],data.u,<span class="number">10</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        ttAnalogOut(<span class="number">1</span>, data.u);</span><br><span class="line">        exectime = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>接收节点（初始化）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">receiver_init</span></span></span><br><span class="line"></span><br><span class="line">ttInitKernel(<span class="string">'prioFP'</span>)</span><br><span class="line"></span><br><span class="line">data.exectime=<span class="number">0.1</span>;</span><br><span class="line">starttime=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">ttCreateTask(<span class="string">'receiver_task'</span>,starttime,<span class="string">'receiver_code'</span>,data)</span><br><span class="line">ttAttachNetworkHandler(<span class="number">1</span>,<span class="string">'receiver_task'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>接收节点（控制代码）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[exectime,data]</span> = <span class="title">receiver_code</span><span class="params">(segment, data)</span></span></span><br><span class="line"><span class="keyword">persistent</span> u</span><br><span class="line"><span class="keyword">switch</span> segment</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span></span><br><span class="line">        u=ttGetMsg;</span><br><span class="line">        exectime = data.exectime;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> ~<span class="built_in">isempty</span>(u)</span><br><span class="line">            ttAnalogOut(<span class="number">1</span>, u)</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">disp</span>(<span class="string">'Error: actuator received empty message!'</span>)</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        exectime = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/25/%E5%8D%9A%E5%AE%A2%E5%B0%8F%E7%99%BD/" rel="next" title="博客小白">
+                <i class="fa fa-chevron-left"></i> 博客小白
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对总线通信中优先级问题的讨论"><span class="nav-number">1.</span> <span class="nav-text">对总线通信中优先级问题的讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、主要实验目标"><span class="nav-number">1.1.</span> <span class="nav-text">一、主要实验目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、系统网络结构"><span class="nav-number">1.2.</span> <span class="nav-text">二、系统网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-系统网络结构及工作原理"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 系统网络结构及工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Simulink模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. Simulink模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-仿真结果及分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 仿真结果及分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、关键问题及策略总结"><span class="nav-number">1.3.</span> <span class="nav-text">三、关键问题及策略总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“优先级”的含义："><span class="nav-number">1.3.1.</span> <span class="nav-text">“优先级”的含义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度策略："><span class="nav-number">1.3.2.</span> <span class="nav-text">任务调度策略：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.4.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">1.5.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键代码："><span class="nav-number">1.5.1.</span> <span class="nav-text">关键代码：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
