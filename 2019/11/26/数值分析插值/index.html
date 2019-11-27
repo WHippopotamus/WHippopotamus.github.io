@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>数值分析 | The Orion</title>
+  <title>数值分析-插值 | The Orion</title>
   
   
 
@@ -291,8 +291,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%EF%BC%88%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3%EF%BC%89/">
-        数值分析
+      <a href="/2019/11/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%8F%92%E5%80%BC/">
+        数值分析-插值
       </a>
     </h1>
   
@@ -367,50 +367,100 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h3 id="数值分析的四大思想">--数值分析的四大思想</h3>
+        <hr />
+<hr />
+<h1 id="插值问题">插值问题</h1>
 <ul>
-<li>迭代</li>
-<li>松弛</li>
-<li>外推</li>
-<li>优化</li>
+<li>插值问题主要分为内插法和外插法，本文主要讨论内插法</li>
+<li>插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值）</li>
+<li>常用的插值方式有：三角插值、有理插值、多项式插值</li>
+<li>不同构造方法的余项都相同（唯一性）</li>
 </ul>
 <hr />
-<h3 id="线性方程组的几种常用的迭代格式">--线性方程组的几种常用的迭代格式</h3>
-<p>对于线形代数方程组 <img src="https://www.zhihu.com/equation?tex=Ax%3Db" alt="[公式]" /> ，其中系数矩阵A可分解为 <img src="https://www.zhihu.com/equation?tex=A%3DL%2BD%2BU" alt="[公式]" /> ，迭代矩阵B可分解为 <img src="https://www.zhihu.com/equation?tex=B%3DB_1%2BB_2" alt="[公式]" /> ，有：</p>
+<h1 id="多项式插值">多项式插值</h1>
+<h2 id="插值多项式">插值多项式</h2>
+<p><span class="math inline">\(P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }\)</span></p>
+<p>其中：多项式系数由下列范德蒙得方程组求得 （非奇异、存在病态问题）</p>
+<p><span class="math inline">\(\left[\begin{array}{ccccc}{1} &amp; {x_{0}} &amp; {x_{0}^{2}} &amp; {\cdots} &amp; {x_{0}^{n}} \\ {1} &amp; {x_{1}} &amp; {x_{1}^{2}} &amp; {\cdots} &amp; {x_{1}^{n}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {1} &amp; {x_{n}} &amp; {x_{n}^{2}} &amp; {\cdots} &amp; {x_{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a_{0}} \\ {a_{1}} \\ {a_{2}} \\ {\vdots} \\ {a_{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x_{0}\right)} \\ {f\left(x_{1}\right)} \\ {f\left(x_{2}\right)} \\ {\vdots} \\ {f\left(x_{n}\right)}\end{array}\right]\)</span></p>
+<h2 id="插值余项">插值余项</h2>
+<p><span class="math inline">\(R_{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p><span class="math inline">\(\left|R_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span> （导函数有界）</p>
+<p>其中</p>
+<p><span class="math inline">\(\omega_{n+1}(x)=\prod_{i=0}^{n}\left(x-x_{i}\right)\)</span></p>
+<h2 id="推论">推论</h2>
 <ul>
-<li>简单迭代格式： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3DB%5Ccdot+x%5E%7B%28k%29%7D%2Bg" alt="[公式]" /></li>
-<li>Gauss-Seidel： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%28I-B_1%29%5E%7B-1%7DB_2%5Ccdot+x%5E%7B%28k%29%7D%2B%28I-B_1%29%5E%7B-1%7Dg" alt="[公式]" /></li>
-<li>Jacobi格式 ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-D%5E%7B-1%7D%28L%2BU%29%5Ccdot+x%5E%7B%28k%29%7D%2BD%5E%7B-1%7Db" alt="[公式]" /></li>
-<li>Jacobi+G-S ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-%28L%2BD%29%5E%7B-1%7DU%5Ccdot+x%5E%7B%28k%29%7D%2B%28L%2BD%29%5E%7B-1%7Db" alt="[公式]" /></li>
-<li>SOR： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%5B%28D%2B%5Comega+L%29%5E%7B-1%7D%28%281-%5Comega%29D-%5Comega+U%29%5D%5Ccdot+x%5E%7B%28k%29%7D%2B%5Comega+%28D%2B%5Comega+L%29%5E%7B-1%7Db" alt="[公式]" /></li>
+<li>当<span class="math inline">\(f(x)\)</span>为不超过n次的多项式时，<span class="math inline">\(f(x)=\varphi (x)\)</span></li>
+<li>节点距离<span class="math inline">\(x\)</span>越近，一般插值误差越小</li>
 </ul>
-<p><strong>收敛条件：</strong> <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_x%29%3C1+" alt="[公式]" /> 是判定收敛的根本法则</p>
+<hr />
+<h1 id="拉格朗日插值">拉格朗日插值</h1>
+<h2 id="插值条件">插值条件</h2>
+<p><span class="math inline">\(l_{i}\left(x_{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left\{\begin{array}{ll}{1} &amp; {j=i} \\ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.\)</span> （线性无关）</p>
+<h2 id="插值基">插值基</h2>
+<p><span class="math inline">\(l_i (x)=\frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
+<h2 id="插值多项式-1">插值多项式</h2>
+<p><span class="math inline">\(L_{n}(x) \stackrel{\Delta}{=} \sum_{i=0}^{n} f\left(x_{i}\right) l_{i}(x)=\sum_{i=0}^{n} f\left(x_{i}\right) \frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
+<h2 id="插值余项-1">插值余项</h2>
+<p><span class="math inline">\(R_{n}(x)=f(x)-L_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p><span class="math inline">\(\left|R_{n}(x)\right|=\left|f(x)-L_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span></p>
+<h2 id="应用">应用</h2>
 <ul>
-<li>简单迭代格式：（充要）<img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C%3C1" alt="[公式]" /></li>
-<li>Gauss-Seidel：（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B%5Cinfty%7D%3C1" alt="[公式]" /> 或 <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B1%7D%3C1" alt="[公式]" /> ，B为简单迭代格式系数矩阵</li>
-<li>Jacobi格式： （充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_J%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_J%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】</li>
-<li>Jacobi+G-S：（充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_S%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_S%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】或【 A对称正定】</li>
-<li>SOR：（必要） <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> ；（充分）【 A对称正定， <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> 】</li>
+<li>插值（采用列表的方法一目了然）</li>
+<li>反插值（单值性条件：被插函数单调连续）</li>
 </ul>
-<p><strong>简单迭代法的误差估计：</strong></p>
+<h2 id="特点">特点</h2>
 <ul>
-<li>（后验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%28k%29%7D-x%5E%7B%28k-1%29%7D%5C%7C" alt="[公式]" /></li>
-<li>（先验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%5Ek%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%281%29%7D-x%5E%7B%280%29%7D%5C%7C" alt="[公式]" /></li>
+<li>形式对称</li>
+<li>通常用于理论分析</li>
+<li>当增加插值节点时，计算不方便</li>
 </ul>
-<p>通过求解 <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Ek%28B%29%5Cleq10%5E%7B-m%7D" alt="[公式]" /> 可以得到【大约需要迭代的次数k】</p>
-<p><strong>Remaks:</strong></p>
+<h1 id="牛顿插值">牛顿插值</h1>
+<h2 id="差商">差商</h2>
+<p>重要工具：差商表</p>
+<p>差商的性质：对称性，与导数的关系</p>
+<h2 id="插值公式">插值公式</h2>
+<p><span class="math inline">\(\begin{aligned} N_{n}(x)=&amp; f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0}, x_{1}, x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\\ &amp;\cdots+f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n-1}\right) \end{aligned}\)</span></p>
+<p>加入节点后：</p>
+<p><span class="math inline">\(N_{n+1}(x)=N_{n}(x)+f\left[x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
+<h2 id="余项">余项</h2>
+<p>插值型：<span class="math inline">\(R_n (x)=f\left[x,x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
+<p>导数型：<span class="math inline">\(R_{n}(x)=f(x)-N_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p>导数与差商的关系：<span class="math inline">\(f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}\)</span></p>
+<h2 id="特点-1">特点</h2>
 <ul>
-<li><p><img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7D%3DO%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7Dx%3DO" alt="[公式]" /> ，关键在于证明B为收敛矩阵</p></li>
-<li><p>Gauss-Seidel格式通常情况下可用于对Jacobi格式的加速，但Gauss-Seidel格式并不是在所有情况下都更快，有时甚至不收敛</p></li>
-<li><p>在SOR（逐次超松弛）迭代格式中， <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="[公式]" /> 成为【松弛因子】。</p></li>
-<li><ul>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3C1" alt="[公式]" /> ：低松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3E1" alt="[公式]" /> ：超松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3D1" alt="[公式]" /> ：退化为Gauss-Seidel迭代格式</li>
-</ul></li>
-<li><p>最佳松弛因子 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D" alt="[公式]" /> ：求解困难，但对于系数矩阵A【对称正定】||【严格对角占优】||【弱对角占优&amp;不可约】的线形代数方程组，有 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D%3D%5Cfrac%7B2%7D%7B1%2B%5Csqrt%7B1-%5Crho%5E2%28B_L%29%7D%7D" alt="[公式]" /></p></li>
-<li><p>各种加速格式的【核心思想】：尽量更多的利用已经得到的数据</p></li>
+<li>有利于节点数的增加</li>
+<li>对函数的光滑性要求高</li>
+<li>需要估计导函数的最值</li>
+<li>保守</li>
 </ul>
+<h1 id="等距节点插值">等距节点插值</h1>
+<p>当节点等距分布时简化Newton插值公式：<span class="math inline">\(x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0\)</span></p>
+<h2 id="常用差分算子">常用差分算子</h2>
+<p>向前差分：<span class="math inline">\(\left\{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \\ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>向后差分：<span class="math inline">\(\left\{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \\ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>恒等算子：<span class="math inline">\(\left\{\begin{array}{}{I f(x)=f(x)} \\ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>位移算子：<span class="math inline">\(\left\{\begin{array}{}{E f(x)=f(x+h)} \\ {E^{s} f(x)=f(x+s h)}\end{array}\right.\)</span></p>
+<p>中心差分：<span class="math inline">\(\left\{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \\ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>差分算子的重要性质：</p>
+<ul>
+<li><span class="math inline">\(\Delta=E-I\)</span></li>
+<li><span class="math inline">\(\nabla=I-E^{-1}\)</span></li>
+<li><span class="math inline">\(\delta=E^{1 / 2}-E^{-1 / 2}\)</span></li>
+</ul>
+<p>差分与差商的关系：</p>
+<p><span class="math inline">\(f\left[x_{0}, x_{1}\right]=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}\)</span></p>
+<h2 id="插值公式-1">插值公式</h2>
+<p>向前：</p>
+<p><span class="math inline">\(N_{n}(a+t h)=f\left(x_{0}\right)+\sum_{k=1}^{n} \frac{\Delta^{k} f\left(x_{0}\right)}{k !} t(t-1) \cdots(t-k+1)\)</span></p>
+<p><span class="math inline">\(N_{2}\left(x_{0}+t h\right)=f\left(x_{0}\right)+\frac{\Delta f\left(x_{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)\)</span></p>
+<p>向后：</p>
+<p><span class="math inline">\(N_{n}(b+t h)=f\left(x_{n}\right)+\sum_{k=1}^{n} \frac{\nabla^{k} f\left(x_{n}\right)}{k !} t(t+1) \cdots(t+k-1)\)</span></p>
+<h1 id="hermite插值">Hermite插值</h1>
+<h2 id="插值条件-1">插值条件</h2>
+<p><span class="math inline">\(\left\{\begin{array}{l}{H_{2 n+1}\left(x_{i}\right)=f\left(x_{i}\right)} \\ {H_{2 n+1}^{\prime}\left(x_{i}\right)=f^{\prime}\left(x_{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）\)</span></p>
+<h2 id="插值基-1">插值基</h2>
+<h2 id="插值多项式-2">插值多项式</h2>
+<h2 id="余项-1">余项</h2>
 
       </div>
       
@@ -423,10 +473,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-26T11:32:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-27T21:35:12+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>updated at Nov 26, 2019</p>
+    <p>updated at Nov 27, 2019</p>
   </a>
 </div>
 
@@ -445,7 +495,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%EF%BC%88%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3%EF%BC%89/&title=数值分析 | The Orion&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/11/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%8F%92%E5%80%BC/&title=数值分析-插值 | The Orion&summary="
           
           >
           
@@ -457,7 +507,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%EF%BC%88%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3%EF%BC%89/&title=数值分析 | The Orion&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/11/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%8F%92%E5%80%BC/&title=数值分析-插值 | The Orion&summary="
           
           >
           
@@ -469,7 +519,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%EF%BC%88%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3%EF%BC%89/&title=数值分析 | The Orion&summary="
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/11/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%8F%92%E5%80%BC/&title=数值分析-插值 | The Orion&summary="
           
           >
           
@@ -497,9 +547,9 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                           <h4>
-                              <a href="/2019/11/26/%E6%96%B9%E6%B3%95%E8%AE%BA/" rel="prev" title="方法论">
+                              <a href="/2019/11/27/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" rel="prev" title="矩阵论-广义逆矩阵">
                                 
-                                    方法论
+                                    矩阵论-广义逆矩阵
                                 
                               </a>
                           </h4>
@@ -512,9 +562,9 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2019/11/26/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" rel="prev" title="数学公式">
+                              <a href="/2019/11/26/%E7%99%BD%E9%B9%BF%E5%B1%B1%E5%B4%96/" rel="prev" title="白鹿山崖">
                                   
-                                      数学公式
+                                      白鹿山崖
                                   
                               </a>
                           </h4>
@@ -546,7 +596,7 @@
 
   <script>
     window.subData = {
-      title: '数值分析',
+      title: '数值分析-插值',
       tools: true
     }
   </script>
@@ -708,7 +758,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数值分析的四大思想"><span class="toc-text">--数值分析的四大思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性方程组的几种常用的迭代格式"><span class="toc-text">--线性方程组的几种常用的迭代格式</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插值问题"><span class="toc-text">插值问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多项式插值"><span class="toc-text">多项式插值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插值多项式"><span class="toc-text">插值多项式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值余项"><span class="toc-text">插值余项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推论"><span class="toc-text">推论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拉格朗日插值"><span class="toc-text">拉格朗日插值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插值条件"><span class="toc-text">插值条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值基"><span class="toc-text">插值基</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值多项式-1"><span class="toc-text">插值多项式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值余项-1"><span class="toc-text">插值余项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#牛顿插值"><span class="toc-text">牛顿插值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#差商"><span class="toc-text">差商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值公式"><span class="toc-text">插值公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#余项"><span class="toc-text">余项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点-1"><span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#等距节点插值"><span class="toc-text">等距节点插值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用差分算子"><span class="toc-text">常用差分算子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值公式-1"><span class="toc-text">插值公式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hermite插值"><span class="toc-text">Hermite插值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插值条件-1"><span class="toc-text">插值条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值基-1"><span class="toc-text">插值基</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值多项式-2"><span class="toc-text">插值多项式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#余项-1"><span class="toc-text">余项</span></a></li></ol></li></ol>
     </div>
   </section>
 
