@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="The Orion">
 <meta property="og:description" content="一、广义逆矩阵的概念  四个Penrose方程：设\(A\in C^{m\times n}\),\(X\in C^{n\times m}\)，有   \(AXA=A\)   \(XAX=X\)   \((AX)^H=AX\)   \((XA)^H=XA\)   常用的广义逆  {1}逆：仅满足条件（1） Moore-Penrose逆：满足所有条件，记">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-28T08:50:08.823Z">
+<meta property="og:updated_time" content="2019-11-30T13:24:53.805Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="The Orion" type="application/atom+xml">
@@ -134,15 +134,51 @@
 </ul></li>
 </ol>
 <hr />
-<h1 id="二1逆及其应用">二、{1}逆及其应用</h1>
+<h1 id="二1逆">二、{1}逆</h1>
+<h2 id="求解步骤">求解步骤：</h2>
+<ul>
+<li>step1：化Hermite标准形，求变换阵<span class="math inline">\(S\)</span>，<span class="math inline">\(P\)</span> ；</li>
+<li>step2：引入参数矩阵：<span class="math inline">\(L=[ \ \alpha \ , \beta \ , \ ...]\)</span> 等；</li>
+<li>step3：代入公式：<span class="math inline">\(X=P\begin{bmatrix}I_r&amp;O\\O&amp;L\end{bmatrix}S\)</span>；</li>
+<li>step4：若令其中的参数全部为0，则可以进一步的得到矩阵的<span class="math inline">\(\{1，2\}\)</span>逆。</li>
+</ul>
 <h1 id="三moore-penrose逆">三、Moore-Penrose逆</h1>
+<h2 id="求解步骤-1">求解步骤：</h2>
+<p>利用满秩分解求解矩阵的<span class="math inline">\(A^+\)</span></p>
+<ul>
+<li>step1：求满秩分解<span class="math inline">\(A=FG\)</span></li>
+<li>step2：代入公式<span class="math inline">\(A^+=G^H(GG^H)^{-1}(F^HF)^{-1}F^H\)</span></li>
+</ul>
+<p>特殊的：</p>
+<ul>
+<li>当A为行满秩时：<span class="math inline">\(A^+=A^H(AA^H)^{-1}\)</span></li>
+<li>当A为列满秩时：<span class="math inline">\(A^+=(A^HA)^{-1}A^H\)</span></li>
+</ul>
+<h1 id="四广义逆矩阵的应用">四、广义逆矩阵的应用：</h1>
+<h2 id="线性方程组的求解">线性方程组的求解</h2>
+<h3 id="利用a1">1）利用<span class="math inline">\(A\{1\}\)</span>​</h3>
+<ul>
+<li>可解性（充要）：<span class="math inline">\(AA^{(1)}b=b\)</span></li>
+<li>通解：<span class="math inline">\(x=A^{(1)}b+(I-A^{(1)}A)y \ \ ,\  \forall y\in C^n\)</span></li>
+</ul>
+<h3 id="利用a">2）利用<span class="math inline">\(A^+\)</span></h3>
+<ul>
+<li>可解性（充要）：<span class="math inline">\(AA^+b=b\)</span></li>
+<li>通解：<span class="math inline">\(x=A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span></li>
+</ul>
+<p>利用Morre-Penrose逆求解线性方程组<span class="math inline">\(Ax=b\)</span>时可以得到下整齐的结论：</p>
+<ul>
+<li>有解（相容）的充分必要条件为<span class="math inline">\(AA^+b=b\)</span>；</li>
+<li><span class="math inline">\(A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span>表示相容方程组的通解，或者矛盾方程组的全部最小二乘解；</li>
+<li><span class="math inline">\(x_0=A^+b\)</span>是相容方程组的唯一极小范数解，或是矛盾方程组的唯一极小范数最小二乘解。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" data-id="ck3jhfy9s000438tkevuc1ut4" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" data-id="ck3llz36f0002pstk5hso4ab0" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -185,6 +221,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/">【生活感悟】</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】方法论</a>
           </li>
         
@@ -200,10 +240,6 @@
             <a href="/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/">【文学】青崖白鹿</a>
           </li>
         
-          <li>
-            <a href="/2019/11/26/%E6%94%BB%E7%95%A5/">攻略</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -215,7 +251,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
