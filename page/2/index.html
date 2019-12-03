@@ -77,6 +77,94 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-【数值分析】线性方程组求解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/" class="article-date">
+  <time datetime="2019-11-26T03:23:45.000Z" itemprop="datePublished">2019-11-26</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/">【数值分析】线性方程组的求解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="数值分析的四大思想">--数值分析的四大思想</h3>
+<ul>
+<li>迭代</li>
+<li>松弛</li>
+<li>外推</li>
+<li>优化</li>
+</ul>
+<hr />
+<h3 id="线性方程组的几种常用的迭代格式">--线性方程组的几种常用的迭代格式</h3>
+<p>对于线形代数方程组 <img src="https://www.zhihu.com/equation?tex=Ax%3Db" alt="[公式]" /> ，其中系数矩阵A可分解为 <img src="https://www.zhihu.com/equation?tex=A%3DL%2BD%2BU" alt="[公式]" /> ，迭代矩阵B可分解为 <img src="https://www.zhihu.com/equation?tex=B%3DB_1%2BB_2" alt="[公式]" /> ，有：</p>
+<ul>
+<li>简单迭代格式： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3DB%5Ccdot+x%5E%7B%28k%29%7D%2Bg" alt="[公式]" /></li>
+<li>Gauss-Seidel： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%28I-B_1%29%5E%7B-1%7DB_2%5Ccdot+x%5E%7B%28k%29%7D%2B%28I-B_1%29%5E%7B-1%7Dg" alt="[公式]" /></li>
+<li>Jacobi格式 ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-D%5E%7B-1%7D%28L%2BU%29%5Ccdot+x%5E%7B%28k%29%7D%2BD%5E%7B-1%7Db" alt="[公式]" /></li>
+<li>Jacobi+G-S ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-%28L%2BD%29%5E%7B-1%7DU%5Ccdot+x%5E%7B%28k%29%7D%2B%28L%2BD%29%5E%7B-1%7Db" alt="[公式]" /></li>
+<li>SOR： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%5B%28D%2B%5Comega+L%29%5E%7B-1%7D%28%281-%5Comega%29D-%5Comega+U%29%5D%5Ccdot+x%5E%7B%28k%29%7D%2B%5Comega+%28D%2B%5Comega+L%29%5E%7B-1%7Db" alt="[公式]" /></li>
+</ul>
+<p><strong>收敛条件：</strong> <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_x%29%3C1+" alt="[公式]" /> 是判定收敛的根本法则</p>
+<ul>
+<li>简单迭代格式：（充要）<img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C%3C1" alt="[公式]" /></li>
+<li>Gauss-Seidel：（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B%5Cinfty%7D%3C1" alt="[公式]" /> 或 <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B1%7D%3C1" alt="[公式]" /> ，B为简单迭代格式系数矩阵</li>
+<li>Jacobi格式： （充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_J%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_J%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】</li>
+<li>Jacobi+G-S：（充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_S%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_S%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】或【 A对称正定】</li>
+<li>SOR：（必要） <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> ；（充分）【 A对称正定， <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> 】</li>
+</ul>
+<p><strong>简单迭代法的误差估计：</strong></p>
+<ul>
+<li>（后验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%28k%29%7D-x%5E%7B%28k-1%29%7D%5C%7C" alt="[公式]" /></li>
+<li>（先验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%5Ek%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%281%29%7D-x%5E%7B%280%29%7D%5C%7C" alt="[公式]" /></li>
+</ul>
+<p>通过求解 <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Ek%28B%29%5Cleq10%5E%7B-m%7D" alt="[公式]" /> 可以得到【大约需要迭代的次数k】</p>
+<p><strong>Remaks:</strong></p>
+<ul>
+<li><p><img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7D%3DO%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7Dx%3DO" alt="[公式]" /> ，关键在于证明B为收敛矩阵</p></li>
+<li><p>Gauss-Seidel格式通常情况下可用于对Jacobi格式的加速，但Gauss-Seidel格式并不是在所有情况下都更快，有时甚至不收敛</p></li>
+<li><p>在SOR（逐次超松弛）迭代格式中， <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="[公式]" /> 成为【松弛因子】。</p></li>
+<li><ul>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3C1" alt="[公式]" /> ：低松弛</li>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3E1" alt="[公式]" /> ：超松弛</li>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3D1" alt="[公式]" /> ：退化为Gauss-Seidel迭代格式</li>
+</ul></li>
+<li><p>最佳松弛因子 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D" alt="[公式]" /> ：求解困难，但对于系数矩阵A【对称正定】||【严格对角占优】||【弱对角占优&amp;不可约】的线形代数方程组，有 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D%3D%5Cfrac%7B2%7D%7B1%2B%5Csqrt%7B1-%5Crho%5E2%28B_L%29%7D%7D" alt="[公式]" /></p></li>
+<li><p>各种加速格式的【核心思想】：尽量更多的利用已经得到的数据</p></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/" data-id="ck3pyxt2r0004e8tk0sb5bw2z" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-【数学】常用公式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/" class="article-date">
@@ -246,7 +334,7 @@ G_n=
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/" data-id="ck3pvpi4d00045wtk57aa0oq2" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/" data-id="ck3pyxt2s0005e8tk0udl1u6q" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -275,6 +363,10 @@ G_n=
       <ul>
         
           <li>
+            <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8D%95%E8%AF%8D/">【英语】单词</a>
           </li>
         
@@ -290,10 +382,6 @@ G_n=
             <a href="/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/">【生活感悟】</a>
           </li>
         
-          <li>
-            <a href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】世界观与方法论</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -305,7 +393,7 @@ G_n=
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
