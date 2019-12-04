@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>【数值分析】微分方程数值解法 | The Orion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="解的存在性，唯一性，稳定性  一、基本假设 唯一存在性  Lipschitz条件：\(|f(x,y)-f(x,\bar{y})|\leq L|y-\bar{y}|\)  常微分方程数值解法的分类  单步法 || 多步法  离散化方法  差商代替微商法 || Taylor展开法 || 数值积分法  二、求解常微分方程的单步法 1. 几种简单的单步法（低阶方法）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数值分析】微分方程数值解法">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95&#x2F;index.html">
+<meta property="og:site_name" content="The Orion">
+<meta property="og:description" content="解的存在性，唯一性，稳定性  一、基本假设 唯一存在性  Lipschitz条件：\(|f(x,y)-f(x,\bar{y})|\leq L|y-\bar{y}|\)  常微分方程数值解法的分类  单步法 || 多步法  离散化方法  差商代替微商法 || Taylor展开法 || 数值积分法  二、求解常微分方程的单步法 1. 几种简单的单步法（低阶方法）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-04T12:05:32.804Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="The Orion" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github" class="nav-icon" href="https://github.com/myname" target="_blank" rel="noopener"></a>
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">The Orion</a>
+        </h1>
+      
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">lly</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/Archives">Archives</a>
+      
+        <a class="main-nav-link" href="/About">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-【数值分析】微分方程数值解法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/" class="article-date">
+  <time datetime="2019-12-04T06:40:27.000Z" itemprop="datePublished">2019-12-04</time>
+</h3>
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【数值分析】微分方程数值解法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <ul>
+<li>解的存在性，唯一性，稳定性</li>
+</ul>
+<h1 id="一基本假设">一、基本假设</h1>
+<p><strong>唯一存在性</strong></p>
+<ul>
+<li>Lipschitz条件：<span class="math inline">\(|f(x,y)-f(x,\bar{y})|\leq L|y-\bar{y}|\)</span></li>
+</ul>
+<p><strong>常微分方程数值解法的分类</strong></p>
+<ul>
+<li>单步法 || 多步法</li>
+</ul>
+<p><strong>离散化方法</strong></p>
+<ul>
+<li>差商代替微商法 || Taylor展开法 || 数值积分法</li>
+</ul>
+<h1 id="二求解常微分方程的单步法">二、求解常微分方程的单步法</h1>
+<h2 id="几种简单的单步法低阶方法">1. 几种简单的单步法（低阶方法）</h2>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 53%" />
+<col style="width: 3%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">计算格式（<span class="math inline">\(n=0,1,2,\dots,N-1\)</span>）</th>
+<th style="text-align: center;">阶</th>
+<th style="text-align: center;">局部截断误差<span class="math inline">\(R_{n+1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">显式欧拉公式</td>
+<td style="text-align: left;"><span class="math inline">\(y_{n+1}=y_n+hf(x_n,y_n)\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{h^2}{2}y^{&quot;}(x_n)+O(h^3)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">隐式欧拉公式</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y<sup>{(s+1)}<em>{n+1} = y_n+hf(x</em>{n+1},y</sup>{(s)}</em>{n+1})   (s=0,1,2,)\end{cases} $</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(-\frac{h^2}{2}y^{&quot;}(x_n)+O(h^3)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">梯形公式</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y^{(s+1)}</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(s)}_{n+1})]   (s=0,1,2,)\end{cases} $</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(-\frac{h^3}{12}y^{(3)}(x_n)+O(h^4)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">欧拉预测校正</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(0)}_{n+1})]   (s=0)\end{cases} $</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>显式欧拉公式和隐式欧拉公式的精度相当</li>
+<li>梯形公式和欧拉预测矫正公式的结果更准确</li>
+</ul>
+<p><strong>单步法的局部阶段误差</strong>： <span class="math display">\[
+R_{n+1}=y(x_{n+1})-y(x_n)-h\varphi(x_n,y(x_n),h)
+\]</span></p>
+<ul>
+<li>局部截断误差是在前面各步计算结果准确的假设条件下向前推进一步的误差</li>
+<li>主局部截断误差就是截断误差中最大的那个无穷小分量</li>
+</ul>
+<h2 id="runge-kutta方法高阶方法">2. Runge-Kutta方法（高阶方法）</h2>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 48%" />
+<col style="width: 3%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>计算格式（<span class="math inline">\(n=0,1,2,\dots,N-1\)</span>）</th>
+<th style="text-align: center;">阶</th>
+<th style="text-align: center;">局部截断误差<span class="math inline">\(R_{n+1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Taylor展开法</td>
+<td><span class="math inline">\(y_{n+1}=y_n+hy&#39;_n+\frac{h^2}{2!}y^{&quot;}_n+\dots+\frac{h^k}{k!}y^{(k))}_n\)</span></td>
+<td style="text-align: center;">k</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{h^{k+1}}{(k+1)!}y^{(k+1)}(x_n)+O(h^{k+2})\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>几种简单的Runge-Kutta方法</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 72%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>计算格式（<span class="math inline">\(n=0,1,2,\dots,N-1\)</span>）</th>
+<th>阶</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>欧拉预测</td>
+<td><span class="math inline">\(\begin{cases} y_{n+1} = y_n+\frac{h}{2}(K_1+K_2)\\K_1=f(x_n,y_n)\\K_2=f(x_n+h,y_n+K_1)\end{cases}\)</span></td>
+<td>二级二阶</td>
+</tr>
+<tr class="even">
+<td>中点公式</td>
+<td><span class="math inline">\(\begin{cases} y_{n+1} = y_n+hK_2\\K_1=f(x_n,y_n)\\K_2=f(x_n+\frac{1}{2}h,y_n+\frac{1}{2}hK_1)\end{cases}\)</span></td>
+<td>二级二阶</td>
+</tr>
+<tr class="odd">
+<td>Heun公式</td>
+<td><span class="math inline">\(\begin{cases} y_{n+1} = y_n+\frac{h}{4}(K_1+3K_2)\\K_1=f(x_n,y_n)\\K_2=f(x_n+\frac{2}{3}h,y_n+\frac{2}{3}hK_1)\end{cases}\)</span></td>
+<td>二级二阶</td>
+</tr>
+<tr class="even">
+<td>Heun公式</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Kutta公式</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>经典Runge-Kutta</td>
+<td><span class="math inline">\(\begin{cases} y_{n+1} = y_n+\frac{h}{6}(K_1+2K_2+2K_3+K_4)\\K_1=f(x_n,y_n)\\K_2=f(x_n+\frac{1}{2}h,y_n+\frac{1}{2}hK_1)\\K_3=f(x_n+\frac{1}{2}h,y_n+\frac{1}{2}hK_2)\\K_4=f(x_n+h,y_n+hK_3)\end{cases}\)</span></td>
+<td>四级四阶</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Taylor级数展开法要求初值问题的真解足够光滑，计算繁琐</li>
+<li>Runge-Kutta是一种间接采用Taylor展开的数值方法，该方法采用某些点上函数值的不同线性组合来近似初值问题的解析解，避免了高阶偏导数的计算，提高了阶次</li>
+</ul>
+<h2 id="单步法的收敛性相容性稳定性">3. 单步法的收敛性、相容性、稳定性</h2>
+<p><strong>收敛性</strong>：<span class="math inline">\(h\rightarrow 0,y_n\rightarrow y(x_n)\)</span></p>
+<ul>
+<li>局部截断误差：<span class="math inline">\(R_{n+1}=O(h^{p+1})\)</span></li>
+<li>整体截断误差：<span class="math inline">\(|e_{n+1}|=|y(x_{n+1})-x_{n+1}|\leq O(h^p)\)</span>
+<ul>
+<li>单步法（显示||隐式）的整体截断误差通常比局部截断误差地一阶</li>
+</ul></li>
+<li>一阶和一阶以上的单步法都是收敛的</li>
+<li>判断收敛的条件
+<ul>
+<li>局部截断误差</li>
+<li>Lipschitz条件</li>
+</ul></li>
+</ul>
+<p><strong>相容性</strong>：<span class="math inline">\(\varphi(x,y,0)=f(x,y)\)</span></p>
+<ul>
+<li>当<span class="math inline">\(\varphi(x,y,h)\)</span>关于<span class="math inline">\(h\)</span>连续时，收敛的p阶单步法与微分方程相容</li>
+<li>若单步法与微分方程相容，则该单步法至少为一阶方法</li>
+<li>若单步法中的增量函数<span class="math inline">\(\varphi(x,y,h)\)</span>关于<span class="math inline">\(h\)</span>连续，且满足Lipschitz条件，则单步法相容的【充要条件】为局部截断误差<span class="math inline">\(R_{n+1}=O(h^p),(p \geq 1)\)</span></li>
+</ul>
+<p><strong>稳定性</strong>：由舍入误差引起</p>
+<ul>
+<li>微分方程自身的稳定性条件：<span class="math inline">\(Re(\lambda)&lt;0\)</span></li>
+<li>绝对稳定（模型化）</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 32%" />
+<col style="width: 36%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th style="text-align: center;">模型方程</th>
+<th style="text-align: center;">绝对稳定区域：<span class="math inline">\(\lambda\)</span>为复数</th>
+<th style="text-align: center;">绝对稳定区间：<span class="math inline">\(\lambda\)</span>为实数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>显式欧拉</td>
+<td style="text-align: center;"><span class="math inline">\(y_{n+1}=y_n+h\lambda y_n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(|1+\lambda h|\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0 \leq h \leq -\frac{2}{\lambda}\)</span>或<span class="math inline">\([-2,0]\)</span></td>
+</tr>
+<tr class="even">
+<td>梯形</td>
+<td style="text-align: center;"><span class="math inline">\(y_{n+1}=y_n+\frac{h}{2}(\lambda y_n+\lambda y_{n+1})\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\left| \frac{1+\frac{1}{2}\lambda h}{1-\frac{1}{2}\lambda h} \right|\leq1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\forall h\)</span> ，无条件稳定</td>
+</tr>
+<tr class="odd">
+<td>二阶R-K</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(|1+\lambda h+\frac{1}{2}(\lambda h)^2|\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([-2,0]\)</span></td>
+</tr>
+<tr class="even">
+<td>三阶R-K</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(|1+\lambda h+\frac{1}{2！}(\lambda h)^2+\frac{1}{3！}(\lambda h)^3|\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([-2.51,0]\)</span></td>
+</tr>
+<tr class="odd">
+<td>四阶R-K</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(|1+\lambda h+\frac{1}{2！}(\lambda h)^2+\frac{1}{3！}(\lambda h)^3+\frac{1}{4！}(\lambda h)^4|\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([-2.78,0]\)</span></td>
+</tr>
+</tbody>
+</table>
+<h1 id="三线性多步法">三、线性多步法</h1>
+<h2 id="一般形式">1. 一般形式</h2>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/" data-id="ck3r8vy1m0002sctk01mz90rr" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【工具】常用网站
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【数值分析】数值积分与数值微分</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">【工具】常用网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/">【数值分析】微分方程数值解法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8D%95%E8%AF%8D/">【英语】单词</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8F%A3%E8%AF%AD/">【英语】口语</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 liuluyang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
+
+
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
