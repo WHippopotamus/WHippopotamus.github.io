@@ -139,7 +139,7 @@
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" data-id="ck3r9p2jp00016ktkd1swe8k2" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" data-id="ck3rb2wg20003u0tk3rkab93o" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -219,19 +219,19 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">隐式欧拉公式</td>
-<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y<sup>{(s+1)}<em>{n+1} = y_n+hf(x</em>{n+1},y</sup>{(s)}</em>{n+1})   (s=0,1,2,)\end{cases} $</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y<sup>{(s+1)}<em>{n+1} = y_n+hf(x</em>{n+1},y</sup>{(s)}</em>{n+1}) (s=0,1,2,)\end{cases} $</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;"><span class="math inline">\(-\frac{h^2}{2}y^{&quot;}(x_n)+O(h^3)\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">梯形公式</td>
-<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y^{(s+1)}</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(s)}_{n+1})]   (s=0,1,2,)\end{cases} $</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y^{(s+1)}</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(s)}_{n+1})] (s=0,1,2,)\end{cases} $</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;"><span class="math inline">\(-\frac{h^3}{12}y^{(3)}(x_n)+O(h^4)\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">欧拉预测校正</td>
-<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(0)}_{n+1})]   (s=0)\end{cases} $</td>
+<td style="text-align: left;">$ \begin{cases}y^{(0)}<em>{n+1} = y_n+hf(x_n,y_n)\y</em>{n+1} = y_n+[f(x_{n},y_{n})+f(x_{n+1},y^{(0)}_{n+1})]   (s=0)\end{cases} $</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -410,13 +410,57 @@ g_n=\sum_{i=0}^{k-1}{\alpha_i y_{n-i}}+h\sum_{i=0}^{k-1}{\beta_i f_{n-i}}
 <li><span class="math inline">\(\beta_{-1}=0\)</span>时为显示公式，<span class="math inline">\(\beta_{-1}\neq 0\)</span>时为隐式公式</li>
 <li>显示线性多步法的整体截断误差通常比局部截断误差低一阶</li>
 </ul>
+<h2 id="数值积分法">2. 数值积分法</h2>
+<ul>
+<li>四步Adams显式外插公式（等距节点）（四阶）：</li>
+</ul>
+<p><span class="math display">\[
+y_{n+1}=y_n+\frac{h}{24}(55f_n-59f_{n-1}+37f_{n-2}-9f_{n-3})
+\]</span></p>
+<p>截断误差： <span class="math display">\[
+R_{n+1}=\frac{251}{720}h^5y^{(5)}(\eta)
+\]</span></p>
+<ul>
+<li>三步Adams显式内插公式（等距节点）（四阶）：</li>
+</ul>
+<p><span class="math display">\[
+\begin{cases}
+y^{(0)}_{n+1}=y_n+\frac{h}{24}(55f_n-59f_{n-1}+37f_{n-2}-9f_{n-3})\\
+y^{(s+1)}_{n+1}=y_n+\frac{h}{24}(9f(x_{n+1},y^{(s)}_{n+1}))+19f_{n}-5f_{n-1}+f_{n-2})
+\end{cases}
+\]</span></p>
+<p>截断误差： <span class="math display">\[
+R_{n+1}=-\frac{19}{720}h^5y^{(5)}(\eta)
+\]</span></p>
+<ul>
+<li>Adams预测校正公式：</li>
+</ul>
+<p><span class="math display">\[
+\begin{cases}
+y^{(0)}_{n+1}=y_n+\frac{h}{24}(55f_n-59f_{n-1}+37f_{n-2}-9f_{n-3})\\
+y_{n+1}=y_n+\frac{h}{24}(9f(x_{n+1},y^{(0)}_{n+1}))+19f_{n}-5f_{n-1}+f_{n-2})
+\end{cases}
+\]</span></p>
+<h2 id="taylor级数展开法">3. Taylor级数展开法</h2>
+<ul>
+<li>两步Simpson公式（等距节点）（四阶）</li>
+</ul>
+<p><span class="math display">\[
+y_{n+1}=y_{n-1}+\frac{h}{3}(f_{n+1}+4f_{n}+f_{n-1})
+\]</span></p>
+<p>截断误差： <span class="math display">\[
+R_{n+1}=-\frac{1}{90}h^5y^{(5)}(\eta)+O(h^6)
+\]</span></p>
+<ul>
+<li>Taylor展开法可以导出数值积分无法构造的线性多步公式</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/" data-id="ck3r9p2jt00036ktkc89i14rz" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/" data-id="ck3rb2wg10002u0tk5jwr7s8z" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -651,7 +695,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/" data-id="ck3r9p2jw00056ktk8jw1g4xe" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/" data-id="ck3rb2wg60006u0tk0xuthulk" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -696,7 +740,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8D%95%E8%AF%8D/" data-id="ck3r9p2k3000b6ktk42ea101j" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8D%95%E8%AF%8D/" data-id="ck3rb2wgc000bu0tkcstucnv3" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -741,7 +785,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8F%A3%E8%AF%AD/" data-id="ck3r9p2k8000d6ktkbx2rguo3" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8F%A3%E8%AF%AD/" data-id="ck3rb2wgf000cu0tkekxw9nl1" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -790,7 +834,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E5%8E%86%E5%8F%B2%E3%80%91%E5%8E%86%E5%8F%B2%E8%A7%82%E4%B8%96%E7%95%8C/" data-id="ck3r9p2jr00026ktk644l5a35" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/12/01/%E3%80%90%E5%8E%86%E5%8F%B2%E3%80%91%E5%8E%86%E5%8F%B2%E8%A7%82%E4%B8%96%E7%95%8C/" data-id="ck3rb2wfu0000u0tkfafdgo9b" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -836,7 +880,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/" data-id="ck3r9p2jz00076ktk716e3war" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/" data-id="ck3rb2wg90009u0tk783j04y2" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -928,7 +972,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/" data-id="ck3r9p2jj00006ktk41123wno" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/" data-id="ck3rb2wfz0001u0tk9bck2e1q" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -1041,7 +1085,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" data-id="ck3r9p2k2000a6ktk0c3m2e88" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" data-id="ck3rb2wgb000au0tk8sop0oh3" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -1179,7 +1223,7 @@ E_n(f)=\frac{f^{(2n+2)}(\eta)}{(2n+2)!}\int_{a}^{b}{[\omega_{n+1}(x)]^2\rho(x)}d
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3r9p2ju00046ktk4kbo3fwo" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3rb2wg30004u0tk75hjgml4" class="article-share-link">Share</a>
         
       </div>
     </footer>
