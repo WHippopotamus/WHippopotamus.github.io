@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>【矩阵论】线性空间</title>
+      <link href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/"/>
+      <url>/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一数域与映射">一、数域与映射</h1><ul><li>若K为数域，则K必须满足和、差、积、商封闭</li><li>有理数域、实数域、复数域是数域；自然数集、整数集不是数域</li><li>有理数域是最小的数域</li><li>任意一个数域中至少包含0，1两个数</li></ul><p>映射的定义与分类</p><ul><li>单射+满射=双射</li><li>映射相等</li><li>由映射<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>得到乘积<span class="math inline">\(\sigma \tau\)</span>的【充要】条件为<span class="math inline">\(\sigma\)</span>包含于<span class="math inline">\(\tau\)</span>的定义域<ul><li><span class="math inline">\(\sigma \tau \neq \tau \sigma\)</span></li><li><span class="math inline">\((\sigma \tau) \omega= \tau (\sigma \omega)\)</span></li></ul></li></ul><h1 id="二线性空间">二、线性空间</h1><h2 id="线性空间的公理化定义">线性空间的公理化定义</h2><ul><li>“加法”封闭：</li><li>“数乘”封闭：</li><li>加法交换律：</li><li>加法结合律：</li><li>存在零元：</li><li>存在负元</li><li><span class="math inline">\(1\alpha=\alpha\)</span></li><li>数乘结合律</li><li>分配律：</li><li>数因子分配律：</li></ul><p>一些重要的解空间</p><ul><li>多项式空间</li><li>线性齐次方程组的解构成线性空间，而非齐次方程组的解空间不构成线性空间</li></ul><h2 id="线性空间的一些基本性质">线性空间的一些基本性质</h2><ul><li>x性质1：零元是唯一的</li><li>性质2：任意元素<span class="math inline">\(\alpha\)</span>的负元都是唯一的</li><li>性质3：<span class="math inline">\(0\alpha=\theta\)</span>，<span class="math inline">\(（-1）\alpha=-\alpha\)</span>，<span class="math inline">\(k\theta=\theta\)</span></li><li>性质4：若<span class="math inline">\(k\alpha=\theta\)</span>，则<span class="math inline">\(k=0\)</span>或<span class="math inline">\(\alpha=0\)</span></li></ul><h2 id="重要概念">重要概念</h2><ul><li><p>线性表出、线性相关、线性无关</p></li><li><p>向量组的线性表出、等价；极大无关组</p></li><li><p>线性表出、表出唯一</p></li><li><p>一个元素组的任意两个极大无关组等价</p></li><li><p>等价的元素组由相同的秩</p></li><li><p>数域会影响到元素组的线性相关性</p></li></ul><h1 id="三基维数与坐标">三、基、维数与坐标</h1><h2 id="基变换">基变换</h2><ul><li><span class="math inline">\(\alpha \rightarrow \beta\)</span>的基变换公式：<span class="math inline">\(\beta y=\alpha Cy=\alpha x \Rightarrow x=Cy \Leftrightarrow y=C^{-1}x\)</span></li><li>中介基</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【工具】常用网站</title>
       <link href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/"/>
       <url>/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/</url>
@@ -99,7 +112,7 @@
       <link href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
       <url>/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/</url>
       
-        <content type="html"><![CDATA[<hr /><h2 id="科学的世界观与方法论">科学的世界观与方法论</h2><ul><li>科学的方法论：形式逻辑体系+实验验证，正是这两点使得科学成为了一门逻辑自洽的、精确的学问</li><li>通过公理化定义就可以构建一个完备的体系<ul><li>欧氏几何</li><li>黎曼几何</li><li>范数理论</li></ul></li><li>对概念定理理解的三个层次：<ul><li>描述了什么？</li><li>为什么是这样？</li><li>有什么作用？</li></ul></li><li>对学习的认识<ul><li>学习的本质就是用有限的认识来构建可以应对无限可能的模型</li><li>机器学习：数据--学习--模型--应用</li><li>思维导图：线性思维<span class="math inline">\(\rightarrow\)</span>网络思维、发散思维</li><li>费曼技巧：学习+解释</li><li>人类思维的生物学载体：生物神经网络</li><li>学习时间不是衡量学习效果的标准，有效的成果产出才是</li></ul></li></ul><h2 id="哲学的世界观与方法论">哲学的世界观与方法论</h2><ul><li>认识论<ul><li>知己知彼，百战百胜</li><li>未知是人类最大的恐惧来源，因此克服恐惧最好的方法就是面对恐惧</li><li>压力感来自与我们不充分的准备</li><li>见多识广</li><li>人不可能想象出从来没有见过的东西，任何文艺形象的创作都能在现实中找到对应的原型。以人类对维度的认识为例，无论我们在数学上的论证过程如何缜密，但我们永远无法想象出真正的高维空间；反之，如果我们能够简单的体验一下高维空间，即使对数学一窍不通，我们对世界的认识也会上升一个很大的台阶。</li></ul></li><li>普遍联系与永恒发展<ul><li>把握事物间的区别与联系，是提升全面认识的关键</li><li>近朱者赤，近墨者黑</li><li>雪崩的时候没有一片雪花是无辜的</li></ul></li><li>世界的基本特性：<ul><li>因果性</li><li>永恒运动</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<hr /><h1 id="科学的世界观与方法论">科学的世界观与方法论</h1><ul><li>科学的方法论：形式逻辑体系+实验验证，正是这两点使得科学成为了一门逻辑自洽的、精确的学问</li><li>通过公理化定义就可以构建一个完备的体系<ul><li>欧氏几何</li><li>黎曼几何</li><li>范数理论</li></ul></li><li>对概念定理理解的三个层次：<ul><li>描述了什么？</li><li>为什么是这样？</li><li>有什么作用？</li></ul></li><li>对学习的认识<ul><li>学习的本质就是用有限的认识来构建可以应对无限可能的模型</li><li>机器学习：数据--学习--模型--应用</li><li>思维导图：线性思维<span class="math inline">\(\rightarrow\)</span>网络思维、发散思维</li><li>费曼技巧：学习+解释</li><li>人类思维的生物学载体：生物神经网络</li><li>学习时间不是衡量学习效果的标准，有效的成果产出才是</li></ul></li></ul><h1 id="哲学的世界观与方法论">哲学的世界观与方法论</h1><ul><li>认识论<ul><li>知己知彼，百战百胜</li><li>未知是人类最大的恐惧来源，因此克服恐惧最好的方法就是面对恐惧</li><li>压力感来自与我们不充分的准备</li><li>见多识广</li><li>人不可能想象出从来没有见过的东西，任何文艺形象的创作都能在现实中找到对应的原型。以人类对维度的认识为例，无论我们在数学上的论证过程如何缜密，但我们永远无法想象出真正的高维空间；反之，如果我们能够简单的体验一下高维空间，即使对数学一窍不通，我们对世界的认识也会上升一个很大的台阶。</li></ul></li><li>普遍联系与永恒发展<ul><li>把握事物间的区别与联系，是提升全面认识的关键</li><li>近朱者赤，近墨者黑</li><li>雪崩的时候没有一片雪花是无辜的</li></ul></li><li>世界的基本特性：</li><li><ul><li>因果性</li><li>永恒运动</li></ul></li></ul><h1 id="生活的方法论">生活的方法论</h1><ul><li>物以类聚，人与群分</li></ul>]]></content>
       
       
       
