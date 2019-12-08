@@ -7,12 +7,12 @@
   
   <title>【数值分析】插值 | The Orion</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插值问题  插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值 插值多项式 \(P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i">
+  <meta name="description" content="插值问题 插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值插值多项式$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$ 其中：多项式系数由下列范德">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【数值分析】插值">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC&#x2F;index.html">
 <meta property="og:site_name" content="The Orion">
-<meta property="og:description" content="插值问题  插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值 插值多项式 \(P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i">
+<meta property="og:description" content="插值问题 插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值插值多项式$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$ 其中：多项式系数由下列范德">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-11-28T08:48:16.221Z">
 <meta name="twitter:card" content="summary">
@@ -103,107 +103,82 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <hr />
-<hr />
-<h1 id="插值问题">插值问题</h1>
-<ul>
+        <hr>
+<hr>
+<h1 id="插值问题"><a href="#插值问题" class="headerlink" title="插值问题"></a>插值问题</h1><ul>
 <li>插值问题主要分为内插法和外插法，本文主要讨论内插法</li>
 <li>插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值）</li>
 <li>常用的插值方式有：三角插值、有理插值、多项式插值</li>
 <li>不同构造方法的余项都相同（唯一性）</li>
 </ul>
-<hr />
-<h1 id="多项式插值">多项式插值</h1>
-<h2 id="插值多项式">插值多项式</h2>
-<p><span class="math inline">\(P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }\)</span></p>
+<hr>
+<h1 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h1><h2 id="插值多项式"><a href="#插值多项式" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$</p>
 <p>其中：多项式系数由下列范德蒙得方程组求得 （非奇异、存在病态问题）</p>
-<p><span class="math inline">\(\left[\begin{array}{ccccc}{1} &amp; {x_{0}} &amp; {x_{0}^{2}} &amp; {\cdots} &amp; {x_{0}^{n}} \\ {1} &amp; {x_{1}} &amp; {x_{1}^{2}} &amp; {\cdots} &amp; {x_{1}^{n}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {1} &amp; {x_{n}} &amp; {x_{n}^{2}} &amp; {\cdots} &amp; {x_{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a_{0}} \\ {a_{1}} \\ {a_{2}} \\ {\vdots} \\ {a_{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x_{0}\right)} \\ {f\left(x_{1}\right)} \\ {f\left(x_{2}\right)} \\ {\vdots} \\ {f\left(x_{n}\right)}\end{array}\right]\)</span></p>
-<h2 id="插值余项">插值余项</h2>
-<p><span class="math inline">\(R_{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
-<p><span class="math inline">\(\left|R_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span> （导函数有界）</p>
+<p>$\left[\begin{array}{ccccc}{1} &amp; {x<em>{0}} &amp; {x</em>{0}^{2}} &amp; {\cdots} &amp; {x<em>{0}^{n}} \ {1} &amp; {x</em>{1}} &amp; {x<em>{1}^{2}} &amp; {\cdots} &amp; {x</em>{1}^{n}} \ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \ {1} &amp; {x<em>{n}} &amp; {x</em>{n}^{2}} &amp; {\cdots} &amp; {x<em>{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a</em>{0}} \ {a<em>{1}} \ {a</em>{2}} \ {\vdots} \ {a<em>{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x</em>{0}\right)} \ {f\left(x<em>{1}\right)} \ {f\left(x</em>{2}\right)} \ {\vdots} \ {f\left(x_{n}\right)}\end{array}\right]$</p>
+<h2 id="插值余项"><a href="#插值余项" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega</em>{n+1}(x)$</p>
+<p>$\left|R<em>{n}(x)\right| \leq \frac{M</em>{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|$  （导函数有界）</p>
 <p>其中</p>
-<p><span class="math inline">\(\omega_{n+1}(x)=\prod_{i=0}^{n}\left(x-x_{i}\right)\)</span></p>
-<h2 id="推论">推论</h2>
-<ul>
-<li>当<span class="math inline">\(f(x)\)</span>为不超过n次的多项式时，<span class="math inline">\(f(x)=\varphi (x)\)</span></li>
-<li>节点距离<span class="math inline">\(x\)</span>越近，一般插值误差越小</li>
+<p>$\omega<em>{n+1}(x)=\prod</em>{i=0}^{n}\left(x-x_{i}\right)$</p>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><ul>
+<li>当$f(x)$为不超过n次的多项式时，$f(x)=\varphi (x)$</li>
+<li>节点距离$x$越近，一般插值误差越小</li>
 </ul>
-<hr />
-<h1 id="拉格朗日插值">拉格朗日插值</h1>
-<h2 id="插值条件">插值条件</h2>
-<p><span class="math inline">\(l_{i}\left(x_{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left\{\begin{array}{ll}{1} &amp; {j=i} \\ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.\)</span> （线性无关）</p>
-<h2 id="插值基">插值基</h2>
-<p><span class="math inline">\(l_i (x)=\frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
-<h2 id="插值多项式-1">插值多项式</h2>
-<p><span class="math inline">\(L_{n}(x) \stackrel{\Delta}{=} \sum_{i=0}^{n} f\left(x_{i}\right) l_{i}(x)=\sum_{i=0}^{n} f\left(x_{i}\right) \frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
-<h2 id="插值余项-1">插值余项</h2>
-<p><span class="math inline">\(R_{n}(x)=f(x)-L_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
-<p><span class="math inline">\(\left|R_{n}(x)\right|=\left|f(x)-L_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span></p>
-<h2 id="应用">应用</h2>
-<ul>
+<hr>
+<h1 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h1><h2 id="插值条件"><a href="#插值条件" class="headerlink" title="插值条件"></a>插值条件</h2><p>$l<em>{i}\left(x</em>{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left{\begin{array}{ll}{1} &amp; {j=i} \ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.$ （线性无关）</p>
+<h2 id="插值基"><a href="#插值基" class="headerlink" title="插值基"></a>插值基</h2><p>$l<em>i (x)=\frac{\omega</em>{n+1}(x)}{\left(x-x<em>{i}\right) \omega</em>{n+1}^{\prime}\left(x_{i}\right)}$</p>
+<h2 id="插值多项式-1"><a href="#插值多项式-1" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$L<em>{n}(x) \stackrel{\Delta}{=} \sum</em>{i=0}^{n} f\left(x<em>{i}\right) l</em>{i}(x)=\sum<em>{i=0}^{n} f\left(x</em>{i}\right) \frac{\omega<em>{n+1}(x)}{\left(x-x</em>{i}\right) \omega<em>{n+1}^{\prime}\left(x</em>{i}\right)}$</p>
+<h2 id="插值余项-1"><a href="#插值余项-1" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-L</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
+<p>$\left|R<em>{n}(x)\right|=\left|f(x)-L</em>{n}(x)\right| \leq \frac{M<em>{n+1}}{(n+1) !}\left|\omega</em>{n+1}(x)\right|$</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
 <li>插值（采用列表的方法一目了然）</li>
 <li>反插值（单值性条件：被插函数单调连续）</li>
 </ul>
-<h2 id="特点">特点</h2>
-<ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>形式对称</li>
 <li>通常用于理论分析</li>
 <li>当增加插值节点时，计算不方便</li>
 </ul>
-<h1 id="牛顿插值">牛顿插值</h1>
-<h2 id="差商">差商</h2>
-<p>重要工具：差商表</p>
+<h1 id="牛顿插值"><a href="#牛顿插值" class="headerlink" title="牛顿插值"></a>牛顿插值</h1><h2 id="差商"><a href="#差商" class="headerlink" title="差商"></a>差商</h2><p>重要工具：差商表</p>
 <p>差商的性质：对称性，与导数的关系</p>
-<h2 id="插值公式">插值公式</h2>
-<p><span class="math inline">\(\begin{aligned} N_{n}(x)=&amp; f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0}, x_{1}, x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\\ &amp;\cdots+f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n-1}\right) \end{aligned}\)</span></p>
+<h2 id="插值公式"><a href="#插值公式" class="headerlink" title="插值公式"></a>插值公式</h2><p>$\begin{aligned} N<em>{n}(x)=&amp; f\left(x</em>{0}\right)+f\left[x<em>{0}, x</em>{1}\right]\left(x-x<em>{0}\right)+f\left[x</em>{0}, x<em>{1}, x</em>{2}\right]\left(x-x<em>{0}\right)\left(x-x</em>{1}\right)+\ &amp;\cdots+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right]\left(x-x</em>{0}\right)\left(x-x<em>{1}\right) \cdots\left(x-x</em>{n-1}\right) \end{aligned}$</p>
 <p>加入节点后：</p>
-<p><span class="math inline">\(N_{n+1}(x)=N_{n}(x)+f\left[x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
-<h2 id="余项">余项</h2>
-<p>插值型：<span class="math inline">\(R_n (x)=f\left[x,x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
-<p>导数型：<span class="math inline">\(R_{n}(x)=f(x)-N_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
-<p>导数与差商的关系：<span class="math inline">\(f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}\)</span></p>
-<h2 id="特点-1">特点</h2>
-<ul>
+<p>$N<em>{n+1}(x)=N</em>{n}(x)+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right] \omega</em>{n+1}(x)$</p>
+<h2 id="余项"><a href="#余项" class="headerlink" title="余项"></a>余项</h2><p>插值型：$R<em>n (x)=f\left[x,x</em>{0}, x<em>{1}, \cdots, x</em>{n}\right] \omega_{n+1}(x)$</p>
+<p>导数型：$R<em>{n}(x)=f(x)-N</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
+<p>导数与差商的关系：$f\left[x<em>{0}, x</em>{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}$</p>
+<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>有利于节点数的增加</li>
 <li>对函数的光滑性要求高</li>
 <li>需要估计导函数的最值</li>
 <li>保守</li>
 </ul>
-<h1 id="等距节点插值">等距节点插值</h1>
-<p>当节点等距分布时简化Newton插值公式：<span class="math inline">\(x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0\)</span></p>
-<h2 id="常用差分算子">常用差分算子</h2>
-<p>向前差分：<span class="math inline">\(\left\{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \\ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
-<p>向后差分：<span class="math inline">\(\left\{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \\ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
-<p>恒等算子：<span class="math inline">\(\left\{\begin{array}{}{I f(x)=f(x)} \\ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
-<p>位移算子：<span class="math inline">\(\left\{\begin{array}{}{E f(x)=f(x+h)} \\ {E^{s} f(x)=f(x+s h)}\end{array}\right.\)</span></p>
-<p>中心差分：<span class="math inline">\(\left\{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \\ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<h1 id="等距节点插值"><a href="#等距节点插值" class="headerlink" title="等距节点插值"></a>等距节点插值</h1><p>当节点等距分布时简化Newton插值公式：$x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0$</p>
+<h2 id="常用差分算子"><a href="#常用差分算子" class="headerlink" title="常用差分算子"></a>常用差分算子</h2><p>向前差分：$\left{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.$</p>
+<p>向后差分：$\left{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.$</p>
+<p>恒等算子：$\left{\begin{array}{}{I f(x)=f(x)} \ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.$</p>
+<p>位移算子：$\left{\begin{array}{}{E f(x)=f(x+h)} \ {E^{s} f(x)=f(x+s h)}\end{array}\right.$</p>
+<p>中心差分：$\left{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.$</p>
 <p>差分算子的重要性质：</p>
 <ul>
-<li><span class="math inline">\(\Delta=E-I\)</span></li>
-<li><span class="math inline">\(\nabla=I-E^{-1}\)</span></li>
-<li><span class="math inline">\(\delta=E^{1 / 2}-E^{-1 / 2}\)</span></li>
+<li>$\Delta=E-I$</li>
+<li>$\nabla=I-E^{-1}$</li>
+<li>$\delta=E^{1 / 2}-E^{-1 / 2}$</li>
 </ul>
 <p>差分与差商的关系：</p>
-<p><span class="math inline">\(f\left[x_{0}, x_{1}\right]=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}\)</span></p>
-<h2 id="插值公式-1">插值公式</h2>
-<p>向前：</p>
-<p><span class="math inline">\(N_{n}(a+t h)=f\left(x_{0}\right)+\sum_{k=1}^{n} \frac{\Delta^{k} f\left(x_{0}\right)}{k !} t(t-1) \cdots(t-k+1)\)</span></p>
-<p><span class="math inline">\(N_{2}\left(x_{0}+t h\right)=f\left(x_{0}\right)+\frac{\Delta f\left(x_{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)\)</span></p>
+<p>$f\left[x<em>{0}, x</em>{1}\right]=\frac{f\left(x<em>{1}\right)-f\left(x</em>{0}\right)}{x<em>{1}-x</em>{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}$</p>
+<h2 id="插值公式-1"><a href="#插值公式-1" class="headerlink" title="插值公式"></a>插值公式</h2><p>向前：</p>
+<p>$N<em>{n}(a+t h)=f\left(x</em>{0}\right)+\sum<em>{k=1}^{n} \frac{\Delta^{k} f\left(x</em>{0}\right)}{k !} t(t-1) \cdots(t-k+1)$</p>
+<p>$N<em>{2}\left(x</em>{0}+t h\right)=f\left(x<em>{0}\right)+\frac{\Delta f\left(x</em>{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)$</p>
 <p>向后：</p>
-<p><span class="math inline">\(N_{n}(b+t h)=f\left(x_{n}\right)+\sum_{k=1}^{n} \frac{\nabla^{k} f\left(x_{n}\right)}{k !} t(t+1) \cdots(t+k-1)\)</span></p>
-<h1 id="hermite插值">Hermite插值</h1>
-<h2 id="插值条件-1">插值条件</h2>
-<p><span class="math inline">\(\left\{\begin{array}{l}{H_{2 n+1}\left(x_{i}\right)=f\left(x_{i}\right)} \\ {H_{2 n+1}^{\prime}\left(x_{i}\right)=f^{\prime}\left(x_{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）\)</span></p>
-<h2 id="插值基-1">插值基</h2>
-<h2 id="插值多项式-2">插值多项式</h2>
-<h2 id="余项-1">余项</h2>
-
+<p>$N<em>{n}(b+t h)=f\left(x</em>{n}\right)+\sum<em>{k=1}^{n} \frac{\nabla^{k} f\left(x</em>{n}\right)}{k !} t(t+1) \cdots(t+k-1)$</p>
+<h1 id="Hermite插值"><a href="#Hermite插值" class="headerlink" title="Hermite插值"></a>Hermite插值</h1><h2 id="插值条件-1"><a href="#插值条件-1" class="headerlink" title="插值条件"></a>插值条件</h2><p>$\left{\begin{array}{l}{H<em>{2 n+1}\left(x</em>{i}\right)=f\left(x<em>{i}\right)} \ {H</em>{2 n+1}^{\prime}\left(x<em>{i}\right)=f^{\prime}\left(x</em>{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）$</p>
+<h2 id="插值基-1"><a href="#插值基-1" class="headerlink" title="插值基"></a>插值基</h2><h2 id="插值多项式-2"><a href="#插值多项式-2" class="headerlink" title="插值多项式"></a>插值多项式</h2><h2 id="余项-1"><a href="#余项-1" class="headerlink" title="余项"></a>余项</h2>
       
     </div>
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3vnrohl0003vktkfeb2b0mu" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3wsh6vf0003vktk9gam73sg" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -246,6 +221,10 @@
       <ul>
         
           <li>
+            <a href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">【矩阵论】线性空间</a>
           </li>
         
@@ -261,10 +240,6 @@
             <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
           </li>
         
-          <li>
-            <a href="/2019/12/01/%E3%80%90%E8%8B%B1%E8%AF%AD%E3%80%91%E5%8D%95%E8%AF%8D/">【英语】单词</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -276,7 +251,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
