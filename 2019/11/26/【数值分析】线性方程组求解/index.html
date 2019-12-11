@@ -40,45 +40,6 @@
     
     
         
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
     
 
 
@@ -93,9 +54,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -119,9 +80,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -217,8 +178,6 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
-                    
 
                     
                         <span class="post-time">
@@ -226,58 +185,61 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Math/">Math</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h3 id="—数值分析的四大思想"><a href="#—数值分析的四大思想" class="headerlink" title="—数值分析的四大思想"></a>—数值分析的四大思想</h3><ul>
+            <h3 id="数值分析的四大思想">--数值分析的四大思想</h3>
+<ul>
 <li>迭代</li>
 <li>松弛</li>
 <li>外推</li>
 <li>优化</li>
 </ul>
-<hr>
-<h3 id="—线性方程组的几种常用的迭代格式"><a href="#—线性方程组的几种常用的迭代格式" class="headerlink" title="—线性方程组的几种常用的迭代格式"></a>—线性方程组的几种常用的迭代格式</h3><p>对于线形代数方程组 <img src="https://www.zhihu.com/equation?tex=Ax%3Db" alt="[公式]"> ，其中系数矩阵A可分解为 <img src="https://www.zhihu.com/equation?tex=A%3DL%2BD%2BU" alt="[公式]"> ，迭代矩阵B可分解为 <img src="https://www.zhihu.com/equation?tex=B%3DB_1%2BB_2" alt="[公式]"> ，有：</p>
+<hr />
+<h3 id="线性方程组的几种常用的迭代格式">--线性方程组的几种常用的迭代格式</h3>
+<p>对于线形代数方程组 <img src="https://www.zhihu.com/equation?tex=Ax%3Db" alt="[公式]" /> ，其中系数矩阵A可分解为 <img src="https://www.zhihu.com/equation?tex=A%3DL%2BD%2BU" alt="[公式]" /> ，迭代矩阵B可分解为 <img src="https://www.zhihu.com/equation?tex=B%3DB_1%2BB_2" alt="[公式]" /> ，有：</p>
 <ul>
-<li>简单迭代格式： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3DB%5Ccdot+x%5E%7B%28k%29%7D%2Bg" alt="[公式]"></li>
-<li>Gauss-Seidel： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%28I-B_1%29%5E%7B-1%7DB_2%5Ccdot+x%5E%7B%28k%29%7D%2B%28I-B_1%29%5E%7B-1%7Dg" alt="[公式]"></li>
-<li>Jacobi格式 ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-D%5E%7B-1%7D%28L%2BU%29%5Ccdot+x%5E%7B%28k%29%7D%2BD%5E%7B-1%7Db" alt="[公式]"></li>
-<li>Jacobi+G-S ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-%28L%2BD%29%5E%7B-1%7DU%5Ccdot+x%5E%7B%28k%29%7D%2B%28L%2BD%29%5E%7B-1%7Db" alt="[公式]"></li>
-<li>SOR： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%5B%28D%2B%5Comega+L%29%5E%7B-1%7D%28%281-%5Comega%29D-%5Comega+U%29%5D%5Ccdot+x%5E%7B%28k%29%7D%2B%5Comega+%28D%2B%5Comega+L%29%5E%7B-1%7Db" alt="[公式]"></li>
+<li>简单迭代格式： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3DB%5Ccdot+x%5E%7B%28k%29%7D%2Bg" alt="[公式]" /></li>
+<li>Gauss-Seidel： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%28I-B_1%29%5E%7B-1%7DB_2%5Ccdot+x%5E%7B%28k%29%7D%2B%28I-B_1%29%5E%7B-1%7Dg" alt="[公式]" /></li>
+<li>Jacobi格式 ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-D%5E%7B-1%7D%28L%2BU%29%5Ccdot+x%5E%7B%28k%29%7D%2BD%5E%7B-1%7Db" alt="[公式]" /></li>
+<li>Jacobi+G-S ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-%28L%2BD%29%5E%7B-1%7DU%5Ccdot+x%5E%7B%28k%29%7D%2B%28L%2BD%29%5E%7B-1%7Db" alt="[公式]" /></li>
+<li>SOR： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%5B%28D%2B%5Comega+L%29%5E%7B-1%7D%28%281-%5Comega%29D-%5Comega+U%29%5D%5Ccdot+x%5E%7B%28k%29%7D%2B%5Comega+%28D%2B%5Comega+L%29%5E%7B-1%7Db" alt="[公式]" /></li>
 </ul>
-<p><strong>收敛条件：</strong> <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_x%29%3C1+" alt="[公式]"> 是判定收敛的根本法则</p>
+<p><strong>收敛条件：</strong> <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_x%29%3C1+" alt="[公式]" /> 是判定收敛的根本法则</p>
 <ul>
-<li>简单迭代格式：（充要）<img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C%3C1" alt="[公式]"></li>
-<li>Gauss-Seidel：（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B%5Cinfty%7D%3C1" alt="[公式]"> 或 <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B1%7D%3C1" alt="[公式]"> ，B为简单迭代格式系数矩阵</li>
-<li>Jacobi格式： （充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_J%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_J%5C%7C%3C1" alt="[公式]"> 或【A严格对角占优】</li>
-<li>Jacobi+G-S：（充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_S%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_S%5C%7C%3C1" alt="[公式]"> 或【A严格对角占优】或【 A对称正定】</li>
-<li>SOR：（必要） <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]"> ；（充分）【 A对称正定， <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]"> 】</li>
+<li>简单迭代格式：（充要）<img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C%3C1" alt="[公式]" /></li>
+<li>Gauss-Seidel：（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B%5Cinfty%7D%3C1" alt="[公式]" /> 或 <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B1%7D%3C1" alt="[公式]" /> ，B为简单迭代格式系数矩阵</li>
+<li>Jacobi格式： （充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_J%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_J%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】</li>
+<li>Jacobi+G-S：（充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_S%29%3C1+" alt="[公式]" /> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_S%5C%7C%3C1" alt="[公式]" /> 或【A严格对角占优】或【 A对称正定】</li>
+<li>SOR：（必要） <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> ；（充分）【 A对称正定， <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]" /> 】</li>
 </ul>
 <p><strong>简单迭代法的误差估计：</strong></p>
 <ul>
-<li>（后验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%28k%29%7D-x%5E%7B%28k-1%29%7D%5C%7C" alt="[公式]"></li>
-<li>（先验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%5Ek%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%281%29%7D-x%5E%7B%280%29%7D%5C%7C" alt="[公式]"></li>
+<li>（后验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%28k%29%7D-x%5E%7B%28k-1%29%7D%5C%7C" alt="[公式]" /></li>
+<li>（先验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%5Ek%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%281%29%7D-x%5E%7B%280%29%7D%5C%7C" alt="[公式]" /></li>
 </ul>
-<p>通过求解 <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Ek%28B%29%5Cleq10%5E%7B-m%7D" alt="[公式]"> 可以得到【大约需要迭代的次数k】</p>
+<p>通过求解 <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Ek%28B%29%5Cleq10%5E%7B-m%7D" alt="[公式]" /> 可以得到【大约需要迭代的次数k】</p>
 <p><strong>Remaks:</strong></p>
 <ul>
-<li><p><img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7D%3DO%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7Dx%3DO" alt="[公式]"> ，关键在于证明B为收敛矩阵</p>
-</li>
-<li><p>Gauss-Seidel格式通常情况下可用于对Jacobi格式的加速，但Gauss-Seidel格式并不是在所有情况下都更快，有时甚至不收敛</p>
-</li>
-<li><p>在SOR（逐次超松弛）迭代格式中， <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="[公式]"> 成为【松弛因子】。</p>
-</li>
+<li><p><img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7D%3DO%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7Dx%3DO" alt="[公式]" /> ，关键在于证明B为收敛矩阵</p></li>
+<li><p>Gauss-Seidel格式通常情况下可用于对Jacobi格式的加速，但Gauss-Seidel格式并不是在所有情况下都更快，有时甚至不收敛</p></li>
+<li><p>在SOR（逐次超松弛）迭代格式中， <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="[公式]" /> 成为【松弛因子】。</p></li>
 <li><ul>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3C1" alt="[公式]"> ：低松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3E1" alt="[公式]"> ：超松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3D1" alt="[公式]"> ：退化为Gauss-Seidel迭代格式</li>
-</ul>
-</li>
-<li><p>最佳松弛因子 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D" alt="[公式]"> ：求解困难，但对于系数矩阵A【对称正定】||【严格对角占优】||【弱对角占优&amp;不可约】的线形代数方程组，有 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D%3D%5Cfrac%7B2%7D%7B1%2B%5Csqrt%7B1-%5Crho%5E2%28B_L%29%7D%7D" alt="[公式]"></p>
-</li>
-<li><p>各种加速格式的【核心思想】：尽量更多的利用已经得到的数据</p>
-</li>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3C1" alt="[公式]" /> ：低松弛</li>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3E1" alt="[公式]" /> ：超松弛</li>
+<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3D1" alt="[公式]" /> ：退化为Gauss-Seidel迭代格式</li>
+</ul></li>
+<li><p>最佳松弛因子 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D" alt="[公式]" /> ：求解困难，但对于系数矩阵A【对称正定】||【严格对角占优】||【弱对角占优&amp;不可约】的线形代数方程组，有 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D%3D%5Cfrac%7B2%7D%7B1%2B%5Csqrt%7B1-%5Crho%5E2%28B_L%29%7D%7D" alt="[公式]" /></p></li>
+<li><p>各种加速格式的【核心思想】：尽量更多的利用已经得到的数据</p></li>
 </ul>
 
         </div>
@@ -291,22 +253,7 @@
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/">http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/</a></span>
-                    </p>
                 
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span></span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY<strong>?</span>
-                     </p>
                 
 
             </section>
@@ -316,6 +263,12 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
+                    
+                        <a href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"># 数值分析</a>
+                    
+                        
                 </span>
             </div>
             <div>

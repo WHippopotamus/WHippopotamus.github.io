@@ -40,45 +40,6 @@
     
     
         
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
     
 
 
@@ -93,9 +54,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -119,9 +80,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -217,8 +178,6 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
-                    
 
                     
                         <span class="post-time">
@@ -226,21 +185,26 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/History/">History</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="一、科学的历史"><a href="#一、科学的历史" class="headerlink" title="一、科学的历史"></a>一、科学的历史</h1><ul>
+            <h1 id="一科学的历史">一、科学的历史</h1>
+<ul>
 <li>1609年，意大利天文学家、物理学家伽利略发明了人类历史上第一台天文望远镜。</li>
-<li>$H_{\infty}$鲁棒控制理论的发展过程的<a href="http://blog.sina.com.cn/s/blog_3e26cd0b01000548.html" target="_blank" rel="noopener">两大阶段</a>，以两篇著名论文为标志：<ul>
-<li>1981年，Zames，经典 $H_{\infty}$鲁棒控制理论</li>
-<li>1989年，Dolye，状态空间 $H_{\infty}$鲁棒控制理论</li>
+<li><span class="math inline">\(H_{\infty}\)</span>鲁棒控制理论的发展过程的<a href="http://blog.sina.com.cn/s/blog_3e26cd0b01000548.html" target="_blank" rel="noopener">两大阶段</a>，以两篇著名论文为标志： - 1981年，Zames，经典 <span class="math inline">\(H_{\infty}\)</span>鲁棒控制理论 - 1989年，Dolye，状态空间 <span class="math inline">\(H_{\infty}\)</span>鲁棒控制理论</li>
 </ul>
-</li>
-</ul>
-<hr>
-<h1 id="二、政治的历史"><a href="#二、政治的历史" class="headerlink" title="二、政治的历史"></a>二、政治的历史</h1><hr>
+<hr />
+<h1 id="二政治的历史">二、政治的历史</h1>
+<hr />
 
         </div>
 
@@ -253,22 +217,7 @@
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2019/12/01/%E3%80%90%E5%8E%86%E5%8F%B2%E3%80%91%E5%8E%86%E5%8F%B2%E8%A7%82%E4%B8%96%E7%95%8C/">http://yoursite.com/2019/12/01/%E3%80%90%E5%8E%86%E5%8F%B2%E3%80%91%E5%8E%86%E5%8F%B2%E8%A7%82%E4%B8%96%E7%95%8C/</a></span>
-                    </p>
                 
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span></span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY<strong>?</span>
-                     </p>
                 
 
             </section>
@@ -278,6 +227,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E6%97%B6%E9%97%B4%E8%BD%B4/"># 时间轴</a>
+                    
+                        
                 </span>
             </div>
             <div>

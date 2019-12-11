@@ -40,45 +40,6 @@
     
     
         
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
     
 
 
@@ -93,9 +54,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -119,9 +80,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -217,8 +178,6 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
-                    
 
                     
                         <span class="post-time">
@@ -226,12 +185,20 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Math/">Math</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="一、数域与映射"><a href="#一、数域与映射" class="headerlink" title="一、数域与映射"></a>一、数域与映射</h1><ul>
+            <h1 id="一数域与映射">一、数域与映射</h1>
+<ul>
 <li>若K为数域，则K必须满足和、差、积、商封闭</li>
 <li>有理数域、实数域、复数域是数域；自然数集、整数集不是数域</li>
 <li>有理数域是最小的数域</li>
@@ -241,173 +208,153 @@
 <ul>
 <li>单射+满射=双射</li>
 <li>映射相等</li>
-<li>由映射$\sigma$和$\tau$得到乘积$\sigma \tau$的【充要】条件为$\sigma$包含于$\tau$的定义域<ul>
-<li>$\sigma \tau \neq \tau \sigma$</li>
-<li>$(\sigma \tau) \omega= \tau (\sigma \omega)$</li>
+<li>由映射<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>得到乘积<span class="math inline">\(\sigma \tau\)</span>的【充要】条件为<span class="math inline">\(\sigma\)</span>包含于<span class="math inline">\(\tau\)</span>的定义域
+<ul>
+<li><span class="math inline">\(\sigma \tau \neq \tau \sigma\)</span></li>
+<li><span class="math inline">\((\sigma \tau) \omega= \tau (\sigma \omega)\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id="二、线性空间"><a href="#二、线性空间" class="headerlink" title="二、线性空间"></a>二、线性空间</h1><p>一些重要的解空间</p>
+<h1 id="二线性空间">二、线性空间</h1>
+<p>一些重要的解空间</p>
 <ul>
 <li>多项式空间</li>
 <li>线性齐次方程组的解构成线性空间，而非齐次方程组的解空间不构成线性空间</li>
 </ul>
-<h2 id="线性空间的一些基本性质"><a href="#线性空间的一些基本性质" class="headerlink" title="线性空间的一些基本性质"></a>线性空间的一些基本性质</h2><ul>
+<h2 id="线性空间的一些基本性质">线性空间的一些基本性质</h2>
+<ul>
 <li>x性质1：零元是唯一的</li>
-<li>性质2：任意元素$\alpha$的负元都是唯一的</li>
-<li>性质3：$0\alpha=\theta$，$（-1）\alpha=-\alpha$，$k\theta=\theta$</li>
-<li>性质4：若$k\alpha=\theta$，则$k=0$或$\alpha=0$</li>
+<li>性质2：任意元素<span class="math inline">\(\alpha\)</span>的负元都是唯一的</li>
+<li>性质3：<span class="math inline">\(0\alpha=\theta\)</span>，<span class="math inline">\(（-1）\alpha=-\alpha\)</span>，<span class="math inline">\(k\theta=\theta\)</span></li>
+<li>性质4：若<span class="math inline">\(k\alpha=\theta\)</span>，则<span class="math inline">\(k=0\)</span>或<span class="math inline">\(\alpha=0\)</span></li>
 </ul>
-<h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><ul>
-<li>线性表出、线性相关、线性无关</li>
-<li>向量组的线性表出、等价；极大无关组</li>
-<li>线性表出、表出唯一</li>
-<li>一个元素组的任意两个极大无关组等价</li>
-<li><p>等价的元素组由相同的秩</p>
-</li>
-<li><p>数域会影响到元素组的线性相关性</p>
-</li>
+<h2 id="重要概念">重要概念</h2>
+<ul>
+<li><p>线性表出、线性相关、线性无关</p></li>
+<li><p>向量组的线性表出、等价；极大无关组</p></li>
+<li><p>线性表出、表出唯一</p></li>
+<li><p>一个元素组的任意两个极大无关组等价</p></li>
+<li><p>等价的元素组由相同的秩</p></li>
+<li><p>数域会影响到元素组的线性相关性</p></li>
 </ul>
-<h1 id="三、基、维数与坐标"><a href="#三、基、维数与坐标" class="headerlink" title="三、基、维数与坐标"></a>三、基、维数与坐标</h1><h2 id="基变换"><a href="#基变换" class="headerlink" title="基变换"></a>基变换</h2><ul>
-<li>$\alpha \rightarrow \beta$的基变换公式：$\beta y=\alpha Cy=\alpha x \Rightarrow x=Cy \Leftrightarrow y=C^{-1}x$</li>
+<h1 id="三基维数与坐标">三、基、维数与坐标</h1>
+<h2 id="基变换">基变换</h2>
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span>的基变换公式：<span class="math inline">\(\beta y=\alpha Cy=\alpha x \Rightarrow x=Cy \Leftrightarrow y=C^{-1}x\)</span></li>
 <li>中介基</li>
 </ul>
-<h2 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h2><ul>
+<h2 id="线性变换">线性变换</h2>
+<ul>
 <li>定义：满足叠加性和齐次性</li>
 <li>常用线性变换：恒等变换（单位变换）、零变换</li>
 <li>线性变换可能奖线性无关的元素组变成线性相关的元素组</li>
-<li>线性变换的运算：<ul>
+<li>线性变换的运算：
+<ul>
 <li>线性变换的乘积也是线性变换</li>
 <li>线性变换的乘积满足结合律</li>
 <li>线性变换的乘法一般不满足交换律</li>
-</ul>
-</li>
+</ul></li>
 <li>线性变换T可逆的【充要】条件为：T为一一对应</li>
 <li>若线性变换T可逆，则其逆变换是唯一的</li>
 </ul>
-<hr>
-<h1 id="四、课后题思路"><a href="#四、课后题思路" class="headerlink" title="四、课后题思路"></a>四、课后题思路</h1><ol>
-<li><p>验证是否构成<strong>数域</strong>：证明集合非空、验证加减乘除的封闭性</p>
-</li>
+<hr />
+<h1 id="四课后题思路">四、课后题思路</h1>
+<ol type="1">
+<li><p>验证是否构成<strong>数域</strong>：证明集合非空、验证加减乘除的封闭性</p></li>
 <li><p><strong>判定线性空间</strong>：验证定义中的十个条件</p>
 <ul>
 <li>加法封闭&amp;&amp;数乘封闭</li>
 <li>加法交换律&amp;&amp;加法结合律</li>
-<li>存在零元$\theta$，使得$\alpha+\theta=\alpha$</li>
-<li>存在负元$\beta$，使得$\alpha+\beta=\theta$</li>
-<li>$1\alpha=\alpha$</li>
+<li>存在零元<span class="math inline">\(\theta\)</span>，使得<span class="math inline">\(\alpha+\theta=\alpha\)</span></li>
+<li>存在负元<span class="math inline">\(\beta\)</span>，使得<span class="math inline">\(\alpha+\beta=\theta\)</span></li>
+<li><span class="math inline">\(1\alpha=\alpha\)</span></li>
 <li>数乘结合律</li>
-<li>数乘分配律：$(k+l)\alpha=k\alpha+l\alpha$</li>
-<li>数因子分配律：$k(\alpha+\beta)=k\alpha+k\beta$</li>
-</ul>
-</li>
-<li><p>判断线性空间中元素组的<strong>线性相关性</strong>：利用$k_1\alpha_1+k_2\alpha_2+\dots+k_n\alpha_n=0$</p>
-</li>
-<li><p>求同一个向量在不同基下的<strong>坐标</strong>：相等、整理、比较系数、求线性方程组</p>
-</li>
-<li><p>求(I)到(II)的<strong>过渡矩阵</strong>：利用$(\beta_1,\beta_2,\dots\beta_n)y=(\alpha_1,\alpha_2,\dots,\alpha_n)Cy=(\alpha_1,\alpha_2,\dots,\alpha_n)x$</p>
-</li>
-<li><p>求在两个基下具有<strong>相同坐标</strong>的所有向量：$x=Cx$</p>
-</li>
-<li><p><strong>子空间</strong>：$W$对于$V$中所定义的加法和数乘运算也构成数域$K$上的线性空间</p>
-</li>
-<li><p>子空间的有<strong>关系运算</strong>：$W_1=span{\alpha_1,\alpha_2,\dots,\alpha_m}$， $W_2=span{\beta_1,\beta_2,\dots,\beta_n}$</p>
+<li>数乘分配律：<span class="math inline">\((k+l)\alpha=k\alpha+l\alpha\)</span></li>
+<li>数因子分配律：<span class="math inline">\(k(\alpha+\beta)=k\alpha+k\beta\)</span></li>
+</ul></li>
+<li><p>判断线性空间中元素组的<strong>线性相关性</strong>：利用<span class="math inline">\(k_1\alpha_1+k_2\alpha_2+\dots+k_n\alpha_n=0\)</span></p></li>
+<li><p>求同一个向量在不同基下的<strong>坐标</strong>：相等、整理、比较系数、求线性方程组</p></li>
+<li><p>求(I)到(II)的<strong>过渡矩阵</strong>：利用<span class="math inline">\((\beta_1,\beta_2,\dots\beta_n)y=(\alpha_1,\alpha_2,\dots,\alpha_n)Cy=(\alpha_1,\alpha_2,\dots,\alpha_n)x\)</span></p></li>
+<li><p>求在两个基下具有<strong>相同坐标</strong>的所有向量：<span class="math inline">\(x=Cx\)</span></p></li>
+<li><p><strong>子空间</strong>：<span class="math inline">\(W\)</span>对于<span class="math inline">\(V\)</span>中所定义的加法和数乘运算也构成数域<span class="math inline">\(K\)</span>上的线性空间</p></li>
+<li><p>子空间的有<strong>关系运算</strong>：<span class="math inline">\(W_1=span\{\alpha_1,\alpha_2,\dots,\alpha_m\}\)</span>， <span class="math inline">\(W_2=span\{\beta_1,\beta_2,\dots,\beta_n\}\)</span></p>
 <ul>
-<li>交：$W_1\cap W_2 $</li>
-<li>和：$W_1+W_2=span{ \alpha_1,\alpha_2,\dots,\alpha_m\ ,\beta_1,\beta_2,\dots,\beta_n }$</li>
+<li>交：$W_1W_2 $</li>
+<li>和：<span class="math inline">\(W_1+W_2=span\{ \alpha_1,\alpha_2,\dots,\alpha_m\ ,\beta_1,\beta_2,\dots,\beta_n \}\)</span></li>
 <li>直和</li>
-</ul>
-</li>
+</ul></li>
 <li><p><strong>线性变换的判定条件</strong>：</p>
 <ul>
-<li>叠加性：$T(\alpha+\beta)=T(\alpha)+T(\beta)$</li>
-<li>齐次性：$T(k\alpha)=kT(\alpha)$</li>
-</ul>
-</li>
-<li><p>线性变换的<strong>矩阵</strong>：$T(\alpha_1,\alpha_2,\dots,\alpha_m)=(T(\alpha_1),T(\alpha_2),\dots,T(\alpha_n))=(\alpha_1,\alpha_2,\dots,\alpha_m)A$</p>
-</li>
+<li>叠加性：<span class="math inline">\(T(\alpha+\beta)=T(\alpha)+T(\beta)\)</span></li>
+<li>齐次性：<span class="math inline">\(T(k\alpha)=kT(\alpha)\)</span></li>
+</ul></li>
+<li><p>线性变换的<strong>矩阵</strong>：<span class="math inline">\(T(\alpha_1,\alpha_2,\dots,\alpha_m)=(T(\alpha_1),T(\alpha_2),\dots,T(\alpha_n))=(\alpha_1,\alpha_2,\dots,\alpha_m)A\)</span></p></li>
 <li><p>求同一个线性变换在不同基下的矩阵：</p>
 <ul>
 <li>同一线性变换在不同基下的矩阵式相似的</li>
-<li>设$T$在基(I)、基(II)下的矩阵分别为$A$和$B$，由(I)到(II)的过渡矩阵为$P$，则$B=P^{-1}AP$</li>
+<li>设<span class="math inline">\(T\)</span>在基(I)、基(II)下的矩阵分别为<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，由(I)到(II)的过渡矩阵为<span class="math inline">\(P\)</span>，则<span class="math inline">\(B=P^{-1}AP\)</span></li>
 <li>注意与基变换的区别</li>
-</ul>
-</li>
-<li><p><strong>线性变换的运算</strong>：设$T $的在基（I）下的矩阵为$A$，则</p>
+</ul></li>
+<li><p><strong>线性变换的运算</strong>：设$T <span class="math inline">\(的在基（I）下的矩阵为\)</span>A$，则</p>
 <ul>
 <li>线性变换可逆等价于线性变换的矩阵可逆</li>
-<li>$T^{-1}$在基（I）下的矩阵为$A^{-1}$</li>
-<li>$T+S$在基（I）下的矩阵为$A+B$</li>
-<li>$TS$在基（I）下的矩阵为$AB$</li>
-<li>$rankT=rankA$</li>
-</ul>
-</li>
-<li><p>线性变换的<strong>特征值与特征向量</strong>：设$T $的在基（I）下的矩阵为$A$，则</p>
+<li><span class="math inline">\(T^{-1}\)</span>在基（I）下的矩阵为<span class="math inline">\(A^{-1}\)</span></li>
+<li><span class="math inline">\(T+S\)</span>在基（I）下的矩阵为<span class="math inline">\(A+B\)</span></li>
+<li><span class="math inline">\(TS\)</span>在基（I）下的矩阵为<span class="math inline">\(AB\)</span></li>
+<li><span class="math inline">\(rankT=rankA\)</span></li>
+</ul></li>
+<li><p>线性变换的<strong>特征值与特征向量</strong>：设$T <span class="math inline">\(的在基（I）下的矩阵为\)</span>A$，则</p>
 <ul>
-<li>$T$的特征值就是$A$的特征值</li>
-<li>$T$的特征向量在基（I）下的坐标就是矩阵$A$对应的特征向量</li>
-</ul>
-</li>
+<li><span class="math inline">\(T\)</span>的特征值就是<span class="math inline">\(A\)</span>的特征值</li>
+<li><span class="math inline">\(T\)</span>的特征向量在基（I）下的坐标就是矩阵<span class="math inline">\(A\)</span>对应的特征向量</li>
+</ul></li>
 <li><p>线性变换的相似对角化</p>
 <ul>
-<li>可对角化条件：$T$在数域$K$上由$n$的线性无关的特征向量</li>
-<li>对角化的方法：$\lambda_i,P$分别为矩阵$A$的特征向量及相似变换矩阵<ul>
-<li>$\Lambda=diag([\lambda_1,\lambda_2,\dots,\lambda_n])$</li>
-<li>$(\beta_1,\beta_2,\dots\beta_n)=(\alpha_1,\alpha_2,\dots,\alpha_n)P$</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>不变子空间：对$\forall\alpha\in W$，有$T(\alpha)\in W$</p>
-</li>
-<li><p>特征子空间：$V_{\lambda_0}={\alpha|T(\alpha)=\lambda_0\alpha,\alpha\in V}$</p>
-</li>
-<li><p>度量矩阵（Gram矩阵）：$A=(a<em>{ij})</em>{n\times n},a_{ij}=(\alpha_i,\alpha_j)$</p>
+<li>可对角化条件：<span class="math inline">\(T\)</span>在数域<span class="math inline">\(K\)</span>上由<span class="math inline">\(n\)</span>的线性无关的特征向量</li>
+<li>对角化的方法：<span class="math inline">\(\lambda_i,P\)</span>分别为矩阵<span class="math inline">\(A\)</span>的特征向量及相似变换矩阵
+<ul>
+<li><span class="math inline">\(\Lambda=diag([\lambda_1,\lambda_2,\dots,\lambda_n])\)</span></li>
+<li><span class="math inline">\((\beta_1,\beta_2,\dots\beta_n)=(\alpha_1,\alpha_2,\dots,\alpha_n)P\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>不变子空间：对<span class="math inline">\(\forall\alpha\in W\)</span>，有<span class="math inline">\(T(\alpha)\in W\)</span></p></li>
+<li><p>特征子空间：<span class="math inline">\(V_{\lambda_0}=\{\alpha|T(\alpha)=\lambda_0\alpha,\alpha\in V\}\)</span></p></li>
+<li><p>度量矩阵（Gram矩阵）：<span class="math inline">\(A=(a_{ij})_{n\times n},a_{ij}=(\alpha_i,\alpha_j)\)</span></p>
 <ul>
 <li>同一线性变换在不同基下的度量矩阵是合同的</li>
-<li>$B=P^{T}AP$，其中$P$为两个基之间的过渡矩阵</li>
-</ul>
-</li>
-<li><p>矩阵的内积：$(A,B)=tr(AB^H)$</p>
+<li><span class="math inline">\(B=P^{T}AP\)</span>，其中<span class="math inline">\(P\)</span>为两个基之间的过渡矩阵</li>
+</ul></li>
+<li><p>矩阵的内积：<span class="math inline">\((A,B)=tr(AB^H)\)</span></p>
 <ul>
-<li><pre><code class="lang-matlab">function y=innerprod(A,B)
-    y=trace(A*B&#39;);
-end
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>Gram-Schmidit正交化法=正交化+单位化</p>
-</li>
-<li><p><strong>正交变换</strong>：$(T(\alpha),T(\beta))=(\alpha,\beta)$，内积不变</p>
+<li><div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1"></a>function y=innerprod(A,B)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>   y=trace(A*B&#39;);</span>
+<span id="cb1-3"><a href="#cb1-3"></a>end</span></code></pre></div></li>
+</ul></li>
+<li><p>Gram-Schmidit正交化法=正交化+单位化</p></li>
+<li><p><strong>正交变换</strong>：<span class="math inline">\((T(\alpha),T(\beta))=(\alpha,\beta)\)</span>，内积不变</p>
 <ul>
 <li>（第一类）平面旋转变换：</li>
-<li>（第一类）镜像变换：$T(x)=x-2(u,x)u$</li>
+<li>（第一类）镜像变换：<span class="math inline">\(T(x)=x-2(u,x)u\)</span></li>
 <li>若线性变换T的矩阵A为正交矩阵，则T也为正交变换</li>
 <li>正交变换保持元素的长度不变：</li>
 <li>标准正交基=正交变换（标准正交基）</li>
 <li>正交矩阵=线性变换的矩阵（标准正交基）</li>
-</ul>
-</li>
-<li><p><strong>对称变换</strong>：$(T(\alpha),\beta)=(\alpha,T(\beta))$</p>
+</ul></li>
+<li><p><strong>对称变换</strong>：<span class="math inline">\((T(\alpha),\beta)=(\alpha,T(\beta))\)</span></p>
 <ul>
 <li>【充要条件】任意标准基下的矩阵是实对称矩阵</li>
-</ul>
-</li>
-<li><p><strong>投影变换</strong>：$P_{L,M}(x)=y$</p>
+</ul></li>
+<li><p><strong>投影变换</strong>：<span class="math inline">\(P_{L,M}(x)=y\)</span></p>
 <ul>
 <li><strong>投影矩阵</strong>：投影变换在单位正交基下的矩阵</li>
-<li>设A为幂等矩阵，则有$N(A)=R(I-A)$</li>
+<li>设A为幂等矩阵，则有<span class="math inline">\(N(A)=R(I-A)\)</span></li>
 <li>矩阵P为投影矩阵的【充要条件】是P为<strong>幂等矩阵</strong></li>
-<li>正交投影矩阵：【充要条件】$P^2=P$且$P^H=P$</li>
-</ul>
-</li>
+<li>正交投影矩阵：【充要条件】<span class="math inline">\(P^2=P\)</span>且<span class="math inline">\(P^H=P\)</span></li>
+</ul></li>
 <li><p>投影矩阵的计算：</p>
 <ul>
-<li>投影矩阵：$P_{L,M}=(X,O)(X,Y)^{-1}$</li>
-<li>正交投影矩阵：$P_{L}=X(X^HX)^{-1}X^H$</li>
-</ul>
-</li>
+<li>投影矩阵：<span class="math inline">\(P_{L,M}=(X,O)(X,Y)^{-1}\)</span></li>
+<li>正交投影矩阵：<span class="math inline">\(P_{L}=X(X^HX)^{-1}X^H\)</span></li>
+</ul></li>
 </ol>
 
         </div>
@@ -421,22 +368,7 @@ end
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">http://yoursite.com/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/</a></span>
-                    </p>
                 
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span></span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY<strong>?</span>
-                     </p>
                 
 
             </section>
@@ -446,6 +378,12 @@ end
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
+                    
+                        <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/"># 矩阵论</a>
+                    
+                        
                 </span>
             </div>
             <div>

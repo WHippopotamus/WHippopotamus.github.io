@@ -40,45 +40,6 @@
     
     
         
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-        
     
 
 
@@ -93,9 +54,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -119,9 +80,9 @@
                 
                     <a class="menu-item" href="/archives">Posts</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/categories">Categories</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tags">Tags</a>
                 
                     <a class="menu-item" href="/about">About</a>
                 
@@ -155,8 +116,6 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
-                    
 
                     
                         <span class="post-time">
@@ -164,43 +123,49 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Others/">Others</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <div class="table-container">
-<table>
+            <table>
 <thead>
-<tr>
-<th style="text-align:center">学校入口</th>
-<th style="text-align:center">学术搜索</th>
-<th style="text-align:center">数学符号（Tex）</th>
+<tr class="header">
+<th style="text-align: center;">学校入口</th>
+<th style="text-align: center;">学术搜索</th>
+<th style="text-align: center;">数学符号（Tex）</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center"><a href="http://tushuguan.nwpu.edu.cn/test2019/xbgydxtsg.htm" target="_blank" rel="noopener">图书馆</a></td>
-<td style="text-align:center"><a href="https://cnki.net/" target="_blank" rel="noopener">中国知网</a></td>
-<td style="text-align:center"><a href="https://blog.csdn.net/gsww404/article/details/78684278" target="_blank" rel="noopener">参考链接1</a></td>
+<tr class="odd">
+<td style="text-align: center;"><a href="http://tushuguan.nwpu.edu.cn/test2019/xbgydxtsg.htm" target="_blank" rel="noopener">图书馆</a></td>
+<td style="text-align: center;"><a href="https://cnki.net/" target="_blank" rel="noopener">中国知网</a></td>
+<td style="text-align: center;"><a href="https://blog.csdn.net/gsww404/article/details/78684278" target="_blank" rel="noopener">参考链接1</a></td>
 </tr>
-<tr>
-<td style="text-align:center"><a href="https://uis.nwpu.edu.cn/cas/login?service=https%3A%2F%2Fecampus.nwpu.edu.cn%2Fc%2Fportal%2Flogin" target="_blank" rel="noopener">翱翔门户</a></td>
-<td style="text-align:center"><a href="https://scholar.google.com/" target="_blank" rel="noopener">谷歌学术</a></td>
-<td style="text-align:center"><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">参考链接2</a></td>
+<tr class="even">
+<td style="text-align: center;"><a href="https://uis.nwpu.edu.cn/cas/login?service=https%3A%2F%2Fecampus.nwpu.edu.cn%2Fc%2Fportal%2Flogin" target="_blank" rel="noopener">翱翔门户</a></td>
+<td style="text-align: center;"><a href="https://scholar.google.com/" target="_blank" rel="noopener">谷歌学术</a></td>
+<td style="text-align: center;"><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">参考链接2</a></td>
 </tr>
-<tr>
-<td style="text-align:center"><a href="https://mail.nwpu.edu.cn/" target="_blank" rel="noopener">西工大邮箱</a></td>
-<td style="text-align:center"><a href="http://xueshu.baidu.com/" target="_blank" rel="noopener">百度学术</a></td>
-<td style="text-align:center"></td>
+<tr class="odd">
+<td style="text-align: center;"><a href="https://mail.nwpu.edu.cn/" target="_blank" rel="noopener">西工大邮箱</a></td>
+<td style="text-align: center;"><a href="http://xueshu.baidu.com/" target="_blank" rel="noopener">百度学术</a></td>
+<td style="text-align: center;"></td>
 </tr>
-<tr>
-<td style="text-align:center"><a href="http://222.24.192.95/index.php" target="_blank" rel="noopener">奖学金系统</a></td>
-<td style="text-align:center"></td>
+<tr class="even">
+<td style="text-align: center;"><a href="http://222.24.192.95/index.php" target="_blank" rel="noopener">奖学金系统</a></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-</div>
 
         </div>
 
@@ -213,22 +178,7 @@
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">http://yoursite.com/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/</a></span>
-                    </p>
                 
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span></span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY<strong>?</span>
-                     </p>
                 
 
             </section>
@@ -238,6 +188,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E5%AF%BC%E8%88%AA/"># 导航</a>
+                    
+                        
                 </span>
             </div>
             <div>
