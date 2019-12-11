@@ -1,109 +1,238 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
-  <title>【矩阵论】线性空间 | The Orion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、数域与映射 若K为数域，则K必须满足和、差、积、商封闭 有理数域、实数域、复数域是数域；自然数集、整数集不是数域 有理数域是最小的数域 任意一个数域中至少包含0，1两个数  映射的定义与分类  单射+满射=双射 映射相等 由映射$\sigma$和$\tau$得到乘积$\sigma \tau$的【充要】条件为$\sigma$包含于$\tau$的定义域 $\sigma \tau \neq \tau">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【矩阵论】线性空间">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4&#x2F;index.html">
-<meta property="og:site_name" content="The Orion">
-<meta property="og:description" content="一、数域与映射 若K为数域，则K必须满足和、差、积、商封闭 有理数域、实数域、复数域是数域；自然数集、整数集不是数域 有理数域是最小的数域 任意一个数域中至少包含0，1两个数  映射的定义与分类  单射+满射=双射 映射相等 由映射$\sigma$和$\tau$得到乘积$\sigma \tau$的【充要】条件为$\sigma$包含于$\tau$的定义域 $\sigma \tau \neq \tau">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-08T09:12:31.256Z">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="The Orion" type="application/atom+xml">
-  
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="liuluyang">
+
+
+
+
+
+<title>【矩阵论】线性空间 | The Orion</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
 
 </head>
-
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        
-          <a id="nav-github" class="nav-icon" href="https://github.com/myname" target="_blank" rel="noopener"></a>
-        
-      </div>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
     </nav>
-    <div id="header-title">
-      
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">The Orion</a>
-        </h1>
-      
-    </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">lly</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
-      
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/Archives">Archives</a>
-      
-        <a class="main-nav-link" href="/About">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">Search</a>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
     </nav>
-  </div>
+
 </header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
 
-    <div class="outer">
-      <section id="main"><article id="post-【矩阵论】线性空间" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/" class="article-date">
-  <time datetime="2019-12-06T01:19:13.000Z" itemprop="datePublished">2019-12-06</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【矩阵论】线性空间
-    </h1>
-  
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
 
-      </header>
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h1 id="一、数域与映射"><a href="#一、数域与映射" class="headerlink" title="一、数域与映射"></a>一、数域与映射</h1><ul>
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【矩阵论】线性空间</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 6, 2019&nbsp;&nbsp;9:19:13</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="一数域与映射">一、数域与映射</h1>
+<ul>
 <li>若K为数域，则K必须满足和、差、积、商封闭</li>
 <li>有理数域、实数域、复数域是数域；自然数集、整数集不是数域</li>
 <li>有理数域是最小的数域</li>
@@ -113,217 +242,219 @@
 <ul>
 <li>单射+满射=双射</li>
 <li>映射相等</li>
-<li>由映射$\sigma$和$\tau$得到乘积$\sigma \tau$的【充要】条件为$\sigma$包含于$\tau$的定义域<ul>
-<li>$\sigma \tau \neq \tau \sigma$</li>
-<li>$(\sigma \tau) \omega= \tau (\sigma \omega)$</li>
+<li>由映射<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>得到乘积<span class="math inline">\(\sigma \tau\)</span>的【充要】条件为<span class="math inline">\(\sigma\)</span>包含于<span class="math inline">\(\tau\)</span>的定义域
+<ul>
+<li><span class="math inline">\(\sigma \tau \neq \tau \sigma\)</span></li>
+<li><span class="math inline">\((\sigma \tau) \omega= \tau (\sigma \omega)\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id="二、线性空间"><a href="#二、线性空间" class="headerlink" title="二、线性空间"></a>二、线性空间</h1><h2 id="线性空间的公理化定义"><a href="#线性空间的公理化定义" class="headerlink" title="线性空间的公理化定义"></a>线性空间的公理化定义</h2><ul>
-<li>“加法”封闭：</li>
-<li>“数乘”封闭：</li>
-<li>加法交换律：</li>
-<li>加法结合律：</li>
-<li>存在零元：</li>
-<li>存在负元</li>
-<li>$1\alpha=\alpha$</li>
-<li>数乘结合律</li>
-<li>分配律：</li>
-<li>数因子分配律：</li>
-</ul>
+<h1 id="二线性空间">二、线性空间</h1>
 <p>一些重要的解空间</p>
 <ul>
 <li>多项式空间</li>
 <li>线性齐次方程组的解构成线性空间，而非齐次方程组的解空间不构成线性空间</li>
 </ul>
-<h2 id="线性空间的一些基本性质"><a href="#线性空间的一些基本性质" class="headerlink" title="线性空间的一些基本性质"></a>线性空间的一些基本性质</h2><ul>
-<li>x性质1：零元是唯一的</li>
-<li>性质2：任意元素$\alpha$的负元都是唯一的</li>
-<li>性质3：$0\alpha=\theta$，$（-1）\alpha=-\alpha$，$k\theta=\theta$</li>
-<li>性质4：若$k\alpha=\theta$，则$k=0$或$\alpha=0$</li>
-</ul>
-<h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><ul>
-<li>线性表出、线性相关、线性无关</li>
-<li>向量组的线性表出、等价；极大无关组</li>
-<li>线性表出、表出唯一</li>
-<li>一个元素组的任意两个极大无关组等价</li>
-<li>等价的元素组由相同的秩</li>
-</ul>
+<h2 id="线性空间的一些基本性质">线性空间的一些基本性质</h2>
 <ul>
-<li>数域会影响到元素组的线性相关性</li>
+<li>x性质1：零元是唯一的</li>
+<li>性质2：任意元素<span class="math inline">\(\alpha\)</span>的负元都是唯一的</li>
+<li>性质3：<span class="math inline">\(0\alpha=\theta\)</span>，<span class="math inline">\(（-1）\alpha=-\alpha\)</span>，<span class="math inline">\(k\theta=\theta\)</span></li>
+<li>性质4：若<span class="math inline">\(k\alpha=\theta\)</span>，则<span class="math inline">\(k=0\)</span>或<span class="math inline">\(\alpha=0\)</span></li>
 </ul>
-<h1 id="三、基、维数与坐标"><a href="#三、基、维数与坐标" class="headerlink" title="三、基、维数与坐标"></a>三、基、维数与坐标</h1><h2 id="基变换"><a href="#基变换" class="headerlink" title="基变换"></a>基变换</h2><ul>
-<li>$\alpha \rightarrow \beta$的基变换公式：$\beta y=\alpha Cy=\alpha x \Rightarrow x=Cy \Leftrightarrow y=C^{-1}x$</li>
+<h2 id="重要概念">重要概念</h2>
+<ul>
+<li><p>线性表出、线性相关、线性无关</p></li>
+<li><p>向量组的线性表出、等价；极大无关组</p></li>
+<li><p>线性表出、表出唯一</p></li>
+<li><p>一个元素组的任意两个极大无关组等价</p></li>
+<li><p>等价的元素组由相同的秩</p></li>
+<li><p>数域会影响到元素组的线性相关性</p></li>
+</ul>
+<h1 id="三基维数与坐标">三、基、维数与坐标</h1>
+<h2 id="基变换">基变换</h2>
+<ul>
+<li><span class="math inline">\(\alpha \rightarrow \beta\)</span>的基变换公式：<span class="math inline">\(\beta y=\alpha Cy=\alpha x \Rightarrow x=Cy \Leftrightarrow y=C^{-1}x\)</span></li>
 <li>中介基</li>
 </ul>
-<h2 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h2><ul>
+<h2 id="线性变换">线性变换</h2>
+<ul>
 <li>定义：满足叠加性和齐次性</li>
 <li>常用线性变换：恒等变换（单位变换）、零变换</li>
 <li>线性变换可能奖线性无关的元素组变成线性相关的元素组</li>
-<li>线性变换的运算：<ul>
+<li>线性变换的运算：
+<ul>
 <li>线性变换的乘积也是线性变换</li>
 <li>线性变换的乘积满足结合律</li>
 <li>线性变换的乘法一般不满足交换律</li>
-</ul>
-</li>
+</ul></li>
 <li>线性变换T可逆的【充要】条件为：T为一一对应</li>
 <li>若线性变换T可逆，则其逆变换是唯一的</li>
 </ul>
+<hr />
+<h1 id="四课后题思路">四、课后题思路</h1>
+<ol type="1">
+<li><p>验证是否构成<strong>数域</strong>：证明集合非空、验证加减乘除的封闭性</p></li>
+<li><p><strong>判定线性空间</strong>：验证定义中的十个条件</p>
+<ul>
+<li>加法封闭&amp;&amp;数乘封闭</li>
+<li>加法交换律&amp;&amp;加法结合律</li>
+<li>存在零元<span class="math inline">\(\theta\)</span>，使得<span class="math inline">\(\alpha+\theta=\alpha\)</span></li>
+<li>存在负元<span class="math inline">\(\beta\)</span>，使得<span class="math inline">\(\alpha+\beta=\theta\)</span></li>
+<li><span class="math inline">\(1\alpha=\alpha\)</span></li>
+<li>数乘结合律</li>
+<li>数乘分配律：<span class="math inline">\((k+l)\alpha=k\alpha+l\alpha\)</span></li>
+<li>数因子分配律：<span class="math inline">\(k(\alpha+\beta)=k\alpha+k\beta\)</span></li>
+</ul></li>
+<li><p>判断线性空间中元素组的<strong>线性相关性</strong>：利用<span class="math inline">\(k_1\alpha_1+k_2\alpha_2+\dots+k_n\alpha_n=0\)</span></p></li>
+<li><p>求同一个向量在不同基下的<strong>坐标</strong>：相等、整理、比较系数、求线性方程组</p></li>
+<li><p>求(I)到(II)的<strong>过渡矩阵</strong>：利用<span class="math inline">\((\beta_1,\beta_2,\dots\beta_n)y=(\alpha_1,\alpha_2,\dots,\alpha_n)Cy=(\alpha_1,\alpha_2,\dots,\alpha_n)x\)</span></p></li>
+<li><p>求在两个基下具有<strong>相同坐标</strong>的所有向量：<span class="math inline">\(x=Cx\)</span></p></li>
+<li><p><strong>子空间</strong>：<span class="math inline">\(W\)</span>对于<span class="math inline">\(V\)</span>中所定义的加法和数乘运算也构成数域<span class="math inline">\(K\)</span>上的线性空间</p></li>
+<li><p>子空间的有<strong>关系运算</strong>：<span class="math inline">\(W_1=span\{\alpha_1,\alpha_2,\dots,\alpha_m\}\)</span>， <span class="math inline">\(W_2=span\{\beta_1,\beta_2,\dots,\beta_n\}\)</span></p>
+<ul>
+<li>交：$W_1W_2 $</li>
+<li>和：<span class="math inline">\(W_1+W_2=span\{ \alpha_1,\alpha_2,\dots,\alpha_m\ ,\beta_1,\beta_2,\dots,\beta_n \}\)</span></li>
+<li>直和</li>
+</ul></li>
+<li><p><strong>线性变换的判定条件</strong>：</p>
+<ul>
+<li>叠加性：<span class="math inline">\(T(\alpha+\beta)=T(\alpha)+T(\beta)\)</span></li>
+<li>齐次性：<span class="math inline">\(T(k\alpha)=kT(\alpha)\)</span></li>
+</ul></li>
+<li><p>线性变换的<strong>矩阵</strong>：<span class="math inline">\(T(\alpha_1,\alpha_2,\dots,\alpha_m)=(T(\alpha_1),T(\alpha_2),\dots,T(\alpha_n))=(\alpha_1,\alpha_2,\dots,\alpha_m)A\)</span></p></li>
+<li><p>求同一个线性变换在不同基下的矩阵：</p>
+<ul>
+<li>同一线性变换在不同基下的矩阵式相似的</li>
+<li>设<span class="math inline">\(T\)</span>在基(I)、基(II)下的矩阵分别为<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，由(I)到(II)的过渡矩阵为<span class="math inline">\(P\)</span>，则<span class="math inline">\(B=P^{-1}AP\)</span></li>
+<li>注意与基变换的区别</li>
+</ul></li>
+<li><p><strong>线性变换的运算</strong>：设$T <span class="math inline">\(的在基（I）下的矩阵为\)</span>A$，则</p>
+<ul>
+<li>线性变换可逆等价于线性变换的矩阵可逆</li>
+<li><span class="math inline">\(T^{-1}\)</span>在基（I）下的矩阵为<span class="math inline">\(A^{-1}\)</span></li>
+<li><span class="math inline">\(T+S\)</span>在基（I）下的矩阵为<span class="math inline">\(A+B\)</span></li>
+<li><span class="math inline">\(TS\)</span>在基（I）下的矩阵为<span class="math inline">\(AB\)</span></li>
+<li><span class="math inline">\(rankT=rankA\)</span></li>
+</ul></li>
+<li><p>线性变换的<strong>特征值与特征向量</strong>：设$T <span class="math inline">\(的在基（I）下的矩阵为\)</span>A$，则</p>
+<ul>
+<li><span class="math inline">\(T\)</span>的特征值就是<span class="math inline">\(A\)</span>的特征值</li>
+<li><span class="math inline">\(T\)</span>的特征向量在基（I）下的坐标就是矩阵<span class="math inline">\(A\)</span>对应的特征向量</li>
+</ul></li>
+<li><p>线性变换的相似对角化</p>
+<ul>
+<li>可对角化条件：<span class="math inline">\(T\)</span>在数域<span class="math inline">\(K\)</span>上由<span class="math inline">\(n\)</span>的线性无关的特征向量</li>
+<li>对角化的方法：<span class="math inline">\(\lambda_i,P\)</span>分别为矩阵<span class="math inline">\(A\)</span>的特征向量及相似变换矩阵
+<ul>
+<li><span class="math inline">\(\Lambda=diag([\lambda_1,\lambda_2,\dots,\lambda_n])\)</span></li>
+<li><span class="math inline">\((\beta_1,\beta_2,\dots\beta_n)=(\alpha_1,\alpha_2,\dots,\alpha_n)P\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>不变子空间：对<span class="math inline">\(\forall\alpha\in W\)</span>，有<span class="math inline">\(T(\alpha)\in W\)</span></p></li>
+<li><p>特征子空间：<span class="math inline">\(V_{\lambda_0}=\{\alpha|T(\alpha)=\lambda_0\alpha,\alpha\in V\}\)</span></p></li>
+<li><p>度量矩阵（Gram矩阵）：<span class="math inline">\(A=(a_{ij})_{n\times n},a_{ij}=(\alpha_i,\alpha_j)\)</span></p>
+<ul>
+<li>同一线性变换在不同基下的度量矩阵是合同的</li>
+<li><span class="math inline">\(B=P^{T}AP\)</span>，其中<span class="math inline">\(P\)</span>为两个基之间的过渡矩阵</li>
+</ul></li>
+<li><p>矩阵的内积：<span class="math inline">\((A,B)=tr(AB^H)\)</span></p>
+<ul>
+<li><div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1"></a>function y=innerprod(A,B)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>   y=trace(A*B&#39;);</span>
+<span id="cb1-3"><a href="#cb1-3"></a>end</span></code></pre></div></li>
+</ul></li>
+<li><p>Gram-Schmidit正交化法=正交化+单位化</p></li>
+<li><p><strong>正交变换</strong>：<span class="math inline">\((T(\alpha),T(\beta))=(\alpha,\beta)\)</span>，内积不变</p>
+<ul>
+<li>（第一类）平面旋转变换：</li>
+<li>（第一类）镜像变换：<span class="math inline">\(T(x)=x-2(u,x)u\)</span></li>
+<li>若线性变换T的矩阵A为正交矩阵，则T也为正交变换</li>
+<li>正交变换保持元素的长度不变：</li>
+<li>标准正交基=正交变换（标准正交基）</li>
+<li>正交矩阵=线性变换的矩阵（标准正交基）</li>
+</ul></li>
+<li><p><strong>对称变换</strong>：<span class="math inline">\((T(\alpha),\beta)=(\alpha,T(\beta))\)</span></p>
+<ul>
+<li>【充要条件】任意标准基下的矩阵是实对称矩阵</li>
+</ul></li>
+<li><p><strong>投影变换</strong>：<span class="math inline">\(P_{L,M}(x)=y\)</span></p>
+<ul>
+<li><strong>投影矩阵</strong>：投影变换在单位正交基下的矩阵</li>
+<li>设A为幂等矩阵，则有<span class="math inline">\(N(A)=R(I-A)\)</span></li>
+<li>矩阵P为投影矩阵的【充要条件】是P为<strong>幂等矩阵</strong></li>
+<li>正交投影矩阵：【充要条件】<span class="math inline">\(P^2=P\)</span>且<span class="math inline">\(P^H=P\)</span></li>
+</ul></li>
+<li><p>投影矩阵的计算：</p>
+<ul>
+<li>投影矩阵：<span class="math inline">\(P_{L,M}=(X,O)(X,Y)^{-1}\)</span></li>
+<li>正交投影矩阵：<span class="math inline">\(P_{L}=X(X^HX)^{-1}X^H\)</span></li>
+</ul></li>
+</ol>
 
-      
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>liuluyang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">http://yoursite.com/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">【工具】常用网站</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© liuluyang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/" data-id="ck3wsh6vq0006vktkayl1589d" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          【光阴流水】
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【工具】常用网站</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">【矩阵论】线性空间</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">【工具】常用网站</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/">【数值分析】微分方程数值解法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 liuluyang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
-    </div>
-  </div>
 </footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/Archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/About" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
-</nav>
 
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    menuSettings: {
-      zoom: "None"
-    },
-    showMathMenu: false,
-    jax: ["input/TeX","output/CommonHTML"],
-    extensions: ["tex2jax.js"],
-    TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js"],
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-  });
-</script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
-
-
-
-<!-- totop start -->
-<div id="totop">
-	<a title="To Top"></a>
-</div>
-<!-- totop end -->
-
-<!-- swiftype search start -->
-
-<!-- swiftype search end -->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-</div>
+    </div>
 </body>
 </html>

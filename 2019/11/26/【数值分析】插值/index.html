@@ -1,332 +1,395 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
-  <title>【数值分析】插值 | The Orion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插值问题 插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值插值多项式$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$ 其中：多项式系数由下列范德">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【数值分析】插值">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC&#x2F;index.html">
-<meta property="og:site_name" content="The Orion">
-<meta property="og:description" content="插值问题 插值问题主要分为内插法和外插法，本文主要讨论内插法 插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值） 常用的插值方式有：三角插值、有理插值、多项式插值 不同构造方法的余项都相同（唯一性）   多项式插值插值多项式$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$ 其中：多项式系数由下列范德">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-28T08:48:16.221Z">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="The Orion" type="application/atom+xml">
-  
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="liuluyang">
+
+
+
+
+
+<title>【数值分析】插值 | The Orion</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
 
 </head>
-
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        
-          <a id="nav-github" class="nav-icon" href="https://github.com/myname" target="_blank" rel="noopener"></a>
-        
-      </div>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
     </nav>
-    <div id="header-title">
-      
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">The Orion</a>
-        </h1>
-      
-    </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">lly</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
-      
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/Archives">Archives</a>
-      
-        <a class="main-nav-link" href="/About">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">Search</a>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
     </nav>
-  </div>
+
 </header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
 
-    <div class="outer">
-      <section id="main"><article id="post-【数值分析】插值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" class="article-date">
-  <time datetime="2019-11-26T11:33:11.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【数值分析】插值
-    </h1>
-  
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
 
-      </header>
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <hr>
-<hr>
-<h1 id="插值问题"><a href="#插值问题" class="headerlink" title="插值问题"></a>插值问题</h1><ul>
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【数值分析】插值</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">liuluyang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 26, 2019&nbsp;&nbsp;19:33:11</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr />
+<hr />
+<h1 id="插值问题">插值问题</h1>
+<ul>
 <li>插值问题主要分为内插法和外插法，本文主要讨论内插法</li>
 <li>插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值）</li>
 <li>常用的插值方式有：三角插值、有理插值、多项式插值</li>
 <li>不同构造方法的余项都相同（唯一性）</li>
 </ul>
-<hr>
-<h1 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h1><h2 id="插值多项式"><a href="#插值多项式" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$</p>
+<hr />
+<h1 id="多项式插值">多项式插值</h1>
+<h2 id="插值多项式">插值多项式</h2>
+<p><span class="math inline">\(P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }\)</span></p>
 <p>其中：多项式系数由下列范德蒙得方程组求得 （非奇异、存在病态问题）</p>
-<p>$\left[\begin{array}{ccccc}{1} &amp; {x<em>{0}} &amp; {x</em>{0}^{2}} &amp; {\cdots} &amp; {x<em>{0}^{n}} \ {1} &amp; {x</em>{1}} &amp; {x<em>{1}^{2}} &amp; {\cdots} &amp; {x</em>{1}^{n}} \ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \ {1} &amp; {x<em>{n}} &amp; {x</em>{n}^{2}} &amp; {\cdots} &amp; {x<em>{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a</em>{0}} \ {a<em>{1}} \ {a</em>{2}} \ {\vdots} \ {a<em>{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x</em>{0}\right)} \ {f\left(x<em>{1}\right)} \ {f\left(x</em>{2}\right)} \ {\vdots} \ {f\left(x_{n}\right)}\end{array}\right]$</p>
-<h2 id="插值余项"><a href="#插值余项" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega</em>{n+1}(x)$</p>
-<p>$\left|R<em>{n}(x)\right| \leq \frac{M</em>{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|$  （导函数有界）</p>
+<p><span class="math inline">\(\left[\begin{array}{ccccc}{1} &amp; {x_{0}} &amp; {x_{0}^{2}} &amp; {\cdots} &amp; {x_{0}^{n}} \\ {1} &amp; {x_{1}} &amp; {x_{1}^{2}} &amp; {\cdots} &amp; {x_{1}^{n}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {1} &amp; {x_{n}} &amp; {x_{n}^{2}} &amp; {\cdots} &amp; {x_{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a_{0}} \\ {a_{1}} \\ {a_{2}} \\ {\vdots} \\ {a_{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x_{0}\right)} \\ {f\left(x_{1}\right)} \\ {f\left(x_{2}\right)} \\ {\vdots} \\ {f\left(x_{n}\right)}\end{array}\right]\)</span></p>
+<h2 id="插值余项">插值余项</h2>
+<p><span class="math inline">\(R_{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p><span class="math inline">\(\left|R_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span> （导函数有界）</p>
 <p>其中</p>
-<p>$\omega<em>{n+1}(x)=\prod</em>{i=0}^{n}\left(x-x_{i}\right)$</p>
-<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><ul>
-<li>当$f(x)$为不超过n次的多项式时，$f(x)=\varphi (x)$</li>
-<li>节点距离$x$越近，一般插值误差越小</li>
+<p><span class="math inline">\(\omega_{n+1}(x)=\prod_{i=0}^{n}\left(x-x_{i}\right)\)</span></p>
+<h2 id="推论">推论</h2>
+<ul>
+<li>当<span class="math inline">\(f(x)\)</span>为不超过n次的多项式时，<span class="math inline">\(f(x)=\varphi (x)\)</span></li>
+<li>节点距离<span class="math inline">\(x\)</span>越近，一般插值误差越小</li>
 </ul>
-<hr>
-<h1 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h1><h2 id="插值条件"><a href="#插值条件" class="headerlink" title="插值条件"></a>插值条件</h2><p>$l<em>{i}\left(x</em>{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left{\begin{array}{ll}{1} &amp; {j=i} \ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.$ （线性无关）</p>
-<h2 id="插值基"><a href="#插值基" class="headerlink" title="插值基"></a>插值基</h2><p>$l<em>i (x)=\frac{\omega</em>{n+1}(x)}{\left(x-x<em>{i}\right) \omega</em>{n+1}^{\prime}\left(x_{i}\right)}$</p>
-<h2 id="插值多项式-1"><a href="#插值多项式-1" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$L<em>{n}(x) \stackrel{\Delta}{=} \sum</em>{i=0}^{n} f\left(x<em>{i}\right) l</em>{i}(x)=\sum<em>{i=0}^{n} f\left(x</em>{i}\right) \frac{\omega<em>{n+1}(x)}{\left(x-x</em>{i}\right) \omega<em>{n+1}^{\prime}\left(x</em>{i}\right)}$</p>
-<h2 id="插值余项-1"><a href="#插值余项-1" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-L</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
-<p>$\left|R<em>{n}(x)\right|=\left|f(x)-L</em>{n}(x)\right| \leq \frac{M<em>{n+1}}{(n+1) !}\left|\omega</em>{n+1}(x)\right|$</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<hr />
+<h1 id="拉格朗日插值">拉格朗日插值</h1>
+<h2 id="插值条件">插值条件</h2>
+<p><span class="math inline">\(l_{i}\left(x_{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left\{\begin{array}{ll}{1} &amp; {j=i} \\ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.\)</span> （线性无关）</p>
+<h2 id="插值基">插值基</h2>
+<p><span class="math inline">\(l_i (x)=\frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
+<h2 id="插值多项式-1">插值多项式</h2>
+<p><span class="math inline">\(L_{n}(x) \stackrel{\Delta}{=} \sum_{i=0}^{n} f\left(x_{i}\right) l_{i}(x)=\sum_{i=0}^{n} f\left(x_{i}\right) \frac{\omega_{n+1}(x)}{\left(x-x_{i}\right) \omega_{n+1}^{\prime}\left(x_{i}\right)}\)</span></p>
+<h2 id="插值余项-1">插值余项</h2>
+<p><span class="math inline">\(R_{n}(x)=f(x)-L_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p><span class="math inline">\(\left|R_{n}(x)\right|=\left|f(x)-L_{n}(x)\right| \leq \frac{M_{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|\)</span></p>
+<h2 id="应用">应用</h2>
+<ul>
 <li>插值（采用列表的方法一目了然）</li>
 <li>反插值（单值性条件：被插函数单调连续）</li>
 </ul>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<h2 id="特点">特点</h2>
+<ul>
 <li>形式对称</li>
 <li>通常用于理论分析</li>
 <li>当增加插值节点时，计算不方便</li>
 </ul>
-<h1 id="牛顿插值"><a href="#牛顿插值" class="headerlink" title="牛顿插值"></a>牛顿插值</h1><h2 id="差商"><a href="#差商" class="headerlink" title="差商"></a>差商</h2><p>重要工具：差商表</p>
+<h1 id="牛顿插值">牛顿插值</h1>
+<h2 id="差商">差商</h2>
+<p>重要工具：差商表</p>
 <p>差商的性质：对称性，与导数的关系</p>
-<h2 id="插值公式"><a href="#插值公式" class="headerlink" title="插值公式"></a>插值公式</h2><p>$\begin{aligned} N<em>{n}(x)=&amp; f\left(x</em>{0}\right)+f\left[x<em>{0}, x</em>{1}\right]\left(x-x<em>{0}\right)+f\left[x</em>{0}, x<em>{1}, x</em>{2}\right]\left(x-x<em>{0}\right)\left(x-x</em>{1}\right)+\ &amp;\cdots+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right]\left(x-x</em>{0}\right)\left(x-x<em>{1}\right) \cdots\left(x-x</em>{n-1}\right) \end{aligned}$</p>
+<h2 id="插值公式">插值公式</h2>
+<p><span class="math inline">\(\begin{aligned} N_{n}(x)=&amp; f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0}, x_{1}, x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\\ &amp;\cdots+f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n-1}\right) \end{aligned}\)</span></p>
 <p>加入节点后：</p>
-<p>$N<em>{n+1}(x)=N</em>{n}(x)+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right] \omega</em>{n+1}(x)$</p>
-<h2 id="余项"><a href="#余项" class="headerlink" title="余项"></a>余项</h2><p>插值型：$R<em>n (x)=f\left[x,x</em>{0}, x<em>{1}, \cdots, x</em>{n}\right] \omega_{n+1}(x)$</p>
-<p>导数型：$R<em>{n}(x)=f(x)-N</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
-<p>导数与差商的关系：$f\left[x<em>{0}, x</em>{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}$</p>
-<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
+<p><span class="math inline">\(N_{n+1}(x)=N_{n}(x)+f\left[x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
+<h2 id="余项">余项</h2>
+<p>插值型：<span class="math inline">\(R_n (x)=f\left[x,x_{0}, x_{1}, \cdots, x_{n}\right] \omega_{n+1}(x)\)</span></p>
+<p>导数型：<span class="math inline">\(R_{n}(x)=f(x)-N_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)\)</span></p>
+<p>导数与差商的关系：<span class="math inline">\(f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}\)</span></p>
+<h2 id="特点-1">特点</h2>
+<ul>
 <li>有利于节点数的增加</li>
 <li>对函数的光滑性要求高</li>
 <li>需要估计导函数的最值</li>
 <li>保守</li>
 </ul>
-<h1 id="等距节点插值"><a href="#等距节点插值" class="headerlink" title="等距节点插值"></a>等距节点插值</h1><p>当节点等距分布时简化Newton插值公式：$x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0$</p>
-<h2 id="常用差分算子"><a href="#常用差分算子" class="headerlink" title="常用差分算子"></a>常用差分算子</h2><p>向前差分：$\left{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>向后差分：$\left{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>恒等算子：$\left{\begin{array}{}{I f(x)=f(x)} \ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>位移算子：$\left{\begin{array}{}{E f(x)=f(x+h)} \ {E^{s} f(x)=f(x+s h)}\end{array}\right.$</p>
-<p>中心差分：$\left{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.$</p>
+<h1 id="等距节点插值">等距节点插值</h1>
+<p>当节点等距分布时简化Newton插值公式：<span class="math inline">\(x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0\)</span></p>
+<h2 id="常用差分算子">常用差分算子</h2>
+<p>向前差分：<span class="math inline">\(\left\{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \\ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>向后差分：<span class="math inline">\(\left\{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \\ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>恒等算子：<span class="math inline">\(\left\{\begin{array}{}{I f(x)=f(x)} \\ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
+<p>位移算子：<span class="math inline">\(\left\{\begin{array}{}{E f(x)=f(x+h)} \\ {E^{s} f(x)=f(x+s h)}\end{array}\right.\)</span></p>
+<p>中心差分：<span class="math inline">\(\left\{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \\ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.\)</span></p>
 <p>差分算子的重要性质：</p>
 <ul>
-<li>$\Delta=E-I$</li>
-<li>$\nabla=I-E^{-1}$</li>
-<li>$\delta=E^{1 / 2}-E^{-1 / 2}$</li>
+<li><span class="math inline">\(\Delta=E-I\)</span></li>
+<li><span class="math inline">\(\nabla=I-E^{-1}\)</span></li>
+<li><span class="math inline">\(\delta=E^{1 / 2}-E^{-1 / 2}\)</span></li>
 </ul>
 <p>差分与差商的关系：</p>
-<p>$f\left[x<em>{0}, x</em>{1}\right]=\frac{f\left(x<em>{1}\right)-f\left(x</em>{0}\right)}{x<em>{1}-x</em>{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}$</p>
-<h2 id="插值公式-1"><a href="#插值公式-1" class="headerlink" title="插值公式"></a>插值公式</h2><p>向前：</p>
-<p>$N<em>{n}(a+t h)=f\left(x</em>{0}\right)+\sum<em>{k=1}^{n} \frac{\Delta^{k} f\left(x</em>{0}\right)}{k !} t(t-1) \cdots(t-k+1)$</p>
-<p>$N<em>{2}\left(x</em>{0}+t h\right)=f\left(x<em>{0}\right)+\frac{\Delta f\left(x</em>{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)$</p>
+<p><span class="math inline">\(f\left[x_{0}, x_{1}\right]=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}\)</span></p>
+<h2 id="插值公式-1">插值公式</h2>
+<p>向前：</p>
+<p><span class="math inline">\(N_{n}(a+t h)=f\left(x_{0}\right)+\sum_{k=1}^{n} \frac{\Delta^{k} f\left(x_{0}\right)}{k !} t(t-1) \cdots(t-k+1)\)</span></p>
+<p><span class="math inline">\(N_{2}\left(x_{0}+t h\right)=f\left(x_{0}\right)+\frac{\Delta f\left(x_{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)\)</span></p>
 <p>向后：</p>
-<p>$N<em>{n}(b+t h)=f\left(x</em>{n}\right)+\sum<em>{k=1}^{n} \frac{\nabla^{k} f\left(x</em>{n}\right)}{k !} t(t+1) \cdots(t+k-1)$</p>
-<h1 id="Hermite插值"><a href="#Hermite插值" class="headerlink" title="Hermite插值"></a>Hermite插值</h1><h2 id="插值条件-1"><a href="#插值条件-1" class="headerlink" title="插值条件"></a>插值条件</h2><p>$\left{\begin{array}{l}{H<em>{2 n+1}\left(x</em>{i}\right)=f\left(x<em>{i}\right)} \ {H</em>{2 n+1}^{\prime}\left(x<em>{i}\right)=f^{\prime}\left(x</em>{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）$</p>
-<h2 id="插值基-1"><a href="#插值基-1" class="headerlink" title="插值基"></a>插值基</h2><h2 id="插值多项式-2"><a href="#插值多项式-2" class="headerlink" title="插值多项式"></a>插值多项式</h2><h2 id="余项-1"><a href="#余项-1" class="headerlink" title="余项"></a>余项</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3wsh6vf0003vktk9gam73sg" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          【矩阵论】广义逆矩阵
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【文学】青崖白鹿</div>
-    </a>
-  
-</nav>
+<p><span class="math inline">\(N_{n}(b+t h)=f\left(x_{n}\right)+\sum_{k=1}^{n} \frac{\nabla^{k} f\left(x_{n}\right)}{k !} t(t+1) \cdots(t+k-1)\)</span></p>
+<h1 id="hermite插值">Hermite插值</h1>
+<h2 id="插值条件-1">插值条件</h2>
+<p><span class="math inline">\(\left\{\begin{array}{l}{H_{2 n+1}\left(x_{i}\right)=f\left(x_{i}\right)} \\ {H_{2 n+1}^{\prime}\left(x_{i}\right)=f^{\prime}\left(x_{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）\)</span></p>
+<h2 id="插值基-1">插值基</h2>
+<h2 id="插值多项式-2">插值多项式</h2>
+<h2 id="余项-1">余项</h2>
 
-  
-</article>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>liuluyang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/">http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/">【矩阵论】广义逆矩阵</a>
+            
+            
+            <a class="next" rel="next" href="/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/">【文学】青崖白鹿</a>
+            
+        </section>
 
 
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">【矩阵论】线性空间</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">【工具】常用网站</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/">【数值分析】微分方程数值解法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+    </article>
+</div>
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© liuluyang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 liuluyang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
-    </div>
-  </div>
 </footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/Archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/About" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
-</nav>
 
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    menuSettings: {
-      zoom: "None"
-    },
-    showMathMenu: false,
-    jax: ["input/TeX","output/CommonHTML"],
-    extensions: ["tex2jax.js"],
-    TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js"],
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-  });
-</script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
-
-
-
-<!-- totop start -->
-<div id="totop">
-	<a title="To Top"></a>
-</div>
-<!-- totop end -->
-
-<!-- swiftype search start -->
-
-<!-- swiftype search end -->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-</div>
+    </div>
 </body>
 </html>

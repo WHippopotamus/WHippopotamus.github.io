@@ -1,810 +1,170 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
-  <title>The Orion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="The Orion">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;2&#x2F;index.html">
-<meta property="og:site_name" content="The Orion">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="The Orion" type="application/atom+xml">
-  
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="liuluyang">
+
+
+
+
+
+<title>The Orion</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
 
 </head>
-
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        
-          <a id="nav-github" class="nav-icon" href="https://github.com/myname" target="_blank" rel="noopener"></a>
-        
-      </div>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
     </nav>
-    <div id="header-title">
-      
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">The Orion</a>
-        </h1>
-      
-    </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">lly</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
-      
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/Archives">Archives</a>
-      
-        <a class="main-nav-link" href="/About">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">Search</a>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
     </nav>
-  </div>
+
 </header>
-
-    <div class="outer">
-      <section id="main">
-  
-    <article id="post-【矩阵论】广义逆矩阵" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" class="article-date">
-  <time datetime="2019-11-27T08:11:50.000Z" itemprop="datePublished">2019-11-27</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/">【矩阵论】广义逆矩阵</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <hr>
-<hr>
-<h1 id="一、广义逆矩阵的概念"><a href="#一、广义逆矩阵的概念" class="headerlink" title="一、广义逆矩阵的概念"></a>一、广义逆矩阵的概念</h1><ol>
-<li><p>四个Penrose方程：设$A\in C^{m\times n}$,$X\in C^{n\times m}$，有</p>
-<ul>
-<li>(1)  $AXA=A$</li>
-<li>(2)  $XAX=X$</li>
-<li>(3)  $(AX)^H=AX$</li>
-<li>(4)  $(XA)^H=XA$</li>
-</ul>
-</li>
-<li><p>常用的广义逆</p>
-<ul>
-<li>{1}逆：仅满足条件（1）</li>
-<li>Moore-Penrose逆：满足所有条件，记为$A^+$，也称加号逆</li>
-</ul>
-</li>
-<li>重要定理<ul>
-<li>矩阵的Moore-Penrose逆存在且唯一，从而所有类型（共15类）的广义逆矩阵均存在</li>
-<li>只要A不可逆，则除Moore-Penrose逆以外的其他所有逆均不唯一</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="二、-1-逆"><a href="#二、-1-逆" class="headerlink" title="二、{1}逆"></a>二、{1}逆</h1><h2 id="求解步骤："><a href="#求解步骤：" class="headerlink" title="求解步骤："></a>求解步骤：</h2><ul>
-<li>step1：化Hermite标准形，求变换阵$S$，$P$ ；</li>
-<li>step2：引入参数矩阵：$L=[ \ \alpha \ , \beta \ , \ …]$ 等；</li>
-<li>step3：代入公式：$X=P\begin{bmatrix}I_r&amp;O\O&amp;L\end{bmatrix}S$；</li>
-<li>step4：若令其中的参数全部为0，则可以进一步的得到矩阵的${1，2}$逆。</li>
-</ul>
-<h1 id="三、Moore-Penrose逆"><a href="#三、Moore-Penrose逆" class="headerlink" title="三、Moore-Penrose逆"></a>三、Moore-Penrose逆</h1><h2 id="求解步骤：-1"><a href="#求解步骤：-1" class="headerlink" title="求解步骤："></a>求解步骤：</h2><p>利用满秩分解求解矩阵的$A^+$</p>
-<ul>
-<li>step1：求满秩分解$A=FG$</li>
-<li>step2：代入公式$A^+=G^H(GG^H)^{-1}(F^HF)^{-1}F^H$</li>
-</ul>
-<p>特殊的：</p>
-<ul>
-<li>当A为行满秩时：$A^+=A^H(AA^H)^{-1}$</li>
-<li>当A为列满秩时：$A^+=(A^HA)^{-1}A^H$</li>
-</ul>
-<h1 id="四、广义逆矩阵的应用："><a href="#四、广义逆矩阵的应用：" class="headerlink" title="四、广义逆矩阵的应用："></a>四、广义逆矩阵的应用：</h1><h2 id="线性方程组的求解"><a href="#线性方程组的求解" class="headerlink" title="线性方程组的求解"></a>线性方程组的求解</h2><h3 id="1）利用-A-1-​"><a href="#1）利用-A-1-​" class="headerlink" title="1）利用$A{1}$​"></a>1）利用$A{1}$​</h3><ul>
-<li>可解性（充要）：$AA^{(1)}b=b$</li>
-<li>通解：$x=A^{(1)}b+(I-A^{(1)}A)y \ \ ,\  \forall y\in C^n$</li>
-</ul>
-<h3 id="2）利用-A"><a href="#2）利用-A" class="headerlink" title="2）利用$A^+$"></a>2）利用$A^+$</h3><ul>
-<li>可解性（充要）：$AA^+b=b$</li>
-<li>通解：$x=A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n$</li>
-</ul>
-<p>利用Morre-Penrose逆求解线性方程组$Ax=b$时可以得到下整齐的结论：</p>
-<ul>
-<li>有解（相容）的充分必要条件为$AA^+b=b$；</li>
-<li>$A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n$表示相容方程组的通解，或者矛盾方程组的全部最小二乘解；</li>
-<li>$x_0=A^+b$是相容方程组的唯一极小范数解，或是矛盾方程组的唯一极小范数最小二乘解。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/" data-id="ck3wsh6wi000fvktk7u3fblaa" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-【数值分析】插值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" class="article-date">
-  <time datetime="2019-11-26T11:33:11.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/">【数值分析】插值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <hr>
-<hr>
-<h1 id="插值问题"><a href="#插值问题" class="headerlink" title="插值问题"></a>插值问题</h1><ul>
-<li>插值问题主要分为内插法和外插法，本文主要讨论内插法</li>
-<li>插值问题的存在星河唯一性（多项式插值、拉格朗日插值、牛顿插值、等距节点插值）</li>
-<li>常用的插值方式有：三角插值、有理插值、多项式插值</li>
-<li>不同构造方法的余项都相同（唯一性）</li>
-</ul>
-<hr>
-<h1 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h1><h2 id="插值多项式"><a href="#插值多项式" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$P^n=|\varphi (x)|\varphi (x)=\sum_{ i=0 }^{n} { a_i x^i }$</p>
-<p>其中：多项式系数由下列范德蒙得方程组求得 （非奇异、存在病态问题）</p>
-<p>$\left[\begin{array}{ccccc}{1} &amp; {x<em>{0}} &amp; {x</em>{0}^{2}} &amp; {\cdots} &amp; {x<em>{0}^{n}} \ {1} &amp; {x</em>{1}} &amp; {x<em>{1}^{2}} &amp; {\cdots} &amp; {x</em>{1}^{n}} \ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \ {1} &amp; {x<em>{n}} &amp; {x</em>{n}^{2}} &amp; {\cdots} &amp; {x<em>{n}^{n}}\end{array}\right]\left[\begin{array}{c}{a</em>{0}} \ {a<em>{1}} \ {a</em>{2}} \ {\vdots} \ {a<em>{n}}\end{array}\right]=\left[\begin{array}{c}{f\left(x</em>{0}\right)} \ {f\left(x<em>{1}\right)} \ {f\left(x</em>{2}\right)} \ {\vdots} \ {f\left(x_{n}\right)}\end{array}\right]$</p>
-<h2 id="插值余项"><a href="#插值余项" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-\varphi(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega</em>{n+1}(x)$</p>
-<p>$\left|R<em>{n}(x)\right| \leq \frac{M</em>{n+1}}{(n+1) !}\left|\omega_{n+1}(x)\right|$  （导函数有界）</p>
-<p>其中</p>
-<p>$\omega<em>{n+1}(x)=\prod</em>{i=0}^{n}\left(x-x_{i}\right)$</p>
-<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><ul>
-<li>当$f(x)$为不超过n次的多项式时，$f(x)=\varphi (x)$</li>
-<li>节点距离$x$越近，一般插值误差越小</li>
-</ul>
-<hr>
-<h1 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h1><h2 id="插值条件"><a href="#插值条件" class="headerlink" title="插值条件"></a>插值条件</h2><p>$l<em>{i}\left(x</em>{j}\right)=\delta_{i j} \stackrel{\Delta}{=}\left{\begin{array}{ll}{1} &amp; {j=i} \ {0} &amp; {j \neq i}\end{array}, \quad j=0,1,2, \cdots, n\right.$ （线性无关）</p>
-<h2 id="插值基"><a href="#插值基" class="headerlink" title="插值基"></a>插值基</h2><p>$l<em>i (x)=\frac{\omega</em>{n+1}(x)}{\left(x-x<em>{i}\right) \omega</em>{n+1}^{\prime}\left(x_{i}\right)}$</p>
-<h2 id="插值多项式-1"><a href="#插值多项式-1" class="headerlink" title="插值多项式"></a>插值多项式</h2><p>$L<em>{n}(x) \stackrel{\Delta}{=} \sum</em>{i=0}^{n} f\left(x<em>{i}\right) l</em>{i}(x)=\sum<em>{i=0}^{n} f\left(x</em>{i}\right) \frac{\omega<em>{n+1}(x)}{\left(x-x</em>{i}\right) \omega<em>{n+1}^{\prime}\left(x</em>{i}\right)}$</p>
-<h2 id="插值余项-1"><a href="#插值余项-1" class="headerlink" title="插值余项"></a>插值余项</h2><p>$R<em>{n}(x)=f(x)-L</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
-<p>$\left|R<em>{n}(x)\right|=\left|f(x)-L</em>{n}(x)\right| \leq \frac{M<em>{n+1}}{(n+1) !}\left|\omega</em>{n+1}(x)\right|$</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
-<li>插值（采用列表的方法一目了然）</li>
-<li>反插值（单值性条件：被插函数单调连续）</li>
-</ul>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>形式对称</li>
-<li>通常用于理论分析</li>
-<li>当增加插值节点时，计算不方便</li>
-</ul>
-<h1 id="牛顿插值"><a href="#牛顿插值" class="headerlink" title="牛顿插值"></a>牛顿插值</h1><h2 id="差商"><a href="#差商" class="headerlink" title="差商"></a>差商</h2><p>重要工具：差商表</p>
-<p>差商的性质：对称性，与导数的关系</p>
-<h2 id="插值公式"><a href="#插值公式" class="headerlink" title="插值公式"></a>插值公式</h2><p>$\begin{aligned} N<em>{n}(x)=&amp; f\left(x</em>{0}\right)+f\left[x<em>{0}, x</em>{1}\right]\left(x-x<em>{0}\right)+f\left[x</em>{0}, x<em>{1}, x</em>{2}\right]\left(x-x<em>{0}\right)\left(x-x</em>{1}\right)+\ &amp;\cdots+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right]\left(x-x</em>{0}\right)\left(x-x<em>{1}\right) \cdots\left(x-x</em>{n-1}\right) \end{aligned}$</p>
-<p>加入节点后：</p>
-<p>$N<em>{n+1}(x)=N</em>{n}(x)+f\left[x<em>{0}, x</em>{1}, \cdots, x<em>{n}\right] \omega</em>{n+1}(x)$</p>
-<h2 id="余项"><a href="#余项" class="headerlink" title="余项"></a>余项</h2><p>插值型：$R<em>n (x)=f\left[x,x</em>{0}, x<em>{1}, \cdots, x</em>{n}\right] \omega_{n+1}(x)$</p>
-<p>导数型：$R<em>{n}(x)=f(x)-N</em>{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$</p>
-<p>导数与差商的关系：$f\left[x<em>{0}, x</em>{1}, \cdots, x_{k}\right]=\frac{f^{(k)}(\xi)}{k !}$</p>
-<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>有利于节点数的增加</li>
-<li>对函数的光滑性要求高</li>
-<li>需要估计导函数的最值</li>
-<li>保守</li>
-</ul>
-<h1 id="等距节点插值"><a href="#等距节点插值" class="headerlink" title="等距节点插值"></a>等距节点插值</h1><p>当节点等距分布时简化Newton插值公式：$x_{i}=a+i h \quad(i=0,1, \cdots, n) \quad h=\frac{b-a}{n}&gt;0$</p>
-<h2 id="常用差分算子"><a href="#常用差分算子" class="headerlink" title="常用差分算子"></a>常用差分算子</h2><p>向前差分：$\left{\begin{array}{c}{\Delta f(x)=f(x+h)-f(x)} \ {\Delta^{m} f(x)=\Delta\left(\Delta^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>向后差分：$\left{\begin{array}{c}{\nabla f(x)=f(x)-f(x-h)} \ {\nabla^{m} f(x)=\nabla\left(\nabla^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>恒等算子：$\left{\begin{array}{}{I f(x)=f(x)} \ {I^{m} f(x)=I\left(I^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>位移算子：$\left{\begin{array}{}{E f(x)=f(x+h)} \ {E^{s} f(x)=f(x+s h)}\end{array}\right.$</p>
-<p>中心差分：$\left{\begin{array}{}{\delta f(x)=f\left(x+\frac{h}{2}\right)-f\left(x-\frac{h}{2}\right)} \ {\delta^{m} f(x)=\delta\left(\delta^{m-1} f(x)\right)}\end{array}\right.$</p>
-<p>差分算子的重要性质：</p>
-<ul>
-<li>$\Delta=E-I$</li>
-<li>$\nabla=I-E^{-1}$</li>
-<li>$\delta=E^{1 / 2}-E^{-1 / 2}$</li>
-</ul>
-<p>差分与差商的关系：</p>
-<p>$f\left[x<em>{0}, x</em>{1}\right]=\frac{f\left(x<em>{1}\right)-f\left(x</em>{0}\right)}{x<em>{1}-x</em>{0}}=\frac{\Delta f\left(x_{0}\right)}{1 \cdot h}$</p>
-<h2 id="插值公式-1"><a href="#插值公式-1" class="headerlink" title="插值公式"></a>插值公式</h2><p>向前：</p>
-<p>$N<em>{n}(a+t h)=f\left(x</em>{0}\right)+\sum<em>{k=1}^{n} \frac{\Delta^{k} f\left(x</em>{0}\right)}{k !} t(t-1) \cdots(t-k+1)$</p>
-<p>$N<em>{2}\left(x</em>{0}+t h\right)=f\left(x<em>{0}\right)+\frac{\Delta f\left(x</em>{0}\right)}{1 !} t+\frac{\Delta^{2} f\left(x_{0}\right)}{2 !} t(t-1)$</p>
-<p>向后：</p>
-<p>$N<em>{n}(b+t h)=f\left(x</em>{n}\right)+\sum<em>{k=1}^{n} \frac{\nabla^{k} f\left(x</em>{n}\right)}{k !} t(t+1) \cdots(t+k-1)$</p>
-<h1 id="Hermite插值"><a href="#Hermite插值" class="headerlink" title="Hermite插值"></a>Hermite插值</h1><h2 id="插值条件-1"><a href="#插值条件-1" class="headerlink" title="插值条件"></a>插值条件</h2><p>$\left{\begin{array}{l}{H<em>{2 n+1}\left(x</em>{i}\right)=f\left(x<em>{i}\right)} \ {H</em>{2 n+1}^{\prime}\left(x<em>{i}\right)=f^{\prime}\left(x</em>{i}\right)}\end{array} i=0,1,2, \cdots, n\right. （唯一性）$</p>
-<h2 id="插值基-1"><a href="#插值基-1" class="headerlink" title="插值基"></a>插值基</h2><h2 id="插值多项式-2"><a href="#插值多项式-2" class="headerlink" title="插值多项式"></a>插值多项式</h2><h2 id="余项-1"><a href="#余项-1" class="headerlink" title="余项"></a>余项</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/" data-id="ck3wsh6vf0003vktk9gam73sg" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-【文学】青崖白鹿" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/" class="article-date">
-  <time datetime="2019-11-26T11:08:12.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/">【文学】青崖白鹿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <hr>
-<hr>
-<h1 id="苏轼"><a href="#苏轼" class="headerlink" title="苏轼"></a>苏轼</h1><ul>
-<li>且将新火试新茶，诗酒趁年华</li>
-<li>但屈指、西风几时来；又不道、流年暗中偷换</li>
-<li>人生到处知和似，应似飞鸿踏雪泥</li>
-<li>有情风万里卷潮来，无情送潮归</li>
-</ul>
-<hr>
-<h1 id="李白"><a href="#李白" class="headerlink" title="李白"></a>李白</h1><ul>
-<li>且放白鹿青崖间，须行即骑访名山</li>
-</ul>
-<hr>
-<h1 id="纳兰性德"><a href="#纳兰性德" class="headerlink" title="纳兰性德"></a>纳兰性德</h1><ul>
-<li>一往情深深几许？深山夕照深秋雨</li>
-</ul>
-<hr>
-<h1 id="诗经"><a href="#诗经" class="headerlink" title="诗经"></a>诗经</h1><ul>
-<li>青青子衿，悠悠我心。纵我不往，子宁不嗣音 ？</li>
-<li>青青子佩，悠悠我思。纵我不往，子宁不来？ </li>
-<li>行迈靡靡，中心摇摇。</li>
-<li>知我者，谓我心忧，不知我者，谓我何求。</li>
-</ul>
-<p><strong>《 国风·王风·黍离 》</strong></p>
-<p>彼黍离离，彼稷之苗。行迈靡靡，中心摇摇。知我者，谓我心忧，不知我者，谓我何求。悠悠苍天！此何人哉？</p>
-<p>彼黍离离，彼稷之穗。行迈靡靡，中心如醉。知我者，谓我心忧，不知我者，谓我何求。悠悠苍天！此何人哉？</p>
-<p>彼黍离离，彼稷之实。行迈靡靡，中心如噎。知我者，谓我心忧，不知我者，谓我何求。悠悠苍天！此何人哉？</p>
-<hr>
-<h1 id="楚风"><a href="#楚风" class="headerlink" title="楚风"></a>楚风</h1><ul>
-<li>兰有秀兮菊有芳，怀佳人兮不能忘</li>
-<li>余处幽篁兮终不见天，路险难兮独后来</li>
-</ul>
-<hr>
-<h1 id="创作"><a href="#创作" class="headerlink" title="创作"></a>创作</h1><ul>
-<li>少年意气风与马</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E9%9D%92%E5%B4%96%E7%99%BD%E9%B9%BF/" data-id="ck3wsh6wh000evktk3gvuccc2" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻略" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E6%94%BB%E7%95%A5/" class="article-date">
-  <time datetime="2019-11-26T09:48:50.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/%E6%94%BB%E7%95%A5/">攻略</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <hr>
-<hr>
-<hr>
-<h1 id="怎样提交计算能力？"><a href="#怎样提交计算能力？" class="headerlink" title="怎样提交计算能力？"></a>怎样提交计算能力？</h1><ol>
-<li>格式清晰</li>
-<li>适当放慢计算速度</li>
-<li>勤加练习</li>
-</ol>
-<hr>
-<h1 id="如何有效的讲述一个故事？"><a href="#如何有效的讲述一个故事？" class="headerlink" title="如何有效的讲述一个故事？"></a>如何有效的讲述一个故事？</h1><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E6%94%BB%E7%95%A5/" data-id="ck3wsh6vz000bvktkdm6vh8xb" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-【数值分析】线性方程组求解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/" class="article-date">
-  <time datetime="2019-11-26T03:23:45.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/">【数值分析】线性方程组的求解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="—数值分析的四大思想"><a href="#—数值分析的四大思想" class="headerlink" title="—数值分析的四大思想"></a>—数值分析的四大思想</h3><ul>
-<li>迭代</li>
-<li>松弛</li>
-<li>外推</li>
-<li>优化</li>
-</ul>
-<hr>
-<h3 id="—线性方程组的几种常用的迭代格式"><a href="#—线性方程组的几种常用的迭代格式" class="headerlink" title="—线性方程组的几种常用的迭代格式"></a>—线性方程组的几种常用的迭代格式</h3><p>对于线形代数方程组 <img src="https://www.zhihu.com/equation?tex=Ax%3Db" alt="[公式]"> ，其中系数矩阵A可分解为 <img src="https://www.zhihu.com/equation?tex=A%3DL%2BD%2BU" alt="[公式]"> ，迭代矩阵B可分解为 <img src="https://www.zhihu.com/equation?tex=B%3DB_1%2BB_2" alt="[公式]"> ，有：</p>
-<ul>
-<li>简单迭代格式： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3DB%5Ccdot+x%5E%7B%28k%29%7D%2Bg" alt="[公式]"></li>
-<li>Gauss-Seidel： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%28I-B_1%29%5E%7B-1%7DB_2%5Ccdot+x%5E%7B%28k%29%7D%2B%28I-B_1%29%5E%7B-1%7Dg" alt="[公式]"></li>
-<li>Jacobi格式 ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-D%5E%7B-1%7D%28L%2BU%29%5Ccdot+x%5E%7B%28k%29%7D%2BD%5E%7B-1%7Db" alt="[公式]"></li>
-<li>Jacobi+G-S ： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D-%28L%2BD%29%5E%7B-1%7DU%5Ccdot+x%5E%7B%28k%29%7D%2B%28L%2BD%29%5E%7B-1%7Db" alt="[公式]"></li>
-<li>SOR： <img src="https://www.zhihu.com/equation?tex=x%5E%7B%28k%2B1%29%7D%3D%5B%28D%2B%5Comega+L%29%5E%7B-1%7D%28%281-%5Comega%29D-%5Comega+U%29%5D%5Ccdot+x%5E%7B%28k%29%7D%2B%5Comega+%28D%2B%5Comega+L%29%5E%7B-1%7Db" alt="[公式]"></li>
-</ul>
-<p><strong>收敛条件：</strong> <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_x%29%3C1+" alt="[公式]"> 是判定收敛的根本法则</p>
-<ul>
-<li>简单迭代格式：（充要）<img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C%3C1" alt="[公式]"></li>
-<li>Gauss-Seidel：（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B%5Cinfty%7D%3C1" alt="[公式]"> 或 <img src="https://www.zhihu.com/equation?tex=%5C%7CB%5C%7C_%7B1%7D%3C1" alt="[公式]"> ，B为简单迭代格式系数矩阵</li>
-<li>Jacobi格式： （充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_J%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_J%5C%7C%3C1" alt="[公式]"> 或【A严格对角占优】</li>
-<li>Jacobi+G-S：（充要） <img src="https://www.zhihu.com/equation?tex=%5Crho+%28B_S%29%3C1+" alt="[公式]"> ；（充分） <img src="https://www.zhihu.com/equation?tex=%5C%7CB_S%5C%7C%3C1" alt="[公式]"> 或【A严格对角占优】或【 A对称正定】</li>
-<li>SOR：（必要） <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]"> ；（充分）【 A对称正定， <img src="https://www.zhihu.com/equation?tex=0%3C%5Comega+%3C2" alt="[公式]"> 】</li>
-</ul>
-<p><strong>简单迭代法的误差估计：</strong></p>
-<ul>
-<li>（后验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%28k%29%7D-x%5E%7B%28k-1%29%7D%5C%7C" alt="[公式]"></li>
-<li>（先验） <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5E%7B%28k%29%7D-%5Cbar%7Bx%7D%5C%7C%5Cleq%5Cfrac%7B%5C%7CB%5C%7C%5Ek%7D%7B1-%5C%7CB%5C%7C%7D%5C%7Cx%5E%7B%281%29%7D-x%5E%7B%280%29%7D%5C%7C" alt="[公式]"></li>
-</ul>
-<p>通过求解 <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Ek%28B%29%5Cleq10%5E%7B-m%7D" alt="[公式]"> 可以得到【大约需要迭代的次数k】</p>
-<p><strong>Remaks:</strong></p>
-<ul>
-<li><p><img src="https://www.zhihu.com/equation?tex=%5Crho+%28B%29%3C1+%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7D%3DO%5CLeftrightarrow+%5Clim_%7Bk+%5Crightarrow+%5Cinfty%7D%7BB%5Ek%7Dx%3DO" alt="[公式]"> ，关键在于证明B为收敛矩阵</p>
-</li>
-<li><p>Gauss-Seidel格式通常情况下可用于对Jacobi格式的加速，但Gauss-Seidel格式并不是在所有情况下都更快，有时甚至不收敛</p>
-</li>
-<li><p>在SOR（逐次超松弛）迭代格式中， <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="[公式]"> 成为【松弛因子】。</p>
-</li>
-<li><ul>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3C1" alt="[公式]"> ：低松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3E1" alt="[公式]"> ：超松弛</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Comega+%3D1" alt="[公式]"> ：退化为Gauss-Seidel迭代格式</li>
-</ul>
-</li>
-<li><p>最佳松弛因子 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D" alt="[公式]"> ：求解困难，但对于系数矩阵A【对称正定】||【严格对角占优】||【弱对角占优&amp;不可约】的线形代数方程组，有 <img src="https://www.zhihu.com/equation?tex=%5Comega+_%7Bopt%7D%3D%5Cfrac%7B2%7D%7B1%2B%5Csqrt%7B1-%5Crho%5E2%28B_L%29%7D%7D" alt="[公式]"></p>
-</li>
-<li><p>各种加速格式的【核心思想】：尽量更多的利用已经得到的数据</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/" data-id="ck3wsh6vt0008vktk072kh8j5" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-【数学】常用公式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/" class="article-date">
-  <time datetime="2019-11-26T03:22:28.000Z" itemprop="datePublished">2019-11-26</time>
-</h3>
-    
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/">【数学】常用公式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文为作者在学习过程中对一些常用数学公式的总结，主要是为了满足个人日常的使用。如今很多网络平台已经成长为了非常重要的知识分享站，也有很多优秀的人愿意在网上分享自己的学习成果及感悟，作者由此受益良多。受到这种精神的感染，我也非常乐意成为他们中的一员，希望能对读者有些许帮助，同时也欢迎读者批评指正。</p>
-<hr>
-<h1 id="一、高等数学"><a href="#一、高等数学" class="headerlink" title="一、高等数学"></a>一、高等数学</h1><h2 id="Taylor展开式"><a href="#Taylor展开式" class="headerlink" title="Taylor展开式"></a>Taylor展开式</h2><script type="math/tex; mode=display">
-f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f^{"}(x_0)}{2!}(x-x_0)^2+\dots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\dots</script><hr>
-<h1 id="二、矩阵论"><a href="#二、矩阵论" class="headerlink" title="二、矩阵论"></a>二、矩阵论</h1><h2 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h2><p>对任意 <img src="https://www.zhihu.com/equation?tex=x%3D%5Cleft%28%5Cxi_%7B1%7D%2C+%5Cxi_%7B2%7D%2C+%5Ccdots%2C+%5Cxi_%7Bn%7D%5Cright%29%5E%7B%5Cmathrm%7BT%7D%7D+%5Cin+%5Cmathbf%7BC%7D%5E%7Bn%7D" alt="[公式]"> ，规定：</p>
-<ul>
-<li><img src="https://www.zhihu.com/equation?tex=1" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5C%7C_%7B1%7D%3D%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=2" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5C%7C_%7B2%7D%3D%5Csqrt%7B%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C%5E%7B2%7D%7D%3D%5Csqrt%7Bx%5E%7B%5Cmathrm%7BH%7D%7D+x%7D" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cinfty" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7Cx%5C%7C_%7B%5Cinfty%7D%3D%5Cmax+_%7Bk%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C" alt="[公式]"></li>
-</ul>
-<hr>
-<h2 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h2><p>对任意 <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft%28a_%7Bi+j%7D%5Cright%29_%7Bn+%5Ctimes+n%7D+%5Cin+%5Cmathbf%7BC%7D%5E%7Bn+%5Ctimes+n%7D" alt="[公式]"> ，规定：</p>
-<ul>
-<li><img src="https://www.zhihu.com/equation?tex=m_1" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7CA%5C%7C_%7Bm_%7B1%7D%7D%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%7Ca_%7Bi+j%7D%5Cright%7C" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=F" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7C%5Cboldsymbol%7BA%7D%5C%7C_%7B%5Cmathrm%7BF%7D%7D%3D%5Csqrt%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%7Ca_%7Bi+j%7D%5Cright%7C%5E%7B2%7D%7D%3D%5Csqrt%7B%5Coperatorname%7Btr%7D%5Cleft%28%5Cboldsymbol%7BA%7D%5E%7B%5Cmathrm%7BH%7D%7D+%5Cboldsymbol%7BA%7D%5Cright%29%7D" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=m_%5Cinfty" alt="[公式]"> 范数： <img src="https://www.zhihu.com/equation?tex=%5C%7CA%5C%7C_%7Bm_%7B%5Cinfty%7D%7D%3Dn+%5Cmax+_%7Bi%2C+j%7D%5Cleft%7Ca_%7Bi+j%7D%5Cright%7C" alt="[公式]"></li>
-</ul>
-<p>利用于向量的相容性，导出矩阵如下<strong>从属范数</strong>：</p>
-<ul>
-<li><img src="https://www.zhihu.com/equation?tex=1" alt="[公式]"> 范数（列和范数）： <img src="https://www.zhihu.com/equation?tex=%5C%7CA%5C%7C_%7B1%7D%3D%5Cmax+_%7Bj%7D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%7Ca_%7Bi+j%7D%5Cright%7C" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=2" alt="[公式]"> 范数（谱范数）： <img src="https://www.zhihu.com/equation?tex=%5C%7C%5Cboldsymbol%7BA%7D%5C%7C_%7B2%7D%3D%5Csqrt%7B%5Clambda_%7B1%7D%7D" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=%5Clambda_1" alt="[公式]"> 为 <img src="https://www.zhihu.com/equation?tex=A%5EHA" alt="[公式]"> 的最大特征值</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cinfty" alt="[公式]"> 范数（行和范数）： <img src="https://www.zhihu.com/equation?tex=%5C%7CA%5C%7C_%7B%5Cinfty%7D%3D%5Cmax+_%7Bi%7D+%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%7Ca_%7Bi+j%7D%5Cright%7C" alt="[公式]"></li>
-</ul>
-<hr>
-<h2 id="特殊矩阵"><a href="#特殊矩阵" class="headerlink" title="特殊矩阵"></a>特殊矩阵</h2><p><strong>常用特殊矩阵</strong></p>
-<p><strong>正规矩阵：</strong><img src="https://www.zhihu.com/equation?tex=AA%5EH%3DA%5EHA" alt="[公式]"></p>
-<ul>
-<li>酉矩阵： <img src="https://www.zhihu.com/equation?tex=AA%5EH%3DA%5EHA%3DI" alt="[公式]"></li>
-<li>正交矩阵： <img src="https://www.zhihu.com/equation?tex=AA%5ET%3DA%5ETA%3DI" alt="[公式]"> 或 <img src="https://www.zhihu.com/equation?tex=A%5ET%3DA%5E%7B-1%7D" alt="[公式]"></li>
-<li>实对称矩阵： <img src="https://www.zhihu.com/equation?tex=A%5ET%3DA" alt="[公式]"></li>
-<li>实反对称矩阵： <img src="https://www.zhihu.com/equation?tex=A%5ET%3D-A" alt="[公式]"></li>
-<li>Hermite矩阵： <img src="https://www.zhihu.com/equation?tex=A%5EH%3DA" alt="[公式]"></li>
-<li>反Hermite矩阵： <img src="https://www.zhihu.com/equation?tex=A%5EH%3D-A" alt="[公式]"></li>
-</ul>
-<p><strong>正定矩阵：</strong>满足条件 <img src="https://www.zhihu.com/equation?tex=x%5ETAx%3E0" alt="[公式]"> 的矩阵</p>
-<p><strong>Hilbert矩阵：</strong>对称正定，严重病态，n很大时几乎奇异</p>
-<script type="math/tex; mode=display">
-H_n=
-\begin{bmatrix}
-1                &\frac{1}{2}        &...        &\frac{1}{n}    \\ 
-\frac{1}{2}     &\frac{1}{3}          &...        &\frac{1}{n+1}    \\
-\vdots            &\vdots                &            &\vdots            \\
-\frac{1}{n}     &\frac{1}{n+1}      &...        &\frac{1}{2n-1}
-\end{bmatrix}</script><p><strong>Vandermonde矩阵：</strong>严重病态</p>
-<script type="math/tex; mode=display">
-V_n=
-\begin{bmatrix}
-1        &x_0        &x_0^2        &...        &x_0^2    \\ 
-1         &x_1          &x_1^2        &...        &x_1^2    \\
-\vdots    &\vdots        &            &...        &\vdots    \\
-1         &x_n          &x_n^2        &...        &x_n^2
-\end{bmatrix}</script><p><strong>Gram矩阵：</strong></p>
-<script type="math/tex; mode=display">
-G_n=
-\begin{bmatrix}
-(\varphi_0,\varphi_0)    &(\varphi_0,\varphi_1)    &...    &(\varphi_0,\varphi_n)    \\ 
-(\varphi_1,\varphi_0)     &(\varphi_1,\varphi_1)     &...    &(\varphi_1,\varphi_n)    \\
-\vdots                    &\vdots                    &        &\vdots                    \\
-(\varphi_n,\varphi_0)     &(\varphi_n,\varphi_1)  &...    &(\varphi_n,\varphi_n)
-\end{bmatrix}</script><p><strong>特殊矩阵的性质</strong></p>
-<ul>
-<li>Hermite矩阵（实对称矩阵）的特征值均为实数，反Hermite矩阵（实反对称矩阵）的特征值均为零或纯虚数</li>
-<li><img src="https://www.zhihu.com/equation?tex=A%5ETA" alt="[公式]"> 一定是一个对称正定的矩阵</li>
-</ul>
-<hr>
-<h2 id="施密特标准正交化"><a href="#施密特标准正交化" class="headerlink" title="施密特标准正交化"></a>施密特标准正交化</h2><p>对于任意线形无关向量组 <img src="https://www.zhihu.com/equation?tex=%5Calpha_1%2C%5Calpha_2%2C...%5Calpha_n" alt="[公式]"></p>
-<p><strong>正交化：</strong></p>
-<ul>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cbeta_1%3D%5Calpha_1" alt="[公式]"></li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cbeta_2%3D%5Calpha_2-%5Ceta_%7B2%2C1%7D%5Cbeta_1" alt="[公式]"> , <img src="https://www.zhihu.com/equation?tex=%5Ceta_%7B2%2C1%7D%3D%5Cfrac%7B%28%5Calpha_2%2C%5Cbeta_1%29%7D%7B%28%5Cbeta_1%2C%5Cbeta_1%29%7D" alt="[公式]"></li>
-<li>……</li>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cbeta_n%3D%5Calpha_n-%5Ceta_%7Bn%2C1%7D%5Cbeta_1-%5Ceta_%7Bn%2C2%7D%5Cbeta_2-...-%5Ceta_%7Bn%2Cn-1%7D%5Cbeta_%7Bn-1%7D" alt="[公式]"></li>
-</ul>
-<p>其中， <img src="https://www.zhihu.com/equation?tex=%5Ceta_%7Bn%2Cj%7D%3D%5Cfrac%7B%28%5Calpha_n%2C%5Cbeta_j%29%7D%7B%28%5Cbeta_j%2C%5Cbeta_j%29%7D+%2C%EF%BC%88j%3D1%2C2%2C...%2Cn-1%EF%BC%89" alt="[公式]"></p>
-<p><strong>单位化：</strong></p>
-<ul>
-<li><img src="https://www.zhihu.com/equation?tex=%5Cgamma_1%3D%5Cfrac%7B%5Cbeta_1%7D%7B%5C%7C%5Cbeta_1%5C%7C_2%7D%2C%5Cgamma_2%3D%5Cfrac%7B%5Cbeta_2%7D%7B%5C%7C%5Cbeta_2%5C%7C_2%7D%2C...%2C%5Cgamma_n%3D%5Cfrac%7B%5Cbeta_n%7D%7B%5C%7C%5Cbeta_n%5C%7C_2%7D" alt="[公式]"></li>
-</ul>
-<p>则 <img src="https://www.zhihu.com/equation?tex=%5Cgamma_1%2C%5Cgamma_2%2C...%2C%5Cgamma_n" alt="[公式]"> 为标准正交向量组</p>
-<hr>
-<h2 id="矩阵的重要变换"><a href="#矩阵的重要变换" class="headerlink" title="矩阵的重要变换"></a>矩阵的重要变换</h2><ul>
-<li>相似： <img src="https://www.zhihu.com/equation?tex=A%5Csim+B%5CLeftrightarrow+P%5E%7B-1%7DAP%3DB" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=P" alt="[公式]">为由A的特征向量组成的n阶可逆矩阵</li>
-<li>合同： <img src="https://www.zhihu.com/equation?tex=A%5Csimeq+B%5CLeftrightarrow+C%5ETAC%3DB" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">为n阶可逆矩阵</li>
-<li>等价： <img src="https://www.zhihu.com/equation?tex=A%5Ccong+B%5CLeftrightarrow+PAQ%3DB" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=P%E3%80%81Q" alt="[公式]">为可逆矩阵（有限次初等变换）</li>
-<li>酉相似： <img src="https://www.zhihu.com/equation?tex=U%5E%7B-1%7DAU%3DU%5E%7BH%7DAU%3DT" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=T" alt="[公式]"> 为一个上三角矩阵， <img src="https://www.zhihu.com/equation?tex=U" alt="[公式]"> 为一个n阶酉矩阵（Schur定理）</li>
-<li>酉等价： <img src="https://www.zhihu.com/equation?tex=U%5EHAV%3DB" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=U%E3%80%81V" alt="[公式]">分别为m、n阶酉矩阵</li>
-<li>Householder： <img src="https://www.zhihu.com/equation?tex=%5Cexists+H%3DI-2uu%5EH%EF%BC%8Cs.t.Hx%3D%5Calpha+z" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=%7C%5Calpha%7C%3D%5C%7Cx%5C%7C_2" alt="[公式]"> ， <img src="https://www.zhihu.com/equation?tex=u%3D%5Cfrac%7Bx-%5Calpha+z%7D%7B%5C%7Cx-%5Calpha+z%5C%7C_2%7D" alt="[公式]"> ，且 <img src="https://www.zhihu.com/equation?tex=%5Calpha+x%5EHz" alt="[公式]"> 为实数</li>
-<li>Givens变换： <img src="https://www.zhihu.com/equation?tex=%5Cexists+T%EF%BC%8Cs.t.Tx%3D%5Calpha+z" alt="[公式]"> ，其中 <img src="https://www.zhihu.com/equation?tex=%7C%5Calpha%7C%3D%5C%7Cx%5C%7C_2" alt="[公式]"></li>
-<li>Hessenberg变换：<ul>
-<li>Ver1： <img src="https://www.zhihu.com/equation?tex=%28%5Cprod_%7Bi%7DH_i%29A%28%5Cprod_%7Bi%7DH_i%29+%3DU%5E%7BH%7DAU%3DH" alt="[公式]"> ,其中 <img src="https://www.zhihu.com/equation?tex=H" alt="[公式]"> 为一个次上三角矩阵， <img src="https://www.zhihu.com/equation?tex=H_i" alt="[公式]"> 为Householder矩阵</li>
-<li>Ver2： <img src="https://www.zhihu.com/equation?tex=%28%5Cprod_%7Bi%7DT_i%29A%28%5Cprod_%7Bi%7DT_i%29%5EH+%3DU%5E%7BH%7DAU%3DH" alt="[公式]"> ,其中 <img src="https://www.zhihu.com/equation?tex=H" alt="[公式]"> 为一个次上三角矩阵， <img src="https://www.zhihu.com/equation?tex=T_i" alt="[公式]"> 为Givens矩阵</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="矩阵函数"><a href="#矩阵函数" class="headerlink" title="矩阵函数"></a>矩阵函数</h2><p><img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Barray%7D%7Bll%7D%7B%5Cmathrm%7Be%7D%5E%7B%5Cmathrm%7BA%7D%7D%3D%5Csum_%7Bk%3D0%7D%5E%7B%2B%5Cinfty%7D+%5Cfrac%7B1%7D%7Bk+%21%7D+%5Cmathrm%7BA%7D%5E%7Bk%7D%7D+%26+%7B%5Cleft%28%5Cforall+%5Cmathrm%7BA%7D+%5Cin+%5Cmathrm%7BC%7D%5E%7B%5Cmathrm%7Bn%7D+%5Ctimes+n%7D%5Cright%29%7D+%5C%5C++%7B%5Csin+%5Cmathrm%7BA%7D%3D%5Csum_%7Bk%3D0%7D%5E%7B%2B%5Cinfty%7D+%5Cfrac%7B%28-1%29%5E%7Bk%7D%7D%7B%282+k%2B1%29+%21%7D+%5Cmathrm%7BA%7D%5E%7B2+k%2B1%7D%7D+%26+%7B%5Cleft%28%5Cforall+%5Cmathrm%7BA%7D+%5Cin+%5Cmathrm%7BC%7D%5E%7Bn+%5Ctimes+n%7D%5Cright%29%7D+%5C%5C++%7B%5Ccos+A%3D%5Csum_%7Bk%3D0%7D%5E%7B%2B%5Cinfty%7D+%5Cfrac%7B%28-1%29%5E%7Bk%7D%7D%7B%282+k%29+%21%7D+%5Cmathrm%7BA%7D%5E%7B2+k%7D%7D+%26+%7B%5Cleft%28%5Cforall+%5Cmathrm%7BA%7D+%5Cin+%5Cmathrm%7BC%7D%5E%7Bn+%5Ctimes+n%7D%5Cright%29%7D+%5C%5C++%7B%28%5Cmathrm%7BI%7D-%5Cmathrm%7BA%7D%29%5E%7B-1%7D%3D%7D++%7B%5Csum_%7Bk%3D0%7D%5E%7B%2B%5Cinfty%7D+%5Cmathrm%7BA%7D%5E%7Bk%7D+%7D%26%7B%5Cquad%28%5Crho%28%5Cmathrm%7BA%7D%29%3C1%29%7D+%5C%5C++%7B%5Cln+%28%5Cmathrm%7BI%7D%2B%5Cmathrm%7BA%7D%29%3D%7D+%7B%5Csum_%7Bk%3D0%7D%5E%7B%2B%5Cinfty%7D+%5Cfrac%7B%28-1%29%5E%7Bk%7D%7D%7Bk%2B1%7D+A%5E%7Bk%2B1%7D%7D%26%7B%5Cquad%28%5Crho%28%5Cmathrm%7BA%7D%29%3C1%29%7D%5Cend%7Barray%7D" alt="[公式]"></p>
-<p>其中，称 <img src="https://www.zhihu.com/equation?tex=e%5EA" alt="[公式]"> 为矩阵指数函数， <img src="https://www.zhihu.com/equation?tex=%28I-A%29%5E%7B-1%7D" alt="[公式]"> 为Neumann级数</p>
-<h2 id="二阶矩阵求逆公式"><a href="#二阶矩阵求逆公式" class="headerlink" title="二阶矩阵求逆公式"></a><strong>二阶矩阵求逆公式</strong></h2><ul>
-<li><img src="https://www.zhihu.com/equation?tex=%7B%5Cleft%28+%7B%5Cbegin%7Barray%7D%7B%2A%7B20%7D%7Bc%7D%7D+%7B%5Crm%7Ba%7D%7D%26b%5C%5C+c%26d+%5Cend%7Barray%7D%7D+%5Cright%29%5E%7B+-+1%7D%7D+%3D+%5Cfrac%7B1%7D%7B%7Bad+-+bc%7D%7D%5Cleft%28+%7B%5Cbegin%7Barray%7D%7B%2A%7B20%7D%7Bc%7D%7D+d%26%7B+-+b%7D%5C%5C+%7B+-+c%7D%26a+%5Cend%7Barray%7D%7D+%5Cright%29%2Cad+-+bc+%5Cne+0" alt="[公式]"></li>
-</ul>
-<hr>
-<h1 id="三、不等式"><a href="#三、不等式" class="headerlink" title="三、不等式"></a>三、不等式</h1><h2 id="柯西-施瓦茨不等式："><a href="#柯西-施瓦茨不等式：" class="headerlink" title="柯西-施瓦茨不等式："></a>柯西-施瓦茨不等式：</h2><ul>
-<li>Ver1: <img src="https://www.zhihu.com/equation?tex=%5Cleft%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C%5Cleft%7C%5Ceta_%7Bk%7D%5Cright%7C%5Cright%29%5E%7B2%7D+%5Cleqslant%5Cleft%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C%5E%7B2%7D%5Cright%29%5Cleft%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Ceta_%7Bk%7D%5Cright%7C%5E%7B2%7D%5Cright%29" alt="[公式]"></li>
-<li>Ver2： <img src="https://www.zhihu.com/equation?tex=%5Cleft%7C+%7B%7Bx%5EH%7Dy%7D+%5Cright%7C+%5Cle+%5Cleft%5C%7C+x+%5Cright%5C%7C%5Cleft%5C%7C+y+%5Cright%5C%7C%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%28x%2Cy+%5Cin+%7BR%5En%7D%29+" alt="[公式]"></li>
-<li>Ver3： <img src="https://www.zhihu.com/equation?tex=%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%7B%5Ceta+_k%7D%29%5E2+%5Cleq+n%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%7B%5Ceta%5E2+_k%7D" alt="[公式]"></li>
-<li>Ver4：$(f+g,f+g)^{\frac{1}{2}}\leq(f,f)^{\frac{1}{2}}+(g,g)^{\frac{1}{2}}$</li>
-<li>Ver5：$(f,g)\leq (f,f)^{\frac{1}{2}}(g,g)^{\frac{1}{2}}$</li>
-</ul>
-<h2 id="Holder不等式："><a href="#Holder不等式：" class="headerlink" title="Holder不等式："></a><strong>Holder不等式：</strong></h2><ul>
-<li>Ver1： <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D+%5C%7C+%5Ceta_%7Bk%7D%5Cright%7C+%5Cleqslant%5Cleft%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Cxi_%7Bk%7D%5Cright%7C%5E%7Bp%7D%5Cright%29%5E%7B%5Cfrac%7B1%7D%7Bp%7D%7D%5Cleft%28%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cleft%7C%5Ceta_%7Bk%7D%5Cright%7C%5E%7Bq%7D%5Cright%29%5E%7B%5Cfrac%7B1%7D%7Bq%7D%7D" alt="[公式]"></li>
-</ul>
-<p>其中 <img src="https://www.zhihu.com/equation?tex=p%3E1%2C+q%3E1" alt="[公式]"> 且 <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bp%7D%2B%5Cfrac%7B1%7D%7Bq%7D%3D1" alt="[公式]"></p>
-<hr>
-<h2 id="min-max不等式："><a href="#min-max不等式：" class="headerlink" title="min-max不等式："></a>min-max不等式：</h2><ul>
-<li>Ver1： <img src="https://www.zhihu.com/equation?tex=l%5Ccdot+%5Cmax+%5C%7B+m%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%2C%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+n%5C%7D++%5Cle+%5Cmax+%5C%7B+m%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%2C%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+l%5C%7D++%5Ccdot+%5Cmax+%5C%7B+n%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%2C%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+%7B%5Ckern+1pt%7D+l%5C%7D+" alt="[公式]"></li>
-<li>Ver2： <img src="https://www.zhihu.com/equation?tex=%5Cmax+%5C%7B+%7Bx_1%7D+%2B+%7By_1%7D%2C%7Bx_2%7D+%2B+%7By_2%7D%5C%7D++%5Cle+%5Cmax+%5C%7B+%7Bx_1%7D+%2B+%7Bx_2%7D%5C%7D++%2B+%5Cmax+%5C%7B+%7By_1%7D+%2B+%7By_2%7D%5C%7D+" alt="[公式]"></li>
-</ul>
-<hr>
-<h1 id="四、代数"><a href="#四、代数" class="headerlink" title="四、代数"></a>四、代数</h1><h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><ul>
-<li>图解法</li>
-<li>欧几里得算法：辗转相除法（算法鼻祖）</li>
-</ul>
-<h2 id="贝祖数"><a href="#贝祖数" class="headerlink" title="贝祖数"></a>贝祖数</h2><ul>
-<li>$ax+by=m$有整数解的充要条件：m为a、b最大公约数的整数倍</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2019/11/26/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/" data-id="ck3wsh6vv0009vktk2qv7g1v4" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
-</section>
-      
-      <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/06/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">【矩阵论】线性空间</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">【工具】常用网站</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/">【数值分析】微分方程数值解法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/03/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/">【数值分析】数值积分与数值微分</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li></ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 liuluyang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/Archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/About" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
-</nav>
-
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    menuSettings: {
-      zoom: "None"
-    },
-    showMathMenu: false,
-    jax: ["input/TeX","output/CommonHTML"],
-    extensions: ["tex2jax.js"],
-    TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js"],
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-  });
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
 </script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script>
-
-
-
-<!-- totop start -->
-<div id="totop">
-	<a title="To Top"></a>
+        <div class="main">
+            
+    <div class="container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/image/avatar.jpeg"></a>
+        </div>
+        <div class="nickname">Jeremy Bentham</div>
+        <div class="description"><p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> <br>Fusce eget urna vitae velit <em>eleifend interdum at ac</em> nisi.</p>
 </div>
-<!-- totop end -->
-
-<!-- swiftype search start -->
-
-<!-- swiftype search end -->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/archives">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="ZhiHu" href="https://www.zhihu.com/people/sirice" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-zhihu"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Instagram" href="">
+                        
+                        
+                            <i class="iconfont icon-instagram"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Reddit" href="">
+                        
+                        
+                            <i class="iconfont icon-reddit"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" href="https://github.com/Siricee" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
 </div>
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© liuluyang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
 </body>
 </html>
