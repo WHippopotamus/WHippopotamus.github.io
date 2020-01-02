@@ -207,14 +207,13 @@
 通过图片压缩的手段解决了封面头像加载过慢的问题</p></li>
 <li><p><input type="checkbox" disabled="" checked="" />
 解决了公式渲染过程中存在的问题，即：</p><ul>
-<li>在主题文件中打开<code>Mathjax</code>，并将加载方式设置未“'按需'”</li>
+<li>在主题文件中打开<code>Mathjax</code>，并将加载方式设置未<code>按需</code>，例如：</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">  enable: <span class="keyword">true</span></span><br><span class="line">  import: demand <span class="comment"># global or demand</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>在需要使用MathJax的文章的Front-matter中， 将<code>Mathjax</code>设置为<code>true</code> ，例如：</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 测试Mathjax</span><br><span class="line">category:</span><br><span class="line">  - 前端</span><br><span class="line">tags:</span><br><span class="line">  - Hexo</span><br><span class="line">  - MathJax</span><br><span class="line">date: <span class="number">2018</span><span class="number">-10</span><span class="number">-29</span> <span class="number">19</span>:<span class="number">58</span>:<span class="number">35</span></span><br><span class="line">mathjax: <span class="keyword">true</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
-<li><p>[ ]</p></li>
 </ul>
 
         </div>
