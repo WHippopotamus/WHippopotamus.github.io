@@ -12,7 +12,7 @@
 
 
 
-<title>【数值分析】特征值与特征向量 | The Orion</title>
+<title>【技术流】博客日志 | The Orion</title>
 
 
 
@@ -39,45 +39,6 @@
 
     
     
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
         
     
 
@@ -147,25 +108,87 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【数值分析】特征值与特征向量</h1>
+            <h1 class="post-title">【技术流】博客日志</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 11, 2019&nbsp;&nbsp;15:07:10</a>
+                        Date: <a href="#">January 2, 2020&nbsp;&nbsp;19:58:40</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Math/">Math</a>
+                                <a href="/categories/Tech/">Tech</a>
                             
                         </span>
                     
@@ -174,27 +197,24 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li><p>特征值与特征向量的数值解法：迭代法 || 变换法</p></li>
-<li><p>主特征值：按模最大的特征值</p></li>
-<li><p>求特征值和对应的特征向量：<span class="citation" data-cites="乘幂法">@乘幂法</span> || <span class="citation" data-cites="反幂法">@反幂法</span></p>
+            <hr />
+<h2 id="关键词">关键词：</h2>
+<p>技术、博客、bugs</p>
+<h1 id="年1月">2020年1月</h1>
+<h2 id="月2日">1月2日</h2>
 <ul>
-<li>（按模最小）乘幂法（四种情况）：<span class="math inline">\(\lambda_1=lim_{k\rightarrow\infty}\frac{V_i^{k+1}}{V_i^k}\)</span>，<span class="math inline">\(V^{(k)}=A^kV^{(0)}\)</span></li>
-<li>（按模最小）反幂法：
+<li><p><input type="checkbox" disabled="" checked="" />
+通过图片压缩的手段解决了封面头像加载过慢的问题</p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+解决了公式渲染过程中存在的问题，即：</p><ul>
+<li>在主题文件中打开<code>Mathjax</code>，并将加载方式设置未“'按需'”</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">  enable: <span class="keyword">true</span></span><br><span class="line">  import: demand <span class="comment"># global or demand</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>原点平移法</li>
-</ul></li>
-</ul></li>
-<li><p>求实对称矩阵全部特征值与特征向量：</p>
-<ul>
-<li>Jacobi方法：相似对角化 || 正交矩阵 || Givens旋转变换 ）</li>
-</ul></li>
-<li><p>Givens变换&amp;&amp;Householder变换</p></li>
-<li><p>利用实对称矩阵：</p>
-<ul>
-<li>三对角化：Givens变换 || Householder变换</li>
-<li>二分法</li>
-</ul></li>
+<li>在需要使用MathJax的文章的Front-matter中， 将<code>Mathjax</code>设置为<code>true</code> ，例如：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 测试Mathjax</span><br><span class="line">category:</span><br><span class="line">  - 前端</span><br><span class="line">tags:</span><br><span class="line">  - Hexo</span><br><span class="line">  - MathJax</span><br><span class="line">date: <span class="number">2018</span><span class="number">-10</span><span class="number">-29</span> <span class="number">19</span>:<span class="number">58</span>:<span class="number">35</span></span><br><span class="line">mathjax: <span class="keyword">true</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<li><p>[ ]</p></li>
 </ul>
 
         </div>
@@ -219,9 +239,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
-                    
-                        <a href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"># 数值分析</a>
+                        <a href="/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%92%91/"># 技术支撑</a>
                     
                         
                 </span>
@@ -234,10 +252,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/02/%E3%80%90%E6%8A%80%E6%9C%AF%E6%B5%81%E3%80%91%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/">【技术流】博客日志</a>
             
-            
-            <a class="next" rel="next" href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
+            <a class="next" rel="next" href="/2019/12/11/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/">【数值分析】特征值与特征向量</a>
             
         </section>
 
