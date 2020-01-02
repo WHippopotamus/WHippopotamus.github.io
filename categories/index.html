@@ -39,7 +39,44 @@
 
     
     
-        
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
     
 
 
@@ -117,10 +154,10 @@
                     
                     <div class="card-item">
                         <div class="categories">
-                            <a href="/categories/Philosophy/">
+                            <a href="/categories/Personal/">
                                 <h3>
                                     <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    Philosophy
+                                    Personal
                                 </h3>
                             </a>
                             
@@ -128,7 +165,15 @@
                                 
                                     <article class="archive-item">
                                         <a class="archive-item-link"
-                                           href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】世界观与方法论</a>
+                                           href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
+                                    </article>
+                                
+                            
+                                
+                                
+                                    <article class="archive-item">
+                                        <a class="archive-item-link"
+                                           href="/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/">【生活感悟】</a>
                                     </article>
                                 
                             
@@ -161,10 +206,10 @@
                     
                     <div class="card-item">
                         <div class="categories">
-                            <a href="/categories/Personal/">
+                            <a href="/categories/Philosophy/">
                                 <h3>
                                     <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    Personal
+                                    Philosophy
                                 </h3>
                             </a>
                             
@@ -172,15 +217,7 @@
                                 
                                     <article class="archive-item">
                                         <a class="archive-item-link"
-                                           href="/2019/12/08/%E3%80%90%E5%85%89%E9%98%B4%E6%B5%81%E6%B0%B4%E3%80%91/">【光阴流水】</a>
-                                    </article>
-                                
-                            
-                                
-                                
-                                    <article class="archive-item">
-                                        <a class="archive-item-link"
-                                           href="/2019/11/30/%E3%80%90%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E3%80%91/">【生活感悟】</a>
+                                           href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】世界观与方法论</a>
                                     </article>
                                 
                             
@@ -248,7 +285,7 @@
                                 
                                     <article class="archive-item">
                                         <a class="archive-item-link"
-                                           href="/2019/12/11/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/">【数值分析】特征值与特征向量</a>
+                                           href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/">【数值分析】线性方程组的求解</a>
                                     </article>
                                 
                             
@@ -256,7 +293,7 @@
                                 
                                     <article class="archive-item">
                                         <a class="archive-item-link"
-                                           href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3/">【数值分析】线性方程组的求解</a>
+                                           href="/2019/12/11/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/">【数值分析】特征值与特征向量</a>
                                     </article>
                                 
                             
