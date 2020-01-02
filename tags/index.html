@@ -39,44 +39,7 @@
 
     
     
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
+        
     
 
 
@@ -162,17 +125,17 @@
                 
                     <a href="/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/">数值分析<small>(5)</small></a>
                 
+                    <a href="/tags/%E6%97%A5%E8%AE%B0/">日记<small>(1)</small></a>
+                
                     <a href="/tags/%E5%85%AC%E5%BC%8F/">公式<small>(1)</small></a>
                 
-                    <a href="/tags/%E8%AF%97%E8%AF%8D/">诗词<small>(1)</small></a>
-                
                     <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/">矩阵论<small>(2)</small></a>
-                
-                    <a href="/tags/%E6%97%A5%E8%AE%B0/">日记<small>(1)</small></a>
                 
                     <a href="/tags/%E5%8D%95%E8%AF%8D/">单词<small>(1)</small></a>
                 
                     <a href="/tags/%E5%8F%A3%E8%AF%AD/">口语<small>(1)</small></a>
+                
+                    <a href="/tags/%E8%AF%97%E8%AF%8D/">诗词<small>(1)</small></a>
                 
             </div>
         </div>
