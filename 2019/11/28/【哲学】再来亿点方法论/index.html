@@ -12,7 +12,7 @@
 
 
 
-<title>【矩阵论】广义逆矩阵 | The Orion</title>
+<title>【哲学】再来亿点方法论 | The Orion</title>
 
 
 
@@ -39,45 +39,6 @@
 
     
     
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
         
     
 
@@ -213,21 +174,21 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【矩阵论】广义逆矩阵</h1>
+            <h1 class="post-title">【哲学】再来亿点方法论</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 27, 2019&nbsp;&nbsp;16:11:50</a>
+                        Date: <a href="#">November 28, 2019&nbsp;&nbsp;11:21:50</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Math/">Math</a>
+                                <a href="/categories/Philosophy/">Philosophy</a>
                             
                         </span>
                     
@@ -237,74 +198,83 @@
 
         <div class="post-content">
             <hr />
-<hr />
-<h1 id="一广义逆矩阵的概念">一、广义逆矩阵的概念</h1>
+<h1 id="一科学的世界观与方法论">一、科学的世界观与方法论</h1>
+<ul>
+<li><strong>科学的方法论</strong>：形式逻辑体系+实验验证，正是这两点使得科学成为了一门逻辑自洽的、精确的学问</li>
+<li>通过<strong>公理化定义</strong>就可以构建一个完备的体系
 <ol type="1">
-<li>四个Penrose方程：设<span class="math inline">\(A\in C^{m\times n}\)</span>,<span class="math inline">\(X\in C^{n\times m}\)</span>，有
-<ul>
-<li><ol type="1">
-<li><span class="math inline">\(AXA=A\)</span></li>
+<li>欧氏几何</li>
+<li>黎曼几何</li>
+<li>范数理论</li>
 </ol></li>
-<li><ol start="2" type="1">
-<li><span class="math inline">\(XAX=X\)</span></li>
+<li>对<strong>概念定理理解</strong>的三个层次：
+<ol type="1">
+<li>描述了什么？</li>
+<li>为什么是这样？</li>
+<li>有什么作用？</li>
 </ol></li>
-<li><ol start="3" type="1">
-<li><span class="math inline">\((AX)^H=AX\)</span></li>
+<li>对学习的认识
+<ol type="1">
+<li>学习的本质就是用有限的认识来构建可以应对无限可能的模型</li>
+<li>机器学习：数据--学习--模型--应用</li>
+<li>思维导图：线性思维<span class="math inline">\(\rightarrow\)</span>网络思维、发散思维</li>
+<li>费曼技巧：学习+解释</li>
+<li>人类思维的生物学载体：生物神经网络</li>
+<li>学习时间不是衡量学习效果的标准，有效的成果产出才是</li>
+<li>在遇到一个新的问题时，尽量将它往已知的问题上靠，并格外留意它们的相同点与不同点</li>
 </ol></li>
-<li><ol start="4" type="1">
-<li><span class="math inline">\((XA)^H=XA\)</span></li>
+<li><strong>通解思维：</strong>在处理一些有共同点的问题时，为提高效率，最好的办法就是寻找处理这一类办法的通解，且必须满足如下条件：
+<ol type="1">
+<li>通用性：适合处理绝大多数情况，能描述问题的本质</li>
+<li>实用性：其形式最有利于处理生活中最常见的问题</li>
+<li>形式简洁：便于记忆与传播</li>
+<li>灵活性：能够根据不同的附加条件作出相应的变形，以处理各类特殊情况</li>
 </ol></li>
-</ul></li>
-<li>常用的广义逆
-<ul>
-<li>{1}逆：仅满足条件（1）</li>
-<li>Moore-Penrose逆：满足所有条件，记为<span class="math inline">\(A^+\)</span>，也称加号逆</li>
-</ul></li>
-<li>重要定理
-<ul>
-<li>矩阵的Moore-Penrose逆存在且唯一，从而所有类型（共15类）的广义逆矩阵均存在</li>
-<li>只要A不可逆，则除Moore-Penrose逆以外的其他所有逆均不唯一</li>
-</ul></li>
-</ol>
+<li>学会制定性能<strong>指标</strong>或<strong>指标体系</strong></li>
+<li>学会<strong>起名字</strong>：通过命名可以将一类知识打包记忆，强行记住一个知识的所有细节实在太难了。通过名字，我们就可以快速联想到这个知识点包含的主要内容。起名字本身也是一门学问，要能够描述本质、方便好记、有文化内涵等等。只要勤加练习，终能成一代命名鬼才。</li>
+<li><strong>结构化记忆</strong></li>
+</ul>
 <hr />
-<h1 id="二1逆">二、{1}逆</h1>
-<h2 id="求解步骤">求解步骤：</h2>
+<h1 id="二哲学的世界观与方法论">二、哲学的世界观与方法论</h1>
 <ul>
-<li>step1：化Hermite标准形，求变换阵<span class="math inline">\(S\)</span>，<span class="math inline">\(P\)</span> ；</li>
-<li>step2：引入参数矩阵：<span class="math inline">\(L=[ \ \alpha \ , \beta \ , \ ...]\)</span> 等；</li>
-<li>step3：代入公式：<span class="math inline">\(X=P\begin{bmatrix}I_r&amp;O\\O&amp;L\end{bmatrix}S\)</span>；</li>
-<li>step4：若令其中的参数全部为0，则可以进一步的得到矩阵的<span class="math inline">\(\{1，2\}\)</span>逆。</li>
+<li>认识论
+<ol type="1">
+<li>知己知彼，百战百胜</li>
+<li>未知是人类最大的恐惧来源，因此克服恐惧最好的方法就是面对恐惧</li>
+<li>压力感来自与我们不充分的准备</li>
+<li>见多识广</li>
+<li>人不可能想象出从来没有见过的东西，任何文艺形象的创作都能在现实中找到对应的原型。以人类对维度的认识为例，无论我们在数学上的论证过程如何缜密，但我们永远无法想象出真正的高维空间；反之，如果我们能够简单的体验一下高维空间，即使对数学一窍不通，我们对世界的认识也会上升一个很大的台阶。</li>
+</ol></li>
+<li>普遍联系与永恒发展
+<ol type="1">
+<li>把握事物间的区别与联系，是提升全面认识的关键</li>
+<li>近朱者赤，近墨者黑</li>
+<li>雪崩的时候没有一片雪花是无辜的</li>
+</ol></li>
+<li>世界的基本特性：
+<ol type="1">
+<li>因果性</li>
+<li>永恒运动</li>
+</ol></li>
 </ul>
-<h1 id="三moore-penrose逆">三、Moore-Penrose逆</h1>
-<h2 id="求解步骤-1">求解步骤：</h2>
-<p>利用满秩分解求解矩阵的<span class="math inline">\(A^+\)</span></p>
+<hr />
+<h1 id="三生活的方法论">三、生活的方法论</h1>
 <ul>
-<li>step1：求满秩分解<span class="math inline">\(A=FG\)</span></li>
-<li>step2：代入公式<span class="math inline">\(A^+=G^H(GG^H)^{-1}(F^HF)^{-1}F^H\)</span></li>
+<li>物以类聚，人与群分</li>
 </ul>
-<p>特殊的：</p>
-<ul>
-<li>当A为行满秩时：<span class="math inline">\(A^+=A^H(AA^H)^{-1}\)</span></li>
-<li>当A为列满秩时：<span class="math inline">\(A^+=(A^HA)^{-1}A^H\)</span></li>
-</ul>
-<h1 id="四广义逆矩阵的应用">四、广义逆矩阵的应用：</h1>
-<h2 id="线性方程组的求解">线性方程组的求解</h2>
-<h3 id="利用a1">1）利用<span class="math inline">\(A\{1\}\)</span>​</h3>
-<ul>
-<li>可解性（充要）：<span class="math inline">\(AA^{(1)}b=b\)</span></li>
-<li>通解：<span class="math inline">\(x=A^{(1)}b+(I-A^{(1)}A)y \ \ ,\  \forall y\in C^n\)</span></li>
-</ul>
-<h3 id="利用a">2）利用<span class="math inline">\(A^+\)</span></h3>
-<ul>
-<li>可解性（充要）：<span class="math inline">\(AA^+b=b\)</span></li>
-<li>通解：<span class="math inline">\(x=A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span></li>
-</ul>
-<p>利用Morre-Penrose逆求解线性方程组<span class="math inline">\(Ax=b\)</span>时可以得到下整齐的结论：</p>
-<ul>
-<li>有解（相容）的充分必要条件为<span class="math inline">\(AA^+b=b\)</span>；</li>
-<li><span class="math inline">\(A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span>表示相容方程组的通解，或者矛盾方程组的全部最小二乘解；</li>
-<li><span class="math inline">\(x_0=A^+b\)</span>是相容方程组的唯一极小范数解，或是矛盾方程组的唯一极小范数最小二乘解。</li>
-</ul>
+<hr />
+<h1 id="四自问自答">四、自问自答</h1>
+<h2 id="怎样提交计算能力">怎样提交计算能力？</h2>
+<ol type="1">
+<li>格式清晰</li>
+<li>适当放慢计算速度</li>
+<li>勤加练习</li>
+</ol>
+<h2 id="如何有效的讲述一个故事">如何有效的讲述一个故事？</h2>
+<ol type="1">
+<li>记叙文的六个基本要素：时间、地点、任务；起因、经过、结果</li>
+<li>锦上添花的技巧：幽默性、修饰、伏笔</li>
+</ol>
 
         </div>
 
@@ -328,9 +298,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
+                        <a href="/tags/%E4%B8%96%E7%95%8C%E8%A7%82/"># 世界观</a>
                     
-                        <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/"># 矩阵论</a>
+                        <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/"># 方法论</a>
                     
                         
                 </span>
@@ -343,10 +313,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E5%86%8D%E6%9D%A5%E4%BA%BF%E7%82%B9%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】再来亿点方法论</a>
+                <a class="prev" rel="prev" href="/2019/11/30/%E3%80%90%E6%97%A5%E8%AE%B0%E3%80%91%E9%82%A3%E4%B8%AA%E7%94%B7%E4%BA%BA%E7%9A%84%E9%97%B7%E9%AA%9A%E7%8B%AC%E7%99%BD/">那个男人的闷骚独白</a>
             
             
-            <a class="next" rel="next" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/">【数值分析】插值</a>
+            <a class="next" rel="next" href="/2019/11/27/%E3%80%90%E7%9F%A9%E9%98%B5%E8%AE%BA%E3%80%91%E5%B9%BF%E4%B9%89%E9%80%86%E7%9F%A9%E9%98%B5/">【矩阵论】广义逆矩阵</a>
             
         </section>
 

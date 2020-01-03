@@ -12,7 +12,7 @@
 
 
 
-<title>【矩阵论】广义逆矩阵 | The Orion</title>
+<title>【文学】文摘 | The Orion</title>
 
 
 
@@ -39,45 +39,6 @@
 
     
     
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
         
     
 
@@ -213,21 +174,21 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【矩阵论】广义逆矩阵</h1>
+            <h1 class="post-title">【文学】文摘</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 27, 2019&nbsp;&nbsp;16:11:50</a>
+                        Date: <a href="#">January 3, 2020&nbsp;&nbsp;21:07:01</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Math/">Math</a>
+                                <a href="/categories/Literature/">Literature</a>
                             
                         </span>
                     
@@ -236,75 +197,15 @@
         </header>
 
         <div class="post-content">
-            <hr />
-<hr />
-<h1 id="一广义逆矩阵的概念">一、广义逆矩阵的概念</h1>
-<ol type="1">
-<li>四个Penrose方程：设<span class="math inline">\(A\in C^{m\times n}\)</span>,<span class="math inline">\(X\in C^{n\times m}\)</span>，有
-<ul>
-<li><ol type="1">
-<li><span class="math inline">\(AXA=A\)</span></li>
-</ol></li>
-<li><ol start="2" type="1">
-<li><span class="math inline">\(XAX=X\)</span></li>
-</ol></li>
-<li><ol start="3" type="1">
-<li><span class="math inline">\((AX)^H=AX\)</span></li>
-</ol></li>
-<li><ol start="4" type="1">
-<li><span class="math inline">\((XA)^H=XA\)</span></li>
-</ol></li>
-</ul></li>
-<li>常用的广义逆
-<ul>
-<li>{1}逆：仅满足条件（1）</li>
-<li>Moore-Penrose逆：满足所有条件，记为<span class="math inline">\(A^+\)</span>，也称加号逆</li>
-</ul></li>
-<li>重要定理
-<ul>
-<li>矩阵的Moore-Penrose逆存在且唯一，从而所有类型（共15类）的广义逆矩阵均存在</li>
-<li>只要A不可逆，则除Moore-Penrose逆以外的其他所有逆均不唯一</li>
-</ul></li>
-</ol>
-<hr />
-<h1 id="二1逆">二、{1}逆</h1>
-<h2 id="求解步骤">求解步骤：</h2>
-<ul>
-<li>step1：化Hermite标准形，求变换阵<span class="math inline">\(S\)</span>，<span class="math inline">\(P\)</span> ；</li>
-<li>step2：引入参数矩阵：<span class="math inline">\(L=[ \ \alpha \ , \beta \ , \ ...]\)</span> 等；</li>
-<li>step3：代入公式：<span class="math inline">\(X=P\begin{bmatrix}I_r&amp;O\\O&amp;L\end{bmatrix}S\)</span>；</li>
-<li>step4：若令其中的参数全部为0，则可以进一步的得到矩阵的<span class="math inline">\(\{1，2\}\)</span>逆。</li>
-</ul>
-<h1 id="三moore-penrose逆">三、Moore-Penrose逆</h1>
-<h2 id="求解步骤-1">求解步骤：</h2>
-<p>利用满秩分解求解矩阵的<span class="math inline">\(A^+\)</span></p>
-<ul>
-<li>step1：求满秩分解<span class="math inline">\(A=FG\)</span></li>
-<li>step2：代入公式<span class="math inline">\(A^+=G^H(GG^H)^{-1}(F^HF)^{-1}F^H\)</span></li>
-</ul>
-<p>特殊的：</p>
-<ul>
-<li>当A为行满秩时：<span class="math inline">\(A^+=A^H(AA^H)^{-1}\)</span></li>
-<li>当A为列满秩时：<span class="math inline">\(A^+=(A^HA)^{-1}A^H\)</span></li>
-</ul>
-<h1 id="四广义逆矩阵的应用">四、广义逆矩阵的应用：</h1>
-<h2 id="线性方程组的求解">线性方程组的求解</h2>
-<h3 id="利用a1">1）利用<span class="math inline">\(A\{1\}\)</span>​</h3>
-<ul>
-<li>可解性（充要）：<span class="math inline">\(AA^{(1)}b=b\)</span></li>
-<li>通解：<span class="math inline">\(x=A^{(1)}b+(I-A^{(1)}A)y \ \ ,\  \forall y\in C^n\)</span></li>
-</ul>
-<h3 id="利用a">2）利用<span class="math inline">\(A^+\)</span></h3>
-<ul>
-<li>可解性（充要）：<span class="math inline">\(AA^+b=b\)</span></li>
-<li>通解：<span class="math inline">\(x=A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span></li>
-</ul>
-<p>利用Morre-Penrose逆求解线性方程组<span class="math inline">\(Ax=b\)</span>时可以得到下整齐的结论：</p>
-<ul>
-<li>有解（相容）的充分必要条件为<span class="math inline">\(AA^+b=b\)</span>；</li>
-<li><span class="math inline">\(A^+b+(I-A^+A)y \ \ ,\  \forall y\in C^n\)</span>表示相容方程组的通解，或者矛盾方程组的全部最小二乘解；</li>
-<li><span class="math inline">\(x_0=A^+b\)</span>是相容方程组的唯一极小范数解，或是矛盾方程组的唯一极小范数最小二乘解。</li>
-</ul>
+            <h1 id="年2月">2019年2月</h1>
+<h2 id="月24日事业努力规律">2月24日：事业、努力、规律</h2>
+<p><code>原文</code>：有志者，事竟成。现在我要告诉你们，这句话不对。只有符合科学规律和社会发展规律的事才能成。事实上，你们想干的大部分事，不管怎么努力，是成不了的。你们的责任就是在一百件事情中出去九十九件不能成的事情，找出那一件能成的来。这极难，但你们必须做到。</p>
+<p>——摘自刘慈欣《超新星纪元》</p>
+<p>读者评论：这件事一旦找到，那它一定是值得为之奋斗一生的事业！</p>
+<h1 id="年9月">2019年9月</h1>
+<h2 id="月17日心境">9月17日：心境</h2>
+<p><code>原文</code>：仅一夜之间，我的心判若两人。他来自人山人海，原来只为给我一场空欢喜。你来时携带风雨，我无处可避；你走时乱了四季，我久病难医。</p>
+<p>——摘自太宰治《人间失格》</p>
 
         </div>
 
@@ -328,9 +229,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
-                    
-                        <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/"># 矩阵论</a>
+                        <a href="/tags/%E6%91%98%E5%BD%95/"># 摘录</a>
                     
                         
                 </span>
@@ -343,10 +242,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/11/28/%E3%80%90%E5%93%B2%E5%AD%A6%E3%80%91%E5%86%8D%E6%9D%A5%E4%BA%BF%E7%82%B9%E6%96%B9%E6%B3%95%E8%AE%BA/">【哲学】再来亿点方法论</a>
             
-            
-            <a class="next" rel="next" href="/2019/11/26/%E3%80%90%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E3%80%91%E6%8F%92%E5%80%BC/">【数值分析】插值</a>
+            <a class="next" rel="next" href="/2020/01/02/%E3%80%90%E6%8A%80%E6%9C%AF%E6%B5%81%E3%80%91%E5%8D%9A%E5%AE%A2%E5%B0%8F%E7%99%BD%E7%9A%84%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/">【技术流】博客小白的进阶之路</a>
             
         </section>
 
