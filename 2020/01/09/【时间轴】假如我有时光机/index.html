@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="liuluyang">
+
+
+
+
+
+<title>【时间轴】假如我有时光机 | The Orion</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">The orion</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">The orion</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【时间轴】假如我有时光机</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 9, 2020&nbsp;&nbsp;21:31:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Personal/">Personal</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr />
+<h1 id="年">2020年</h1>
+<ul>
+<li>20200101-车队</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20200101-车队.jpg">
+<hr />
+<h1 id="年-1">2019年</h1>
+<ul>
+<li>20191227长征五号复飞成功</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/长征五号复飞成功.jpg">
+<ul>
+<li>20191227-基友柱与猎户座</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191227-基友柱与猎户座.jpg">
+<ul>
+<li>20191222-车队2</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191222-车队2.jpg">
+<ul>
+<li>20191222-车队.jpg</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191222-车队.jpg">
+<ul>
+<li>20191220-认真学习的要疯</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191220-认真学习的要疯.jpg">
+<ul>
+<li>20191220-临时抱佛脚的我</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191220-临时抱佛脚的我.jpg">
+<ul>
+<li>20191213-驾照到手</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191213-拿到驾照.jpg">
+<ul>
+<li>20191109-嘶哟~！！！</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191109-嘶哟~！！！.jpg">
+<ul>
+<li>20191027-潭中阁</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191027-潭中阁楼.jpg">
+<ul>
+<li>20191027-古观音禅寺的钟楼</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191027-古观音禅寺的钟楼.jpg">
+<ul>
+<li>20191017-古观音禅寺的后山</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191017-古观音禅寺的后山.jpg">
+<ul>
+<li>20191022-毛主席说的对</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191022-毛主席说的对.jpg">
+<ul>
+<li>20191006-骚气值+100</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20191006-骚气+100.jpg">
+<ul>
+<li>20190926-阳光下的舍友</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190926-阳光下的舍友.jpg">
+<ul>
+<li>20190901-宋小屌、小王、翔老板</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190901-宋小屌、小王、翔老板.jpg">
+<ul>
+<li>20190901-秦岭</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190901-秦岭.jpg">
+<ul>
+<li>20190901-车队</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190901-车队.jpg">
+<ul>
+<li>20190828-这是P的</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190828-这是P的.jpg">
+<ul>
+<li>20190823-车队2</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190823-车队2.jpg">
+<ul>
+<li>20190823-车队</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190823-车队.jpg">
+<ul>
+<li>20190820-重庆大学内</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190820-重庆大学内.jpg">
+<ul>
+<li>20190820-嘉陵江</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190820-嘉陵江.jpg">
+<ul>
+<li>20190820-川东地貌</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190820-川东地貌.jpg">
+<ul>
+<li>20190811-精神毒品</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190811-精神毒品.jpg">
+<ul>
+<li>20190806-双儿</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190806-双儿.jpg">
+<ul>
+<li>20190720-翔老板和他的老婆</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190720-翔老板和他的老婆.jpg">
+<ul>
+<li>20190704-练车</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190704-练车.jpg">
+<ul>
+<li>20190629-再见~Gay125</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190629-再见~Gay125.jpg">
+<ul>
+<li>20190628-让我再看你一眼</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190628-最后一眼.jpg">
+<ul>
+<li>20190628-忽略右下角</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190628-忽略右下角.jpg">
+<ul>
+<li>20190628-给坤儿搬宿舍</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190628-给坤儿搬宿舍.jpg">
+<ul>
+<li>20190628-搬宿舍</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190628-搬宿舍.jpg">
+<ul>
+<li>20190626-史上最顶毕业合照</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-史上最顶毕业合照.jpg">
+<ul>
+<li>20190626-那傻，笔芯</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-那傻，笔芯.jpg">
+<ul>
+<li>20190626-那啥，笔芯</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-那啥，笔芯.jpg">
+<ul>
+<li>20190626-两个沙雕</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-两个沙雕.jpg">
+<ul>
+<li>20190626-屌哥&amp;&amp;豪哥</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-屌哥&&豪哥.jpg">
+<ul>
+<li>20190626-毕业时的小王</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-毕业时的小王.jpg">
+<ul>
+<li>20190626-Gay125的小伙子3</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-Gay125的小伙子3.jpg">
+<ul>
+<li>20190626-Gay125的小伙子2</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-Gay125的小伙子2.jpg">
+<ul>
+<li>20190626-Gay125的小伙子</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190626-Gay125的小伙子.jpg">
+<ul>
+<li>20190624-眉清目秀的狗子</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190624-眉清目秀的狗子.jpg">
+<ul>
+<li>20190612-啵~</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190612-啵~.jpg">
+<ul>
+<li>20190612-毕业聚餐</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190612-毕业聚餐.jpg">
+<ul>
+<li>20190426-眼睛里的痣</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190426-眼睛里的痣.jpg">
+<ul>
+<li>20190220-双儿</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190220-双儿.jpg">
+<ul>
+<li>20190228-我酸了</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190228-我酸了.jpg">
+<ul>
+<li>20190212-睿睿</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190212-睿睿.jpg">
+<ul>
+<li>20190208-淘气鬼与小可爱</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190208-右边是个小可爱.jpg">
+<ul>
+<li>20190208-迎亲现场</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190208-迎亲现场.jpg">
+<ul>
+<li>20190204-在舅舅家</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-在舅舅家.jpg">
+<ul>
+<li>20190204-燕儿的佩奇</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-燕儿的佩奇.jpg">
+<ul>
+<li>20190204-燕儿2</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-燕儿2.jpg">
+<ul>
+<li>20190204-团年饭2</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-团年饭2.jpg">
+<ul>
+<li>20190204-团年饭</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-团年饭.jpg">
+<ul>
+<li>20190204-睿娃和瑶哥</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-睿娃和瑶哥.jpg">
+<ul>
+<li>20190204-灵魂大作</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190204-灵魂大作.jpg">
+<ul>
+<li>20190203-燕儿和睿睿</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190203-燕儿和睿睿.jpg">
+<ul>
+<li>20190203-燕儿</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190203-燕儿.jpg">
+<ul>
+<li>20190203-采茶大盗</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190203-采茶大盗.jpg">
+<ul>
+<li>20190202-爸</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20190202-爸.jpg">
+<hr />
+<h1 id="年-2">2016年</h1>
+<ul>
+<li>车队与篮球</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/车队与篮球.jpg">
+<hr />
+<h1 id="年-3">2015年</h1>
+<ul>
+<li>车队-祥裕</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/车队-祥裕.jpg">
+<ul>
+<li>经典黑照</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/经典黑照.jpg">
+<ul>
+<li>我糊</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/我糊.jpg">
+<hr />
+<h1 id="年-4">2014年</h1>
+<ul>
+<li>20140609-高中毕业</li>
+</ul>
+<img src="http://q3hhfpfmt.bkt.clouddn.com/myfigcld/images/20140609-高中毕业.jpg">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>liuluyang</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E6%97%A5%E8%AE%B0/"># 日记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/01/03/%E3%80%90%E6%96%87%E5%AD%A6%E3%80%91%E6%96%87%E6%91%98/">【文学】文摘</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© liuluyang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+
+    </div>
+</body>
+</html>
+
+<!--人体时钟背景透明-->
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
